@@ -1,0 +1,17 @@
+//tailwind doesn't support dynamic classes so it's much easier to create this file rather than going againt tailwind nature
+
+$circleSice: var(--arrowWithCircle_circleSize);
+$halfCircleSice: calc($circleSice / 2);
+
+.arrow {
+  &:hover, &:active {
+    .line {
+      width: $circleSice;
+    }
+  }
+  .line {
+    width: calc(100% - $halfCircleSice + 1px);
+    right: calc($halfCircleSice - 1px);
+    top: calc($halfCircleSice - .25px);
+  }
+}
