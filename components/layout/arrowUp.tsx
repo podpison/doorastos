@@ -8,7 +8,6 @@ export const ArrowUp = () => {
   useEffect(() => {
     const callback = () => {
       let currentPos = window.scrollY;
-      console.log(currentPos)
       setPrevPos(currentPos);
       setShow(prevPos >= currentPos)
     };

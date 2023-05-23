@@ -32,6 +32,10 @@ const Pagination: FC<Props> = ({ items, setItems, itemsPerPage, isReset, setIsRe
     setIsReset && setIsReset(false);
   }, [isReset, setIsReset]);
 
+  if (pageCount <= 1) {
+    return <></>
+  };
+
   return <ReactPaginate
     className='flex items-center gap-x-4 w-fit mx-auto mt-20 esm:gap-x-8'
     pageClassName='text-esm text-grey2 transition-colors hover:text-grey1'

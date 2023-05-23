@@ -10,7 +10,7 @@ const items = [
 const Steps: FC = () => {
   let Items = items.map((i, index) => <Item text={i} id={index + 1} key={index} />);
 
-  return <div className='mt30-50 grid gap-y-7 md:grid-cols-3'>
+  return <div className='mt30-50 grid gap-y-7 divide-grey4 max-md:border-y max-md:border-grey4 max-md:divide-y md:grid-cols-3 md:divide-x'>
     {Items}
   </div>
 };

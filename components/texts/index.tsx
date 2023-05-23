@@ -7,10 +7,11 @@ type Props = {
   items: TextsItemType[]
   className?: string
   itemClassName?: string
+  headingClassName?: string
 } & MotionProps
 
-const Texts: FC<Props> = ({ items, className, itemClassName, ...props }) => {
-  let Items = items.map((i, index) => <Item {...i} itemClassName={itemClassName} key={index} />);
+const Texts: FC<Props> = ({ items, className, itemClassName, headingClassName, ...props }) => {
+  let Items = items.map((i, index) => <Item {...i} headingClassName={headingClassName} itemClassName={itemClassName} key={index} />);
 
   return <motion.div className={cn('flex flex-col gap-y-2.5', className)} {...props}>
     {Items}

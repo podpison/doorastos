@@ -6,7 +6,6 @@ const items = [
   'How to choose doors',
   'Stock',
   'About manufacturer',
-  'Site map',
 ];
 
 const Nav: FC = () => {
