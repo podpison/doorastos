@@ -28,10 +28,10 @@ const HelpChooseDialog: FC<Props> = ({ open, initialStage, thirdStageHeading, ..
   }, [initialStage, stage]);
 
   const Stages = [
-    <FirstStage setStage={handleStage} />,
-    <SecondStage setStage={handleStage} />,
-    <ThirdStage heading={thirdStageHeading} setStage={handleStage} />,
-    <FourthStage />,
+    <FirstStage setStage={handleStage} key={0} />,
+    <SecondStage setStage={handleStage} key={1} />,
+    <ThirdStage heading={thirdStageHeading} setStage={handleStage} key={2} />,
+    <FourthStage key={3} />,
   ];
 
   return <DialogBase className='min-h-[220px] max-w-[600px] focus:outline-none pb-10 pt-5 esm:min-h-[280px]' closeIconClassName='top-5 right-[10px]' open={open} {...props}>

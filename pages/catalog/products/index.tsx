@@ -61,7 +61,7 @@ const Products: FC<Props> = ({ itemsPerPage, allItems, activeSecurityItem, start
   useEffect(() => {
     setItemsPortion(items.slice(0, itemsPerPage));
     setIsPaginationReset(true);
-  }, [items.length]);
+  }, [items, itemsPerPage]);
 
   if (items.length === 0) {
     return <NothingFound />

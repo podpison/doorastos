@@ -40,7 +40,7 @@ const Dropdown: FC<DropdownProps> = ({ defaultItem, activeItems, setActiveItem, 
     return () => {
       document.removeEventListener('click', callback);
     };
-  }, [dropdownRef.current, isExpanded, setIsExpanded]);
+  }, [dropdownRef, isExpanded, setIsExpanded]);
 
   return <div className={cn('relative border border-grey4 w-full', isExpanded ? 'border-b-0' : 'transition-colors hover:border-grey2')} ref={dropdownRef}>
     <button className='flex justify-between items-center w-full p-2.5' onClick={handleExpandedStatus}>

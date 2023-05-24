@@ -9,8 +9,8 @@ type Props = {
 const Recall: FC<Props> = ({ className }) => {
   return <div className={cn('flex flex-col gap-y-2.5', className)}>
     <div className='flex flex-col gap-y-2.5'>
-      <h5 className='text16-24 max-w-[11em]'>We'll call you back within a short time</h5>
-      <p className='text-esm text-grey2 max-w-[17em] sm:max-w-[30em]'>We'll help you choose a door and answer any questions</p>
+      <h5 className='text16-24 max-w-[11em]'>We&#96;ll call you back within a short time</h5>
+      <p className='text-esm text-grey2 max-w-[17em] sm:max-w-[30em]'>We&#96;ll help you choose a door and answer any questions</p>
     </div>
     <PhoneForm className={cn(
       'grid grid-cols-[54%_1fr] items-center gap-x-12 esm:gap-x-[90px] sm:gap-x-10 sm:grid-cols-[1fr_max-content]',
