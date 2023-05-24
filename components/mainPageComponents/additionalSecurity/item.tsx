@@ -36,7 +36,7 @@ const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, 
     </div>
     <div className='flex flex-col gap-y-5 md:group-odd:col-[2] md:group-even:row-[1] md:group-even:mt-16 lg:group-even:mt-[5rem]'>
       <h6 className='text14-16 max-w-[31em]'>{subheading}</h6>
-      {(isExpandable && isLaptop) && <p className='text-esm text-grey1 md:max-w-[30em]'>{description[0].description}</p>}
+      {(isExpandable && isLaptop) && <p className='text-esm text-grey1 md:max-w-[30em]'>{description[0].description as string}</p>}
       <Texts className={cn('[&>p]:max-w-[30em]', !isDescOpen && '-z-50')} data-open={isDescOpen} animate={{
         height: !isDescOpen ? 0 : 'auto',
         opacity: !isDescOpen ? 0 : 1,

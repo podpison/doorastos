@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import cn from 'classnames';
-import Item, { AccordionItemType } from './item';
+import Item from './item';
 import { TextsItemType } from '../texts/item';
 
 type Props = {

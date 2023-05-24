@@ -18,8 +18,7 @@ type Props = {
 
 
 const Item: FC<Props> = ({ heading, description, id }) => {
-  typeof description === 'string' && (description = [description]);
-  let items = description.map(i => ({ description: i }));
+  let items = (Array.isArray(description) ? description : [description]).map(i => ({ description: i }));
 
   return <Accordion.Item className='group relative' value={String(id)}>
     <span className='absolute w-full h-px bg-line hidden group-first:block md:w-[200vw] md:-left-[100vw]' />
