@@ -4,7 +4,7 @@ $circleSice: var(--arrowWithCircle_circleSize);
 $halfCircleSice: calc($circleSice / 2);
 
 .arrow {
-  &:hover, &:active {
+  &:hover, &:active, &.forcedActive {
     .line {
       width: $circleSice;
     }

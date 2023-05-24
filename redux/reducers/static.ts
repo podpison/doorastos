@@ -14,24 +14,37 @@ export type ProductType = {
   discount?: number
 }
 
-const initialState = {
-  products: [] as ProductType[]
+export type StockItemType = {
+  heading: string
+  description: string
+  img: {
+    src: string
+    alt: string
+  }
+  id: number
 }
 
-export const fetchProducts = createAsyncThunk(
-  'static/fetchProducts',
-  async () => {
-    let response = await axios.get('/api/products');
+const initialState = {
+  products: [] as ProductType[],
+  stock: [] as StockItemType[],
+}
 
-    return response.data;
+export type StaticStateType = typeof initialState
+
+export const fetchStaticItems = createAsyncThunk(
+  'static/fetchStaticItems',
+  async () => {
+    let response = await axios.get('/api/staticItems');
+
+    return response.data as StaticStateType;
   }
-)
+);
 
 const staticReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
+    .addCase(fetchStaticItems.fulfilled, (state, action) => {
+      return {...state, ...action.payload};
     })
-})
+});
 
 export default staticReducer;

@@ -4,11 +4,14 @@ import PhoneForm from '@/components/forms/phoneForm';
 
 type Props = {
   setStage: () => void
+  heading?: string
 }
 
-const ThirdStage: FC<Props> = ({ setStage }) => {
+const defaultHeading = 'Our manager will call you back within a short time, select the best option and answer any questions';
+
+const ThirdStage: FC<Props> = ({ setStage, heading = defaultHeading }) => {
   return <div className='flex flex-col gap-y-5'>
-    <Dialog.Title className="text-light font-normal text-center mx-auto max-w-[18em]">Our manager will call you back within a short time, select the best option and answer any questions</Dialog.Title>
+    <Dialog.Title className="text-light font-normal text-center mx-auto max-w-[18em]">{heading}</Dialog.Title>
     <PhoneForm className='grid justify-center gap-x-7 [&>button]:mx-auto [&>button]:max-esm:mt-7 [&>button]:md:w-[120px] [&>button]:md:h-[120px] esm:grid-cols-[1fr_max-content] esm:items-center' onSubmit={setStage} />
   </div>
 };

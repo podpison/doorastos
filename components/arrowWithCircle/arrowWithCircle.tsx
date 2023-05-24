@@ -11,14 +11,16 @@ type Props = {
   circleClassName?: string
   signClassName?: string
   width?: 'full' | 'fit'
+  forceActiveStatus?: boolean
 } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-const ArrowWithCircle: FC<Props> = ({ children, circleSize = 30, color = 'blue', className, circleClassName, signClassName, width = 'fit', ...props }) => {
+const ArrowWithCircle: FC<Props> = ({ children, circleSize = 30, color = 'blue', className, circleClassName, signClassName, width = 'fit', forceActiveStatus, ...props }) => {
 
   return <div
     className={cn(
       'group cursor-pointer',
       width === 'fit' ? 'w-fit' : 'w-full',
+      forceActiveStatus && cls.forcedActive,
       cls.arrow, className,
     )}
     {...props}

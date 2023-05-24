@@ -8,9 +8,10 @@ import DialogBase from '../dialogBase';
 
 type Props = {
   initialStage?: 1 | 2 | 3 | 4
+  thirdStageHeading?: string
 } & Dialog.DialogProps
 
-const HelpChooseDialog: FC<Props> = ({ open, initialStage, ...props }) => {
+const HelpChooseDialog: FC<Props> = ({ open, initialStage, thirdStageHeading, ...props }) => {
   const [stage, setStage] = useState(1);
   const handleStage = () => setStage(prev => prev + 1);
 
@@ -29,7 +30,7 @@ const HelpChooseDialog: FC<Props> = ({ open, initialStage, ...props }) => {
   const Stages = [
     <FirstStage setStage={handleStage} />,
     <SecondStage setStage={handleStage} />,
-    <ThirdStage setStage={handleStage} />,
+    <ThirdStage heading={thirdStageHeading} setStage={handleStage} />,
     <FourthStage />,
   ];
 
