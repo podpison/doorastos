@@ -5,7 +5,7 @@ type Props = {
   items: string[]
 }
 
-const Item: FC<Props> = ({ heading, items }) => {
+const Item: FC<Props> = ({ heading, items = [] }) => {
   let Items = items.map((i, index) => <p className='text-esm text-black py-4 first:pt-0 last:pb-0' key={index}>{i}</p>);
 
   return <div className='flex flex-col gap-y-5'>

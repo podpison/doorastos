@@ -9,7 +9,7 @@ export type ItemProps = {
   }[] | string
 }
 
-const Item: FC<ItemProps> = ({ heading, items }) => {
+const Item: FC<ItemProps> = ({ heading, items = [] }) => {
   let Texts = typeof items === 'string'
     ? items
     : items.map((i, index) => {

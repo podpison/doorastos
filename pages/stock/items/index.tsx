@@ -7,7 +7,7 @@ import HelpChooseDialog from '@/components/dialogs/helpChooseDialog';
 const Items: FC = () => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
-  let items = useSelector(selectStockItems);
+  let items = useSelector(selectStockItems) || [];
   let Items = items.map(i => <Item activeItemId={activeItemId} onClick={() => setActiveItemId(i.id)} {...i} key={i.id} />)
 
   const handleActiveItemId = (isOpen: boolean) => {

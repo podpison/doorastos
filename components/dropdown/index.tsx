@@ -13,7 +13,7 @@ export type DropdownProps = {
   setIsExpanded: (name: string | null) => void
 }
 
-const Dropdown: FC<DropdownProps> = ({ defaultItem, activeItems, setActiveItem, items, isExpanded, setIsExpanded }) => {
+const Dropdown: FC<DropdownProps> = ({ defaultItem, activeItems = [], setActiveItem, items = [], isExpanded, setIsExpanded }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleExpandedStatus = () => {

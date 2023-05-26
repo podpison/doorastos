@@ -16,7 +16,7 @@ type Props = {
   activeCategoryItems: ActiveCategoryItemType[]
 }
 
-const Products: FC<Props> = ({ itemsPerPage, allItems, activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems }) => {
+const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems }) => {
   const [items, setItems] = useState<ProductType[]>(allItems); //filtred items
   const [itemsPortion, setItemsPortion] = useState<ProductType[]>(items); //portion of filtred items
   const [isPaginationReset, setIsPaginationReset] = useState(false);

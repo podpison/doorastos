@@ -16,7 +16,7 @@ type Props = {
   setActiveItem: (category: ActiveCategoryItemType['category'], newItems: string[]) => void
 }
 
-const Item: FC<Props> = ({ defaultItem, expandedItem, setExpandedItem, items, activeItems, setActiveItem }) => {
+const Item: FC<Props> = ({ defaultItem, expandedItem, setExpandedItem, items, activeItems = [], setActiveItem }) => {
   return <Dropdown
     defaultItem={defaultItem}
     isExpanded={expandedItem === defaultItem}
