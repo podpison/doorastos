@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react';
-import withThermalBreakImg from '../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/with-thermal-break.webp';
-import tamperproofImg from '../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/tamperproof.webp';
-import armoredImg from '../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/armored.webp';
+import withThermalBreakImg from '../../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/with-thermal-break.webp';
+import tamperproofImg from '../../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/tamperproof.webp';
+import armoredImg from '../../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/armored.webp';
 import Item from './item';
 import { SecurityItemType } from '@/pages/catalog';
 import { ProductType } from '@/redux/reducers/static';

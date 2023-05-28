@@ -1,9 +1,9 @@
-import { FC, useState } from 'react';
-import solidImg from '../../../../../public/imgs/pages/catalog/settings/filter/solid.webp';
-import MDFOverlaysImg from '../../../../../public/imgs/pages/catalog/settings/filter/MDF-overlays.webp';
-import laminatedChipboardImg from '../../../../../public/imgs/pages/catalog/settings/filter/laminated-chipboard.webp';
-import withGlassAndMirrorImg from '../../../../../public/imgs/pages/catalog/settings/filter/with-glass-and-mirror.webp';
-import forgedImg from '../../../../../public/imgs/pages/catalog/settings/filter/forged.webp';
+import { FC, useMemo, useState } from 'react';
+import solidImg from '../../../../../../public/imgs/pages/catalog/settings/filter/solid.webp';
+import MDFOverlaysImg from '../../../../../../public/imgs/pages/catalog/settings/filter/MDF-overlays.webp';
+import laminatedChipboardImg from '../../../../../../public/imgs/pages/catalog/settings/filter/laminated-chipboard.webp';
+import withGlassAndMirrorImg from '../../../../../../public/imgs/pages/catalog/settings/filter/with-glass-and-mirror.webp';
+import forgedImg from '../../../../../../public/imgs/pages/catalog/settings/filter/forged.webp';
 import Item, { ActiveCategoryItemType } from './item';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 }
 
 const Categories: FC<Props> = ({ activeItems = [], setActiveItem }) => {
-  const items = [
+  const items = useMemo(() => [
     {
       defaultItem: 'Price',
       items: [
@@ -121,7 +121,7 @@ const Categories: FC<Props> = ({ activeItems = [], setActiveItem }) => {
         }
       ]
     },
-  ];
+  ], []); //vercel doen't want to deploy this project if items are outside the component
 
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 

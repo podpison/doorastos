@@ -29,8 +29,17 @@ const Pagination: FC<Props> = ({ items, setItems, itemsPerPage, isReset, setIsRe
   }, [itemOffset]);
 
   useEffect(() => {
-    setIsReset && setIsReset(false);
+    if (setIsReset) {
+      setIsReset(false);
+      setItemOffset(0);
+    };
   }, [isReset, setIsReset]);
+
+  useEffect(() => {
+    if (setIsReset) {
+      setIsReset(true);
+    };
+  }, [items]);
 
   if (pageCount <= 1) {
     return <></>

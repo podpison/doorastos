@@ -1,7 +1,7 @@
 import { ProductType } from "@/redux/reducers/static";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import Products from '../pages/catalog/products/index';
+import Products from '../pages/catalog/catalogComponents/products/index';
 
 describe('Catalog', () => {
   const products: ProductType[] = [

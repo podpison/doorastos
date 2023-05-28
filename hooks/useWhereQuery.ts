@@ -12,7 +12,7 @@ export type WhereType = ProductType['where'] | undefined
 
 //the purpose of this hook is to help with handling breadcrumbs with 'where' query 
 const useWhereQuery = (
-  defaultItem: defaultItemType,
+  defaultItems: defaultItemType | defaultItemType[],
   breadcrumbsItems: BreadcrumbsItemType[],
   setBreadcrumbsItems: SetBreadcrumbsItemsType,
   initialItem?: defaultItemType
@@ -22,10 +22,8 @@ const useWhereQuery = (
   useEffect(() => {
     let whereQuery = router.query?.where;
     let dynamicItems = new Map(); //'where' query 
-    let items = [
-      defaultItem,
-    ];
-
+    let items = Array.isArray(defaultItems) ? [...defaultItems] : [defaultItems];
+    
     if (whereQuery) {
       dynamicItems.set('where', { name: whereQuery === 'house' ? 'Doors to the house' : 'Doors to the apartment', href: `?where=${whereQuery}` });
       items.push(dynamicItems.get('where'));

@@ -11,7 +11,10 @@ export type ProductType = {
   where: 'apartment' | 'house'
   finishing: string
   color: string
-  discount?: number
+  discount?: {
+    value: number
+    expiryDate: string
+  }
 }
 
 export type StockItemType = {

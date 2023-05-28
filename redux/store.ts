@@ -1,18 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import staticReducer from './reducers/static';
 import { createWrapper } from 'next-redux-wrapper';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     static: staticReducer,
   },
   devTools: true,
 })
 
-const reduxStore = createWrapper(() => store);
+const reduxWrapper = createWrapper(() => store);
 
 export type StateType = ReturnType<typeof store.getState>;
 export type DispatchType = typeof store.dispatch;
 
-export default reduxStore;
+export default reduxWrapper;

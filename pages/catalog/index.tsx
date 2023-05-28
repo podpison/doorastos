@@ -2,15 +2,15 @@ import Breadcrumbs from "@/components/breadcrumbs";
 import { BreadcrumbsItemType } from "@/components/breadcrumbs/item";
 import Head from "next/head";
 import { FC, useState } from "react";
-import Settings from "./settings";
-import StartPriceFrom from "./settings/startPriceFrom";
-import { ActiveCategoryItemType } from "./settings/filter/categories/item";
-import Products from "./products";
+import Products from "./catalogComponents/products";
 import { ProductType } from "@/redux/reducers/static";
 import { useSelector } from "react-redux";
 import { selectProductItems } from "@/redux/selectors";
 import UniqueOffer from "@/components/uniqueOffers";
 import useWhereQuery from "@/hooks/useWhereQuery";
+import { ActiveCategoryItemType } from "./catalogComponents/settings/filter/categories/item";
+import Settings from "./catalogComponents/settings";
+import StartPriceFrom from "./catalogComponents/settings/startPriceFrom";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null
@@ -22,12 +22,14 @@ const CatalogPage: FC = () => {
   const [activeSecurityItem, setActiveSecurityItem] = useState<SecurityItemType>(null);
   const [activeCategoryItems, setActiveCategoryItems] = useState<ActiveCategoryItemType[]>([]);
   const { where } = useWhereQuery({ name: 'Catalog' }, breadcrumbItems, setBreadcrumbItems);
+  const [isPaginationReset, setIsPaginationReset] = useState(false);
 
   const resetSettings = () => {
     setBreadcrumbItems(prev => prev.filter(i => !i.href?.includes('?where')));
     setStartPriceFromItem(null);
     setActiveSecurityItem(null);
     setActiveCategoryItems([]);
+    setIsPaginationReset(true);
   };
   const setActiveCategoryItem = (category: ActiveCategoryItemType['category'], newItems: string[]) => {
     let categoryIndex = activeCategoryItems.findIndex(c => c.category === category);
@@ -83,6 +85,8 @@ const CatalogPage: FC = () => {
         startPriceFromItem={startPriceFromItem}
         whereItem={where}
         activeCategoryItems={activeCategoryItems}
+        isPaginationReset={isPaginationReset}
+        setIsPaginationReset={setIsPaginationReset}
       />
       <UniqueOffer />
     </main>

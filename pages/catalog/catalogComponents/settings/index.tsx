@@ -1,8 +1,8 @@
 import { Dispatch, FC, SetStateAction } from 'react';
 import Filter from './filter';
-import { ActiveCategoryItemType } from './filter/categories/item';
-import { SecurityItemType } from '..';
 import ButtonsGroup, { ButtonsGroupItemType } from '@/components/buttonsGroup/buttonsGroup';
+import { SecurityItemType } from '../..';
+import { ActiveCategoryItemType } from './filter/categories/item';
 
 type Props = {
   resetSettings: () => void

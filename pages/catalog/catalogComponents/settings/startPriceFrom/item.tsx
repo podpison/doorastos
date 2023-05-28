@@ -1,6 +1,6 @@
 import Checkbox from '@/components/checkbox';
+import { PriceFromType } from '@/pages/catalog';
 import { Dispatch, FC, SetStateAction } from 'react';
-import { PriceFromType } from '../..';
 
 type Props = {
   text: PriceFromType

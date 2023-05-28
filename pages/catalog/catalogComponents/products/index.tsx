@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import Item from './item';
 import NothingFound from './nothingFound';
 import { ProductType } from '@/redux/reducers/static';
-import { PriceFromType, SecurityItemType } from '..';
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
-import { ActiveCategoryItemType } from '../settings/filter/categories/item';
 import Pagination from '@/components/pagination';
+import { PriceFromType, SecurityItemType } from '../..';
+import { ActiveCategoryItemType } from '../settings/filter/categories/item';
 
 type Props = {
   itemsPerPage: number
@@ -14,13 +14,13 @@ type Props = {
   startPriceFromItem: PriceFromType
   whereItem: ProductType['where'] | undefined
   activeCategoryItems: ActiveCategoryItemType[]
+  isPaginationReset: boolean
+  setIsPaginationReset: Dispatch<SetStateAction<boolean>>
 }
 
-const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems }) => {
+const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems, isPaginationReset, setIsPaginationReset }) => {
   const [items, setItems] = useState<ProductType[]>(allItems); //filtred items
   const [itemsPortion, setItemsPortion] = useState<ProductType[]>(items); //portion of filtred items
-  const [isPaginationReset, setIsPaginationReset] = useState(false);
-
   let Items = itemsPortion.map((i) => <Item {...i} key={i.id} />);
 
   useEffect(() => {
@@ -28,8 +28,8 @@ const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, 
 
     let filtredBySecurity = activeSecurityItem !== null ? itemsCopy.filter(i => i.security === activeSecurityItem) : itemsCopy;
     let filtredByPrice = startPriceFromItem !== null ? filtredBySecurity.sort((a, b) => {
-      let aPriceWithDiscount = getPriceWithDiscount(a.price, a?.discount);
-      let bPriceWithDiscount = getPriceWithDiscount(b.price, b?.discount);
+      let aPriceWithDiscount = getPriceWithDiscount(a.price, a?.discount?.value);
+      let bPriceWithDiscount = getPriceWithDiscount(b.price, b?.discount?.value);
 
       return startPriceFromItem === 'Ascending' ? aPriceWithDiscount - bPriceWithDiscount : bPriceWithDiscount - aPriceWithDiscount;
     }) : filtredBySecurity;
@@ -55,12 +55,10 @@ const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, 
     }) : filtredByWhere;
 
     setItems(filtredByCategoryItems);
-    setIsPaginationReset(true);
   }, [allItems, activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems]);
 
   useEffect(() => {
     setItemsPortion(items.slice(0, itemsPerPage));
-    setIsPaginationReset(true);
   }, [items, itemsPerPage]);
 
   if (items.length === 0) {

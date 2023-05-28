@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from 'react';
 import Item from './item';
-import { PriceFromType } from '../..';
+import { PriceFromType } from '@/pages/catalog';
 
 type Props = {
   activeItem: PriceFromType

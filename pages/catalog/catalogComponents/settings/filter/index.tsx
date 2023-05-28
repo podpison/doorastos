@@ -6,7 +6,7 @@ import useResize from '@/hooks/useResize';
 import SecurityProperties from './securityProperties';
 import Categories from './categories';
 import { ActiveCategoryItemType } from './categories/item';
-import { SecurityItemType } from '../..';
+import { SecurityItemType } from '@/pages/catalog';
 
 type Props = {
   activeSecurityItem: SecurityItemType
