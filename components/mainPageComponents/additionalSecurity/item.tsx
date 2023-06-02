@@ -6,6 +6,7 @@ import ArrowDown from '@/components/icons/ArrowDown';
 import Texts from '@/components/texts';
 import ArrowWithCircle from '@/components/arrowWithCircle/arrowWithCircle';
 import { TextsItemType } from '@/components/texts/item';
+import HelpChooseDialog from '@/components/dialogs/helpChooseDialog';
 
 export type AdditionalSecurityItemType = {
   img: StaticImageData
@@ -22,6 +23,9 @@ type Props = {
 
 const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, className, windowWidth }) => {
   const [isDescOpen, setIsDescOpen] = useState(false);
+  const [isHCDOpen, setIsHCDOpen] = useState(false); // HCD - help choose dialog
+
+  const handleHCDOpenStatus = () => setIsHCDOpen(prev => !prev);
   const handleDescStatus = () => setIsDescOpen(prev => !prev);
   let isLaptop = windowWidth >= 768;
 
@@ -44,7 +48,7 @@ const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, 
       }}
         items={(isExpandable && isLaptop) ? description.slice(1) : description}
       />
-      <ArrowWithCircle className='h-fit mt-2.5 group-odd:hidden'>Find out the cost</ArrowWithCircle>
+      <ArrowWithCircle className='h-fit mt-2.5 group-odd:hidden' onClick={handleHCDOpenStatus}>Find out the cost</ArrowWithCircle>
       {!(!isExpandable && isLaptop) &&
         <button className='flex items-center justify-between gap-x-5 w-fit transition-colors hover:text-blue1' onClick={handleDescStatus}>
           <span className='text14'>{isDescOpen ? 'Hide' : 'More'}</span>
@@ -52,7 +56,16 @@ const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, 
         </button>
       }
     </div>
-    {isLaptop && <ArrowWithCircle className='row-[2] col-[1] h-fit absolute right-[calc(50%_+_28px_+_3.5em)] mt-48 group-even:hidden smlg:right-[calc(50%_+_48px_+_3.5em)] lg:right-[calc(50%_+_100px_+_3.5em)]'>Find out the cost</ArrowWithCircle>}
+    {isLaptop &&
+      <ArrowWithCircle
+        className='row-[2] col-[1] h-fit absolute right-[calc(50%_+_28px_+_3.5em)] mt-48 group-even:hidden smlg:right-[calc(50%_+_48px_+_3.5em)] lg:right-[calc(50%_+_100px_+_3.5em)]'
+        onClick={handleHCDOpenStatus}
+      >
+        Find out the cost
+      </ArrowWithCircle>
+    }
+
+    <HelpChooseDialog open={isHCDOpen} onOpenChange={status => setIsHCDOpen(status)} thirdStageHeading={`${heading} price`} initialStage={3} />
   </div>
 };
 

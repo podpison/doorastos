@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 const ShippingPricing: FC = () => {
-  return <div className='mt100-150'>
+  return <section className='mt100-150'>
     <h6 className='text14-24 max-w-[32em]'>The cost of products from the &quot;Expert&quot; plant includes delivery and installation to your place (no further than 30 km from MKAD).</h6>
     <div className='max-w-[500px]'>
       <div className='border-y border-line py-2.5 mt-5'>
@@ -14,7 +14,7 @@ const ShippingPricing: FC = () => {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 };
 
 export default ShippingPricing;

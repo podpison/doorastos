@@ -11,6 +11,7 @@ import Hero from './productComponents/hero';
 import PriceComponents from './productComponents/priceComponents';
 import WhatWillYouGetWhenOrdering from './productComponents/whatWillYouGetWhenOrdering';
 import HowAreWeWorking from './productComponents/howAreWeWorking';
+import Description from './productComponents/description';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -53,6 +54,7 @@ const Product: FC = () => {
       <Hero item={currentItem} />
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
+      <Description currentItem={currentItem} />
       <HowAreWeWorking />
     </main>
   </>

@@ -3,11 +3,11 @@ import cls from './styles.module.scss';
 import cn from 'classnames';
 
 type Props = {
-
+  onClick: () => void
 }
 
-const BookAQuote: FC<Props> = () => {
-  return <button className={cn('group relative flex items-center w-[98px] h-[98px] mt-7 max-sm:mx-auto md:w-[130px] md:h-[130px]', cls.container)}>
+const BookAQuote: FC<Props> = ({ onClick }) => {
+  return <button className={cn('group relative flex items-center w-[98px] h-[98px] mt-7 max-sm:mx-auto md:w-[130px] md:h-[130px]', cls.container)} onClick={onClick}>
     <p className='text-small text-center -rotate-[115deg] transition-colors duration-500 group-hover:text-blue1'>Book a free quote</p>
     <svg
       className='absolute -rotate-[115deg] right-[53%] -top-[25%] md:right-[56%] md:-top-[16%]'

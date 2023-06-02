@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/breadcrumbs';
 import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
 import Head from 'next/head';
 import { FC } from 'react';
-import Items from './items';
+import Info from './guarantessInfo';
 
 const breadcrumbItems: BreadcrumbsItemType[] = [
   {
@@ -10,7 +10,7 @@ const breadcrumbItems: BreadcrumbsItemType[] = [
   }
 ];
 
-const PaymentOrder: FC = () => {
+const Guarantees: FC = () => {
   return <>
     <Head>
       <title>Guarantees | Doorastos</title>
@@ -20,15 +20,9 @@ const PaymentOrder: FC = () => {
     </Head>
     <main>
       <Breadcrumbs items={breadcrumbItems} />
-      <section>
-        <div className='flex flex-col gap-y-2.5'>
-          <h2 className='text18-24 max-w-[35em]'>The most important condition for the validity of the guarantee for metal doors manufactured by Expert is their installation by specially trained teams of craftsmen.</h2>
-          <p className='text-small text-grey2 max-w-[30em]'>In this case, the door will serve for a long time and provide reliable protection for you and your loved ones.</p>
-        </div>
-        <Items />
-      </section>
+      <Info />
     </main>
   </>
 };
 
-export default PaymentOrder;
+export default Guarantees;

@@ -16,9 +16,11 @@ const Breadcrumbs: FC<Props> = ({ items }) => {
 
   let Items = formattedItems.map((i, index, arr) => <Item {...i} isLast={arr.length === index + 1} id={index + 1} key={index} />);
 
-  return <section className='flex items-center flex-wrap gap-x-2 gap-y-1 mb-7'>
-    <Item name='Expert' href='/' id={0} />
-    {Items}
+  return <section className='mb-7'>
+    <nav className='flex items-center flex-wrap gap-x-2 gap-y-1 '>
+      <Item name='Expert' href='/' id={0} />
+      {Items}
+    </nav>
   </section>
 };
 

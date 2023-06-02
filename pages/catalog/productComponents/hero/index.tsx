@@ -12,7 +12,7 @@ type Props = {
 
 const Hero: FC<Props> = ({ item }) => {
   const [isHCDOpen, setIsHCDOpen] = useState(false); // HCD - help choose dialog
-  const handleHCDStatus = (status?: boolean) => setIsHCDOpen(prev => status ? status : !prev);
+  const handleHCDStatus = () => setIsHCDOpen(prev => !prev);
 
   let finalPrice = getPriceWithDiscount(item?.price, item?.discount?.value);
 
@@ -49,13 +49,13 @@ const Hero: FC<Props> = ({ item }) => {
           <small className='text-tiny text-grey2'>* Discount valid untill {formattedExpiryDate}</small>
         </div>
       }
-      <BookAQuote />
-      <button className='group flex border border-x-transparent border-grey4 w-fit transition-colors py-2.5 px-5 mt-5 hover:border-x-grey4 hover:border-y-transparent max-sm:mx-auto'>
+      <BookAQuote onClick={handleHCDStatus} />
+      <button className='group flex border border-x-transparent border-grey4 w-fit transition-colors py-2.5 px-5 mt-5 hover:border-x-grey4 hover:border-y-transparent max-sm:mx-auto' onClick={handleHCDStatus}>
         <span className='text-esm transition-colors'>Get a consultation</span>
       </button>
     </div>
 
-    <HelpChooseDialog open={isHCDOpen} onOpenChange={handleHCDStatus} />
+    <HelpChooseDialog open={isHCDOpen} onOpenChange={(status: boolean) => setIsHCDOpen(status)} initialStage={3} />
   </section>
 };
 
