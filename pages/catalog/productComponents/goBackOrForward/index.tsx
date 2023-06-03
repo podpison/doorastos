@@ -9,7 +9,7 @@ type Props = {
 const GoBackOrForward: FC<Props> = ({ currentItemId, canGoForward }) => {
   return <section className='flex items-center justify-between mt-12'>
     <Item href='/catalog' isReverse>Back to catalog</Item>
-    {canGoForward && <Item href={`/catalog/${(currentItemId || 0) + 1}`}>Next door</Item>}
+    {(canGoForward && currentItemId) && <Item href={`/catalog/${currentItemId + 1}`}>Next door</Item>}
   </section>
 };
 

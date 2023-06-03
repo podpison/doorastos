@@ -8,7 +8,7 @@ type Props = {
   isReverse?: boolean
 }
 
-const Item: FC<Props> = ({ children, href, isReverse = false }) => {
+const Item: FC<Props> = ({ children, href = '', isReverse = false }) => {
   let reverseClassNames = isReverse && 'rotate-180 col-[1] row-[1]';
 
   return <Link className='group grid grid-cols-[repeat(2,_max-content)] items-center gap-x-2.5 md:gap-x-12' href={href}>

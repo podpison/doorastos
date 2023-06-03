@@ -10,7 +10,7 @@ type Props = {
 
 } & ReturnConditionsItemType
 
-const Item: FC<Props> = ({ heading, items }) => {
+const Item: FC<Props> = ({ heading = '', items = [] }) => {
   let Subitems = items.map((i, index) => <p className='text-esm text-black py-2.5 first:pt-0 last:pb-0' key={index}>{i}</p>);
 
   return <div className='grid md:grid-cols-2 md:gap-x-7'>

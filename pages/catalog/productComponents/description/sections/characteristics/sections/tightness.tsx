@@ -9,8 +9,8 @@ type Props = {
 const Tightness: FC<Props> = ({ data }) => {
 
   return <div className='mt-7'>
-    <SectionItem name='Number of seal circuits' value={data.numberOfSealCircuits} />
-    <SectionItem name='Seal material' value={data.sealMaterial} />
+    <SectionItem name='Number of seal circuits' value={data?.numberOfSealCircuits} />
+    <SectionItem name='Seal material' value={data?.sealMaterial} />
   </div>
 };
 
