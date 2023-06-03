@@ -12,6 +12,11 @@ import PriceComponents from './productComponents/priceComponents';
 import WhatWillYouGetWhenOrdering from './productComponents/whatWillYouGetWhenOrdering';
 import HowAreWeWorking from './productComponents/howAreWeWorking';
 import Description from './productComponents/description';
+import Steps from '../paymentOrder/howToPay/steps';
+import SectionHeading from '@/components/sectionHeading';
+import Visualization from './productComponents/visualization';
+import YouMayLike from './productComponents/youMayLike';
+import GoBackOrForward from './productComponents/goBackOrForward';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -37,10 +42,12 @@ const Product: FC = () => {
   }, [currentItem]);
 
   let pageTitle = `${currentItem?.name || 'Product'} | Doorastos`;
-
+  
   if (!currentItem && products.length !== 0) {
     return <NotFound />
   }
+  
+  let canGoForward = ([...products].sort((a, b) => a.id - b.id).at(-1)?.id || 0) > (currentItem?.id || 9999999);
 
   return <>
     <Head>
@@ -56,6 +63,13 @@ const Product: FC = () => {
       <WhatWillYouGetWhenOrdering />
       <Description currentItem={currentItem} />
       <HowAreWeWorking />
+      <Visualization />
+      <section className='mt150-250'>
+        <SectionHeading>How to pay for Expert doors?</SectionHeading>
+        <Steps />
+      </section>
+      <YouMayLike currentItemId={currentItem?.id} />
+      <GoBackOrForward currentItemId={currentItem?.id} canGoForward={canGoForward} />
     </main>
   </>
 };

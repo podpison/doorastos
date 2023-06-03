@@ -8,7 +8,7 @@ type Props = {
 
 const Item: FC<Props> = ({ text, id }) => {
   return <div className={cn(
-    'flex flex-col gap-y-5 border-grey4 max-md:pt-7 md:px-2.5',
+    'flex flex-col gap-y-5 border-grey4 max-md:pt-7 md:px-5',
     'first:md:pl-0',
     'last:max-md:py-7 md:last:pr-0',
   )}>

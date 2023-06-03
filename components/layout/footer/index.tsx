@@ -11,7 +11,7 @@ const Footer: FC = () => {
     <h6 className='text14-20 text-grey2 font-bold tracking-widest font-robodron'>Expert</h6>
     <div className='flex flex-col gap-y-1 max-esm:mt-5 esm:gap-y-2.5 esm:ml-auto smlg:col-[3]'>
       <a className='text14-18 font-light text-white' href='tel:8 800 666 666 66'>8 800 666 666 66</a>
-      <p className='text-grey2 text-[12px] esm:text-[14px]'>The call is free</p>
+      <p className='text-grey2 text-[12px] esm:text-right esm:text-[14px]'>The call is free</p>
     </div>
     <Nav />
     <div

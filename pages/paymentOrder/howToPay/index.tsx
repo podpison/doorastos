@@ -19,7 +19,7 @@ const HowToPay: FC = () => {
         <p className='text14-16 text-grey1'>In addition to the standard contract that determines the order of services, an application is also filled out with a description of all the parameters of the selected door. An amount equal to the price of the product at the time of conclusion of the contract is subject to payment;</p>
       </div>
     </div>
-    <Steps />
+    <Steps className='mt30-50' />
   </section>
 };
 
