@@ -25,7 +25,7 @@ const HowAreWeWorking: FC = () => {
   let Items = items.map((i, index) => <Item {...i} id={index + 1} key={index} />);
 
   return <section className='mt100-150'>
-    <SectionHeading>How are we workinging</SectionHeading>
+    <SectionHeading>How are we working</SectionHeading>
     <div className='mt30-50 grid divide-line max-md:divide-y md:grid-cols-2 md:gap-y-5 md:divide-x lg:grid-cols-4'>
       {Items}
     </div>
