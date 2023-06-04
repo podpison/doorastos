@@ -47,8 +47,8 @@ const Product: FC = () => {
     return <NotFound />
   }
   
-  let canGoForward = ([...products].sort((a, b) => a.id - b.id).at(-1)?.id || 0) > (currentItem?.id || 9999999);
-
+  let canGoForward = products.find(p => p.id === ((currentItem?.id || 0) + 1)) !== undefined;
+  
   return <>
     <Head>
       <title>{pageTitle}</title>

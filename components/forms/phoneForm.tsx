@@ -3,8 +3,14 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import "yup-phone";
 import cn from 'classnames';
+import { customersAPI } from '@/firebase';
+
+//string for dynamic types (e.g. stock)
+export type PhoneFormTypeType = string | 'consultation' | 'recall' | 'antiCutPrice' | 'antiTheftSystem' | 'armoredPrice' | 'deliveryAndInstallation' | 'bookAMeasurement'
 
 type Props = {
+  additionalValues?: object
+  type?: PhoneFormTypeType
   className?: string
   onSubmit?: () => void
 }
@@ -17,12 +23,12 @@ const validationSchema = Yup.object().shape({
   phone: Yup.string().phone('ru', true, 'Wrong format!').required(),
 });
 
-const PhoneForm: FC<Props> = ({ className, onSubmit }) => {
+const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', className, onSubmit }) => {
   return <Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={(values) => {
-      console.log(values);
+      customersAPI.add({...values, type, ...additionalValues})
       onSubmit && onSubmit();
     }}
   >

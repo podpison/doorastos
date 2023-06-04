@@ -9,14 +9,14 @@ import { StockItemType } from '@/redux/reducers/static';
 const itemsPerPage = 3;
 
 const Items: FC = () => {
-  const [activeItemId, setActiveItemId] = useState<number | null>(null);
+  const [activeItemType, setActiveItemType] = useState<string | null>(null);
   let data = useSelector(selectStockItems);
   const [items, setItems] = useState<StockItemType[]>(data.slice(0, 3));
 
-  let Items = items.map(i => <Item activeItemId={activeItemId} onClick={() => setActiveItemId(i.id)} {...i} key={i.id} />)
+  let Items = items.map(i => <Item activeItemType={activeItemType} setActiveItemType={setActiveItemType} {...i} key={i.id} />)
 
-  const handleActiveItemId = (isOpen: boolean) => {
-    !isOpen && setActiveItemId(null);
+  const handleActiveItemType = (isOpen: boolean) => {
+    !isOpen && setActiveItemType(null);
   };
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Items: FC = () => {
     </div>
     <Pagination items={data} itemsPerPage={itemsPerPage} setItems={items => setItems(items as StockItemType[])} />
 
-    <HelpChooseDialog open={activeItemId !== null} onOpenChange={handleActiveItemId} thirdStageHeading='Your personal stock' initialStage={3} />
+    <HelpChooseDialog open={activeItemType !== null} type={activeItemType || ''} onOpenChange={handleActiveItemType} thirdStageHeading='Your personal stock' initialStage={3} />
   </section>
 };
 

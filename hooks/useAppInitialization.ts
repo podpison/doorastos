@@ -14,7 +14,6 @@ const useAppInitialization = () => {
   }, []);
 
   useEffect(() => {
-    console.log(products, stock)
     if (products.length !== 0 && stock.length !== 0) {
       setIsAppLoaded(true);
     };

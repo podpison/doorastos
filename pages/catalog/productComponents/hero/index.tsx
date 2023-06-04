@@ -4,20 +4,23 @@ import Image from 'next/image';
 import { FC, useState } from 'react';
 import cn from 'classnames';
 import HelpChooseDialog from '@/components/dialogs/helpChooseDialog';
-import BookAQuote from './bookAQuote';
+import BookAMeasurement from './bookAMeasurement';
+import textToURL from '@/helpers/textToURL';
+import capitalizeFirstLetter from '@/helpers/capitalizeFirstLetter';
 
 type Props = {
   item: ProductType | undefined
 }
 
 const Hero: FC<Props> = ({ item }) => {
-  const [isHCDOpen, setIsHCDOpen] = useState(false); // HCD - help choose dialog
-  const handleHCDStatus = () => setIsHCDOpen(prev => !prev);
+  const [activeHCDType, setActiveHCDType] = useState<string | null>(null); // HCD - help choose dialog
 
   let finalPrice = getPriceWithDiscount(item?.price, item?.discount?.value);
 
   let expiryDate = new Date(item?.discount?.expiryDate || '');
   let formattedExpiryDate = expiryDate && new Date(expiryDate).toLocaleDateString('ru');
+
+  const onHCDStatusChange = (status: boolean) => !status && setActiveHCDType(null)
 
   if (!item) {
     return <></>
@@ -49,13 +52,13 @@ const Hero: FC<Props> = ({ item }) => {
           <small className='text-tiny text-grey2'>* Discount valid untill {formattedExpiryDate}</small>
         </div>
       }
-      <BookAQuote onClick={handleHCDStatus} />
-      <button className='group flex border border-x-transparent border-grey4 w-fit transition-colors py-2.5 px-5 mt-5 hover:border-x-grey4 hover:border-y-transparent max-sm:mx-auto' onClick={handleHCDStatus}>
+      <BookAMeasurement onClick={() => setActiveHCDType('bookAMeasurement' + capitalizeFirstLetter(textToURL(item.name)))} />
+      <button className='group flex border border-x-transparent border-grey4 w-fit transition-colors py-2.5 px-5 mt-5 hover:border-x-grey4 hover:border-y-transparent max-sm:mx-auto' onClick={() => setActiveHCDType('consultation')}>
         <span className='text-esm transition-colors'>Get a consultation</span>
       </button>
     </div>
 
-    <HelpChooseDialog open={isHCDOpen} onOpenChange={(status: boolean) => setIsHCDOpen(status)} initialStage={3} />
+    <HelpChooseDialog open={activeHCDType !== null} type={activeHCDType || ''} onOpenChange={onHCDStatusChange} initialStage={3} />
   </section>
 };
 

@@ -14,7 +14,7 @@ const YouMayLike: FC<Props> = ({ currentItemId }) => {
   const [items, setItems] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    if (!currentItemId) return;
+    if (currentItemId === undefined) return;
 
     let dataCopy = [...data].filter(i => i.id !== currentItemId);
     let newItems = dataCopy.sort(() => Math.random() - Math.random()).slice(0, 3);

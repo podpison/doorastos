@@ -6,9 +6,9 @@ type Props = {
   onClick: () => void
 }
 
-const BookAQuote: FC<Props> = ({ onClick }) => {
+const BookAMeasurement: FC<Props> = ({ onClick }) => {
   return <button className={cn('group relative flex items-center w-[98px] h-[98px] mt-7 max-sm:mx-auto md:w-[130px] md:h-[130px]', cls.container)} onClick={onClick}>
-    <p className='text-small text-center -rotate-[115deg] transition-colors duration-500 group-hover:text-blue1'>Book a free quote</p>
+    <p className='text-small text-center -rotate-[115deg] transition-colors duration-500 group-hover:text-blue1'>Book a free measurement</p>
     <svg
       className='absolute -rotate-[115deg] right-[53%] -top-[25%] md:right-[56%] md:-top-[16%]'
       width="63" height="8" viewBox="0 0 63 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,4 +17,4 @@ const BookAQuote: FC<Props> = ({ onClick }) => {
   </button>
 };
 
-export default BookAQuote;
+export default BookAMeasurement;

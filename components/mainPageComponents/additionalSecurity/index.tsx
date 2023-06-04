@@ -22,6 +22,7 @@ const items: AdditionalSecurityItemType[] = [
         description: 'Installation of pin anti-cuts in the area of each hinge is included in all entrance doors and is not paid extra.',
       },
     ],
+    type: 'antiCutPrice',
     isExpandable: true,
     className: '[&>div:nth-child(2)]:py-0 [&>div:nth-child(2)>img]:max-h-[250px] [&>div:nth-child( 2)>img]:object-top [&>div:nth-child(2)>img]:object-cover max-md:[&>div:nth-child(2)>img]:w-full md :[&>div:nth-child(2)]:max-h-none md:[&>div:nth-child(2)>img]:max-h-none',
   },
@@ -40,6 +41,7 @@ const items: AdditionalSecurityItemType[] = [
         description: 'This design is an additional security system that we can implement on any front door ordered from us - at your request.',
       }
     ],
+    type: 'antiTheftSystem',
     className: 'md:[&>div:nth-child(2)]:min-h-[480px] md:[&>div:nth-child(2)]:min-h-[600px]'
   },
   {
@@ -57,6 +59,7 @@ const items: AdditionalSecurityItemType[] = [
         description: 'This design is an additional security system that we can implement on any front door ordered from us - at your request.',
       },
     ],
+    type: 'armoredPrice',
     className: 'md:[&>div:nth-child(2)]:min-h-[300px] md:[&>div:nth-child(2)]:min-h-[400px]'
   },
 ];

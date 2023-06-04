@@ -13,6 +13,7 @@ export type AdditionalSecurityItemType = {
   heading: string
   subheading: string
   description: TextsItemType[]
+  type: 'antiCutPrice' | 'antiTheftSystem' | 'armoredPrice'
   isExpandable?: boolean
   className?: string
 }
@@ -21,7 +22,7 @@ type Props = {
   windowWidth: number
 } & AdditionalSecurityItemType
 
-const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, className, windowWidth }) => {
+const Item: FC<Props> = ({ heading, img, subheading, description, type, isExpandable, className, windowWidth }) => {
   const [isDescOpen, setIsDescOpen] = useState(false);
   const [isHCDOpen, setIsHCDOpen] = useState(false); // HCD - help choose dialog
 
@@ -65,7 +66,7 @@ const Item: FC<Props> = ({ heading, img, subheading, description, isExpandable, 
       </ArrowWithCircle>
     }
 
-    <HelpChooseDialog open={isHCDOpen} onOpenChange={status => setIsHCDOpen(status)} thirdStageHeading={`${heading} price`} initialStage={3} />
+    <HelpChooseDialog open={isHCDOpen} onOpenChange={status => setIsHCDOpen(status)} thirdStageHeading={`${heading} price`} type={type} initialStage={3} />
   </div>
 };
 
