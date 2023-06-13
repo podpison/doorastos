@@ -37,7 +37,7 @@ const Item: FC<Props> = ({ heading, img, subheading, description, type, isExpand
   return <div className={cn('group grid gap-y-5 md:grid-cols-[1fr_calc(50%)] md:gap-x-7 smlg:gap-x-12 lg:gap-x-24', className)} data-state={isDescOpen ? 'open' : 'close'}>
     <h5 className='h-fit md:group-odd:text-right md:group-even:absolute md:group-even:left-1/2'>{heading}</h5>
     <div className='flex bg-grey3 max-h-[250px] py-5 md:group-even:col-[1] md:group-even:row-[1]'>
-      <Image className='h-full object-contain m-auto max-md:max-h-[210px]' src={img} alt={heading} />
+      <Image className='h-full w-auto object-contain m-auto max-md:max-h-[210px]' src={img} alt={heading} priority />
     </div>
     <div className='flex flex-col gap-y-5 md:group-odd:col-[2] md:group-even:row-[1] md:group-even:mt-16 lg:group-even:mt-[5rem]'>
       <h6 className='text14-16 max-w-[31em]'>{subheading}</h6>

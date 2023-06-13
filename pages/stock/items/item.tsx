@@ -25,7 +25,7 @@ const Item: FC<Props> = ({ heading, description, img, id, activeItemType, setAct
     <div className='flex flex-col gap-y-2.5 max-w-[470px]'>
       <h6 className='text14-36 font-medium'>{heading}</h6>
       <p className='text-esm max-w-[80%]'>{description}</p>
-      <Image className='w-full object-cover max-h-[300px] esm:hidden' {...img} priority width={300} height={350} />
+      <Image className='w-full object-cover max-h-[300px] esm:hidden' src={img.src} alt={img.alt} priority width={300} height={350} />
     </div>
     <Image className='w-full object-cover max-esm:max-h-[300px] max-esm:hidden esm:row-[1/4] esm:col-[2]' {...img} priority width={300} height={350} />
     <ArrowWithCircle className='text-blue1' forceActiveStatus={activeItemType === type} onClick={onClick}>Get a discount</ArrowWithCircle>

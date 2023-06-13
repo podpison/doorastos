@@ -16,7 +16,7 @@ export type MainPageForWhatItemType = {
 }
 
 type Props = {
-  
+
 } & MainPageForWhatItemType
 
 const Item: FC<Props> = ({ heading, description, img, className, query }) => {
@@ -28,7 +28,12 @@ const Item: FC<Props> = ({ heading, description, img, className, query }) => {
         <ArrowWithCircle className='text-blue1' circleSize={30}>Go to catalog</ArrowWithCircle>
       </Link>
     </div>
-    <Image className='h-auto object-cover object-right w-full max-esm:h-[200px] esm:h-full esm:object-right-bottom' src={img.src} alt={img.alt} priority />
+    <Image
+      className='h-auto object-cover object-right w-full max-esm:h-[200px] esm:h-full esm:object-right-bottom'
+      src={img.src}
+      alt={img.alt}
+      priority
+    />
   </div>
 };
 

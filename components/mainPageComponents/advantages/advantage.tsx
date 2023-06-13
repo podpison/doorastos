@@ -13,7 +13,14 @@ const Advantage: FC<Props> = ({ heading, description, img, className }) => {
       <h4 className='text18-24 text-black'>{heading}</h4>
       <p className='text-[12px] text-grey1 md:text-[16px]'>{description}</p>
     </div>
-    <Image className='object-cover esm:min-h-[300px] max-md:h-[200px] md:min-h-[400px] smlg:min-h-[500px]' src={img} alt='Advantage' width={700} height={500} />
+    <Image
+      className='object-cover w-auto esm:min-h-[300px] max-md:h-[200px] md:min-h-[400px] smlg:min-h-[500px]'
+      src={img}
+      alt='Advantage'
+      width={700}
+      height={500}
+      priority
+    />
   </div>
 };
 

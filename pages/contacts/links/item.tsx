@@ -11,7 +11,7 @@ export type ItemProps = {
 
 const Item: FC<ItemProps> = ({ heading, items = [] }) => {
   let Texts = typeof items === 'string'
-    ? items
+    ? <p className='text10-18'>{items}</p>
     : items.map((i, index) => {
       return i.href
         ? <Link className='text10-18 text-blue1 w-fit transition-all border-b border-transparent hover:border-blue1' href={i.href} key={index}>{i.text}</Link>
