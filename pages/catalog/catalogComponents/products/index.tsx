@@ -8,7 +8,7 @@ import { PriceFromType, SecurityItemType } from '../..';
 import { ActiveCategoryItemType } from '../settings/filter/categories/item';
 
 type Props = {
-  itemsPerPage: number
+  itemsPerPage?: number
   allItems: ProductType[]
   activeSecurityItem: SecurityItemType
   startPriceFromItem: PriceFromType
@@ -18,7 +18,7 @@ type Props = {
   setIsPaginationReset: Dispatch<SetStateAction<boolean>>
 }
 
-const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems, isPaginationReset, setIsPaginationReset }) => {
+const Products: FC<Props> = ({ itemsPerPage = 3, allItems = [], activeSecurityItem, startPriceFromItem, whereItem, activeCategoryItems, isPaginationReset, setIsPaginationReset }) => {
   const [items, setItems] = useState<ProductType[]>(allItems); //filtred items
   const [itemsPortion, setItemsPortion] = useState<ProductType[]>(items); //portion of filtred items
   let Items = itemsPortion.map((i) => <Item {...i} key={i.id} />);
@@ -45,7 +45,7 @@ const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, 
             return priceRange < item.price;
           };
 
-          return priceRange[0] < item.price && item.price < priceRange[1];
+          return priceRange[0] <= item.price && item.price <= priceRange[1];
         };
 
         return ci === item[c.category];
@@ -65,10 +65,10 @@ const Products: FC<Props> = ({ itemsPerPage, allItems = [], activeSecurityItem, 
     return <NothingFound />
   };
 
-  return <div data-testid="catalog">
+  return <div>
     <div
       className='grid gap-y-5 mt-10 esm:grid-cols-2 esm:gap-x-5 md:gap-x-10 smlg:grid-cols-3 smlg:gap-x-4 lg:gap-x-10'
-      data-testid='items'
+      aria-label='Products'
     >
       {Items}
     </div>

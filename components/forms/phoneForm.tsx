@@ -28,7 +28,7 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={(values) => {
-      customersAPI.add({...values, type, ...additionalValues})
+      customersAPI.add({ ...values, type, ...additionalValues })
       onSubmit && onSubmit();
     }}
   >
@@ -41,7 +41,10 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
                 'text14 h-7 w-full border-b outline-none transition-colors',
                 errors.phone ? 'text-red border-b-red placeholder:text-red' : 'border-b-grey1 group-hover:text-grey1',
               )}
-              placeholder='Phone' type="phone" name="phone"
+              placeholder='Phone'
+              type="phone"
+              name="phone"
+              aria-label="Phone input"
             />
           </div>
           <p className='text-tiny text-grey2'>

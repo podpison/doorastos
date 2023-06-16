@@ -7,7 +7,7 @@ type Props = {
 }
 
 const Item: FC<Props> = ({ text }) => {
-  return <Link className='font-light text-grey4 text-[12px] w-fit esm:text-[14px]' href={textToURL(text)}>
+  return <Link className='font-light text-grey4 text-[12px] w-fit transition-colors hover:text-grey3 esm:text-[14px]' href={'/' + textToURL(text)}>
     {text}
   </Link>
 };

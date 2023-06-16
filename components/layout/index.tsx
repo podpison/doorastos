@@ -58,7 +58,7 @@ const Layout: FC<Props> = ({ children }) => {
   return <div
     className={cn('mainContainer font-sfProDisplay flex flex-col min-h-screen', robodronFont.variable, sfProDisplayFont.variable)}
   >
-    <Header />
+    <Header /> 
       {children}
     <Footer />
 
