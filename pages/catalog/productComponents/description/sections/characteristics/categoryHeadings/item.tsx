@@ -13,13 +13,12 @@ const Item: FC<Props> = ({ id, text, isActive, setActiveItemId }) => {
     setActiveItemId(id);
   };
 
-  return <button className='group relative'>
+  return <button className='group relative' onClick={handleClick}>
     <p
       className={cn(
-        'text10-14 whitespace-nowrap transition-none pb-2.5',
+        'text10-14 block whitespace-nowrap transition-none pb-2.5',
         isActive ? 'text-black' : 'text-grey2 group-hover:text-black',
       )}
-      onClick={handleClick}
     >
       {text}
     </p>

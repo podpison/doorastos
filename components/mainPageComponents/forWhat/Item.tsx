@@ -25,7 +25,7 @@ const Item: FC<Props> = ({ heading, description, img, className, query }) => {
       <h5 className='text20-30'>{heading}</h5>
       <p className='text-esm text-grey1 mt-2.5'>{description}</p>
       <Link className='block w-fit mt-5' href={`/catalog?where=${query}`}>
-        <ArrowWithCircle className='text-blue1' circleSize={30}>Go to catalog</ArrowWithCircle>
+        <ArrowWithCircle className='text-blue1' text='Go to catalog' circleSize={30} />
       </Link>
     </div>
     <Image

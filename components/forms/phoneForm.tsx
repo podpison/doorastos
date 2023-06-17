@@ -44,7 +44,7 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
               placeholder='Phone'
               type="phone"
               name="phone"
-              aria-label="Phone input"
+              aria-label="Your phone"
             />
           </div>
           <p className='text-tiny text-grey2'>
@@ -57,6 +57,7 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
             'text-esm font-light bg-blue1 text-white border border-blue1 rounded-full w-[90px] h-[90px] transition-all hover:bg-blue2 hover:border-blue2 active:bg-white active:text-black',
             errors.phone && 'opacity-80 pointer-events-none',
           )}
+          aria-label='Send phone'
           type="submit"
           disabled={isSubmitting || errors.phone !== undefined}
         >

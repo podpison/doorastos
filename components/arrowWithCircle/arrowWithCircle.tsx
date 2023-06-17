@@ -4,7 +4,7 @@ import ChevronRounded from '../chevronRounded';
 import cls from './styles.module.scss';
 
 type Props = {
-  children: ReactNode
+  text: string
   color?: 'blue' | 'white'
   circleSize?: number
   className?: string
@@ -14,7 +14,7 @@ type Props = {
   forceActiveStatus?: boolean
 } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-const ArrowWithCircle: FC<Props> = ({ children, circleSize = 30, color = 'blue', className, circleClassName, signClassName, width = 'fit', forceActiveStatus, ...props }) => {
+const ArrowWithCircle: FC<Props> = ({ text, circleSize = 30, color = 'blue', className, circleClassName, signClassName, width = 'fit', forceActiveStatus, ...props }) => {
 
   return <div
     className={cn(
@@ -25,7 +25,7 @@ const ArrowWithCircle: FC<Props> = ({ children, circleSize = 30, color = 'blue',
     )}
     {...props}
   >
-    <p className={cn('text-esmLight', signClassName)}>{children}</p>
+    <p className={cn('text-esmLight', signClassName)}>{text}</p>
     <div
       className={cn(
         'relative -mt-2.5',
@@ -51,6 +51,7 @@ const ArrowWithCircle: FC<Props> = ({ children, circleSize = 30, color = 'blue',
         height={8}
         style={{ width: circleSize, height: circleSize }}
         color={color}
+        aria-label={text}
       />
     </div>
   </div>

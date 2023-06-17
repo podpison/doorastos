@@ -12,7 +12,7 @@ describe('Recall', () => {
     customersAPIMock.mockClear();
   });
 
-  it('Type wrong phone', async () => {
+  it('types an invalid phone number', async () => {
     const wrongPhone = 'Blah-blah-blah';
 
     const phoneInput = screen.getByLabelText('Phone input');
@@ -25,7 +25,7 @@ describe('Recall', () => {
     expect(submitBtn).toBeDisabled();
   });
 
-  it('Type phone and submit', async () => {
+  it('types a phone number and then click the submit button', async () => {
     const phone = '+79999999999';
 
     const phoneInput = screen.getByLabelText('Phone input');

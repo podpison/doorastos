@@ -17,7 +17,12 @@ const Visualization: FC = () => {
           <h5 className='text-white max-w-[15em] max-sm:text-[20px]'>Free visualization of the door in your interior</h5>
           <p className='text-esm text-grey4 max-w-[25em]'>It&apos;s easier to choose now! Our designers will visualize the door you like in your interior for free.</p>
         </div>
-        <ArrowWithCircle className='mt30-50 text-white max-w-[240px] md:max-w-[260px] smlg:max-w-[300px]' color='white' onClick={handleHCDOpenStatus}>Order visualization</ArrowWithCircle>
+        <ArrowWithCircle
+          className='mt30-50 text-white max-w-[240px] md:max-w-[260px] smlg:max-w-[300px]'
+          text='Order visualization'
+          color='white'
+          onClick={handleHCDOpenStatus}
+        />
       </div>
     </div>
 

@@ -11,7 +11,7 @@ type Props = {
 const Item: FC<Props> = ({ name, img, price, material, id, discount }) => {
   let finalPrice = getPriceWithDiscount(price, discount?.value);
 
-  return <Link className='group' href={`/catalog/${id}`} data-price={finalPrice}>
+  return <Link className='group' href={`/catalog/${id}`} data-price={finalPrice} aria-label={`${name} door`}>
     <div className='relative flex flex-col items-center gap-y-5 bg-grey3 transition-colors py-12 group-hover:bg-line group-active:bg-grey4'>
       {discount && <p className='absolute top-0 left-0 text-esm text-white bg-blue1 py-3 px-1.5 md:px-2 md:py-4'>-{discount.value}%</p>}
       <div className='flex flex-col items-center gap-y-1'>

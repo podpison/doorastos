@@ -26,7 +26,11 @@ const Item: FC<Props> = ({ text, info, activeItem, setActive }) => {
       isActive ? 'border-grey2' : 'border-line',
     )}
   >
-    <div className='flex items-center gap-x-2 w-full py-2.5' onClick={handleCheckboxClick}>
+    <div
+      className='flex items-center gap-x-2 w-full py-2.5'
+      aria-label={`set ${text} security property`}
+      onClick={handleCheckboxClick}
+    >
       <Checkbox checked={isActive} variant='single' />
       <p className='transition-colors text-grey1 text-[14px] group-hover:text-black'>{text}</p>
     </div>

@@ -7,7 +7,7 @@ type Props = {
 }
 
 const BookAMeasurement: FC<Props> = ({ onClick }) => {
-  return <button className={cn('group relative flex items-center w-[98px] h-[98px] mt-7 max-sm:mx-auto md:w-[130px] md:h-[130px]', cls.container)} onClick={onClick}>
+  return <button className={cn('group relative flex items-center w-[98px] h-[98px] mt-7 max-sm:mx-auto esm:w-[110px] esm:h-[110px] md:w-[130px] md:h-[130px]', cls.container)} onClick={onClick}>
     <p className='text-small text-center -rotate-[115deg] transition-colors duration-500 group-hover:text-blue1'>Book a free measurement</p>
     <svg
       className='absolute -rotate-[115deg] right-[53%] -top-[25%] md:right-[56%] md:-top-[16%]'

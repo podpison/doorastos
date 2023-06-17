@@ -15,7 +15,11 @@ import StartPriceFrom from "./catalogComponents/settings/startPriceFrom";
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null
 
-const CatalogPage: FC = () => {
+type Props = {
+  itemsPerPage?: number
+}
+
+const CatalogPage: FC<Props> = ({ itemsPerPage = 3 }) => {
   const products = useSelector(selectProductItems);
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbsItemType[]>([]);
   const [startPriceFromItem, setStartPriceFromItem] = useState<PriceFromType>(null);
@@ -77,7 +81,7 @@ const CatalogPage: FC = () => {
         setActiveItem={setStartPriceFromItem}
       />
       <Products
-        itemsPerPage={3}
+        itemsPerPage={itemsPerPage}
         allItems={products}
         activeSecurityItem={activeSecurityItem}
         startPriceFromItem={startPriceFromItem}

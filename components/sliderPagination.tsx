@@ -16,12 +16,12 @@ const SliderPagination: FC<Props> = ({ portionsCount, className, windowWidth, cu
   let Lines = Array.from(Array(portionsCount).keys())
     .map(l => <span className={cn('block h-px w-full', l <= currentPortion ? 'bg-line2' : 'bg-line')} key={l} />);
 
-  return <div className={cn('flex items-center gap-x-5 text-esm text-grey2', className)} ref={ref} {...props}>
-    <p>1</p>
-    <div className='flex h-px w-full'>
+  return <div className={cn('flex items-center gap-x-5 text-esm text-grey2', className)} ref={ref} aria-label='Pagination' {...props}>
+    <p aria-label='First review'>1</p>
+    <div className='flex h-px w-full' aria-label='Progress'>
       {Lines}
     </div>
-    <p>{portionsCount}</p>
+    <p aria-label='Total amount of reviews'>{portionsCount}</p>
   </div>
 };
 

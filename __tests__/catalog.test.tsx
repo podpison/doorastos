@@ -2029,7 +2029,6 @@ const fakeProducts: ProductType[] = [
 ]
 
 jest.spyOn(redux, 'useSelector').mockReturnValueOnce(fakeProducts);
-
 jest.mock('react-redux', () => {
   return {
     __esModule: true,
@@ -2040,7 +2039,7 @@ jest.mock('react-redux', () => {
 
 describe('Catalog', () => {
   describe('Render filtred items', () => {
-    it('Items with a security property', () => {
+    it('renders items with a specific security setting', () => {
       const securityProperty: SecurityItemType = 'Armored';
       const ProductsWithCurrentProperty = fakeProducts.filter(i => i.security === securityProperty);
 
@@ -2058,7 +2057,7 @@ describe('Catalog', () => {
       expect(screen.getByLabelText('Products').childElementCount).toBe(ProductsWithCurrentProperty.length);
     });
 
-    it('Items with a where property', () => {
+    it('renders items with a where setting', () => {
       const whereProperty: ProductType['where'] = 'apartment';
       const ProductsWithCurrentProperty = fakeProducts.filter(i => i.where === whereProperty);
 

@@ -2,11 +2,10 @@ import { FC } from 'react';
 import { HeaderLinkType } from '..';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
-import closeImg from '../../../../public/imgs/close.svg';
-import Image from 'next/image';
 import Link from './link';
 import PopUpLink from './popUpLink';
 import ArrowWithCircle from '@/components/arrowWithCircle/arrowWithCircle';
+import CloseIcon from '@/components/icons/CloseIcon';
 
 type Props = {
   links: HeaderLinkType[]
@@ -38,11 +37,13 @@ const mobileMenu: FC<Props> = ({ links, isOpen, closeMenu, openHelpChooseDialog 
       }}
       initial={false}
     >
-      <Image className='ml-auto' src={closeImg} alt='Close' onClick={closeMenu} role='button' />
+      <button className='ml-auto block' onClick={closeMenu} aria-label='Close'>
+        <CloseIcon aria-hidden='true' focusable="false" />
+      </button>
       <nav className='mt-7'>
         {Links}
       </nav>
-      <ArrowWithCircle className='text-blue1 mt-12' width='full' onClick={openHelpChooseDialog} circleSize={30}>Help choose</ArrowWithCircle>
+      <ArrowWithCircle className='text-blue1 mt-12' width='full' onClick={openHelpChooseDialog} circleSize={30} text='Help choose' />
     </motion.div>
   </div>
 };

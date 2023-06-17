@@ -49,7 +49,11 @@ const Item: FC<Props> = ({ heading, img, subheading, description, type, isExpand
       }}
         items={(isExpandable && isLaptop) ? description.slice(1) : description}
       />
-      <ArrowWithCircle className='h-fit mt-2.5 group-odd:hidden' onClick={handleHCDOpenStatus}>Find out the cost</ArrowWithCircle>
+      <ArrowWithCircle
+        className='h-fit mt-2.5 group-odd:hidden'
+        text='Find out the cost'
+        onClick={handleHCDOpenStatus}
+      />
       {!(!isExpandable && isLaptop) &&
         <button className='flex items-center justify-between gap-x-5 w-fit transition-colors hover:text-blue1' onClick={handleDescStatus}>
           <span className='text14'>{isDescOpen ? 'Hide' : 'More'}</span>
@@ -60,10 +64,9 @@ const Item: FC<Props> = ({ heading, img, subheading, description, type, isExpand
     {isLaptop &&
       <ArrowWithCircle
         className='row-[2] col-[1] h-fit absolute right-[calc(50%_+_28px_+_3.5em)] mt-48 group-even:hidden smlg:right-[calc(50%_+_48px_+_3.5em)] lg:right-[calc(50%_+_100px_+_3.5em)]'
+        text='Find out the cost'
         onClick={handleHCDOpenStatus}
-      >
-        Find out the cost
-      </ArrowWithCircle>
+      />
     }
 
     <HelpChooseDialog open={isHCDOpen} onOpenChange={status => setIsHCDOpen(status)} thirdStageHeading={`${heading} price`} type={type} initialStage={3} />
