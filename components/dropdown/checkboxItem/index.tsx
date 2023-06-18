@@ -17,9 +17,19 @@ const CheckboxItem: FC<Props> = ({ text, isActive, onClick, info }) => {
   const handleAIDStatus = () => setIsAIDOpen(prev => !prev);
 
   return <div className='grid grid-cols-[1fr_max-content] items-center w-full'>
-    <div className='group flex items-center gap-x-2 w-full' onClick={onClick}>
-      <Checkbox checked={isActive} />
-      <label className='text-[12px] text-grey1 cursor-pointer text-left w-full group-hover:text-black group-active:text-black'>{text}</label>
+    <div className='group flex items-center gap-x-2 w-full' >
+      <Checkbox
+        checked={isActive}
+        id={text}
+        onClick={onClick}
+        onKeyDown={e => e.key === 'Enter' && onClick()}
+      />
+      <label
+        className='text-[12px] text-grey1 cursor-pointer text-left w-full group-hover:text-black group-active:text-black'
+        htmlFor={text}
+      >
+        {text}
+      </label>
     </div>
     {info && <AdditionalInfoDialog open={isAIDOpen} onOpenChange={status => setIsAIDOpen(status)} openDialog={handleAIDStatus} heading={text} {...info} />}
   </div>

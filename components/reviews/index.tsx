@@ -112,7 +112,15 @@ const Reviews: FC = () => {
 
   return <section className='mt130-300'>
     <SectionHeading>Reviews about us</SectionHeading>
-    <Slider className='mt40-50' beforeChange={hanldeBeforeChange} infinite={false} draggable={false} slidesToShow={itemsPerPortion} slidesToScroll={itemsPerPortion} ref={sliderRef}>
+    <Slider
+      className='mt40-50'
+      beforeChange={hanldeBeforeChange}
+      arrows={false}
+      infinite={false}
+      draggable={false}
+      slidesToShow={itemsPerPortion}
+      slidesToScroll={itemsPerPortion}
+      ref={sliderRef}>
       {Items}
     </Slider>
   </section>

@@ -20,7 +20,9 @@ const AdditionalInfoDialog: FC<AdditionalInfoProps> = ({ heading, img, texts, op
   let isDialogShown = open && img && texts;
 
   return <div>
-    <InfoIcon className='hover:fill-grey2 active:fill-blue1' onClick={openDialog} />
+    <button onClick={openDialog} aria-label={`Open ${heading} description`}>
+      <InfoIcon className='hover:fill-grey2 active:fill-blue1' />
+    </button>
     {isDialogShown &&
       <DialogBase className='max-w-[465px] py-5' closeIconClassName='right-2.5 top-6 esm:right-5' open={open} {...props}>
         <h4 className='text-[20px] md:text-[24px]'>{heading}</h4>

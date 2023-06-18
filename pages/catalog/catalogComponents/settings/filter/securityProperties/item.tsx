@@ -27,12 +27,11 @@ const Item: FC<Props> = ({ text, info, activeItem, setActive }) => {
     )}
   >
     <div
-      className='flex items-center gap-x-2 w-full py-2.5'
+      className='flex items-center gap-x-2 w-full'
       aria-label={`set ${text} security property`}
-      onClick={handleCheckboxClick}
     >
-      <Checkbox checked={isActive} variant='single' />
-      <p className='transition-colors text-grey1 text-[14px] group-hover:text-black'>{text}</p>
+      <Checkbox checked={isActive} variant='single' id={text} onClick={handleCheckboxClick} onKeyDown={e => e.key === 'Enter' && handleCheckboxClick()} />
+      <label className='transition-colors text-grey1 text-[14px] w-full cursor-pointer py-2.5 group-hover:text-black' htmlFor={text}>{text}</label>
     </div>
     <AdditionalInfoDialog open={isAIDOpen} onOpenChange={status => setIsAIDOpen(status)} openDialog={handleAIDStatus} heading={text} {...info} />
   </div>

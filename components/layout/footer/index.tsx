@@ -10,7 +10,13 @@ const Footer: FC = () => {
     <div className='leftContainer absolute top-0 w-screen h-full max-w-[100vw] bg-black -z-20' />
     <h6 className='text14-20 text-grey2 font-bold tracking-widest font-robodron' aria-label='Logo'>Expert</h6>
     <div className='flex flex-col gap-y-1 max-esm:mt-5 esm:gap-y-2.5 esm:ml-auto smlg:col-[3]'>
-      <a className='text14-18 font-light text-white transition-colors hover:text-white/80' href='tel:8 800 666 666 66'>8 800 666 666 66</a>
+      <a
+        className='text14-18 font-light text-white transition-colors hover:text-white/80'
+        href='tel:880066666666'
+        aria-label='8. 8 0 0. 6 6 6. 6 6. 6 6 6.'
+      >
+        8 800 666 66 666
+      </a>
       <p className='text-grey2 text-[12px] esm:text-right esm:text-[14px]'>The call is free</p>
     </div>
     <Nav />

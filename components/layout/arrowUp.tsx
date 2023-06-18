@@ -34,6 +34,7 @@ export const ArrowUp = () => {
       'flex fixed bottom-[5%] right-[2%] w-10 h-10 rounded-full transition-all bg-grey1 cursor-pointer hover:bg-black',
       hidden ? 'opacity-0 pointer-events-none -z-50' : 'opacity-100 z-50'
     )}
+    disabled={hidden}
     onClick={clickHandler}
     aria-label='Go up'
   >

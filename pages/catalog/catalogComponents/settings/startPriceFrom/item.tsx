@@ -13,9 +13,20 @@ const Item: FC<Props> = ({ text, checkedItem, setCheckedItem }) => {
     setCheckedItem(checkedItem === text ? null : text);
   };
 
-  return <div className='group flex items-center gap-x-2 cursor-pointer' onClick={handleClick}>
-    <Checkbox checked={text === checkedItem} variant='single' />
-    <label className='text-tiny text-grey1 transition-colors cursor-pointer group-hover:text-black'>Price {text}</label>
+  return <div className='group flex items-center gap-x-2 cursor-pointer' >
+    <Checkbox
+      checked={text === checkedItem}
+      onClick={handleClick}
+      onKeyDown={e => e.key === 'Enter' && handleClick()}
+      variant='single'
+      id={text || ''}
+    />
+    <label
+      className='text-tiny text-grey1 transition-colors cursor-pointer group-hover:text-black'
+      htmlFor={text || ''}
+    >
+      Price {text?.toLowerCase()}
+    </label>
   </div>
 };
 

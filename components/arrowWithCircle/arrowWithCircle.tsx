@@ -51,7 +51,6 @@ const ArrowWithCircle: FC<Props> = ({ text, circleSize = 30, color = 'blue', cla
         height={8}
         style={{ width: circleSize, height: circleSize }}
         color={color}
-        aria-label={text}
       />
     </div>
   </div>
