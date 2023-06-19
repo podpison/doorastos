@@ -18,7 +18,7 @@ const SliderPagination: FC<Props> = ({ portionsCount, className, windowWidth, cu
 
   return <div className={cn('flex items-center gap-x-5 text-esm text-grey2', className)} ref={ref} aria-label='Pagination' {...props}>
     <p aria-label='First review'>1</p>
-    <div className='flex h-px w-full' aria-label='Progress'>
+    <div className='flex h-px w-full'>
       {Lines}
     </div>
     <p aria-label='Total amount of reviews'>{portionsCount}</p>
