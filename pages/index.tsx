@@ -1,12 +1,12 @@
-import AdditionalSecurity from '@/components/mainPageComponents/additionalSecurity';
-import Advantages from '@/components/mainPageComponents/advantages';
-import CompanyName from '@/components/mainPageComponents/companyName';
-import ForWhat from '@/components/mainPageComponents/forWhat';
-import Hero from '@/components/mainPageComponents/hero';
-import QualityDifferences from '@/components/mainPageComponents/qualityDifferences';
 import Recall from '@/components/recall';
 import Reviews from '@/components/reviews';
 import UniqueOffer from '@/components/uniqueOffers';
+import AdditionalSecurity from '@/ui/main/additionalSecurity';
+import Advantages from '@/ui/main/advantages';
+import CompanyName from '@/ui/main/companyName';
+import ForWhat from '@/ui/main/forWhat';
+import Hero from '@/ui/main/hero';
+import QualityDifferences from '@/ui/main/qualityDifferences';
 import Head from 'next/head'
 
 const MainPage: React.FC = () => {

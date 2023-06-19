@@ -7,16 +7,16 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NotFound from '../404';
-import Hero from './productComponents/hero';
-import PriceComponents from './productComponents/priceComponents';
-import WhatWillYouGetWhenOrdering from './productComponents/whatWillYouGetWhenOrdering';
-import HowAreWeWorking from './productComponents/howAreWeWorking';
-import Description from './productComponents/description';
-import Steps from '../paymentOrder/howToPay/steps';
+import Hero from '@/ui/product/hero';
+import PriceComponents from '@/ui/product/priceComponents';
+import WhatWillYouGetWhenOrdering from '@/ui/product/whatWillYouGetWhenOrdering';
+import Description from '@/ui/product/description';
+import HowAreWeWorking from '@/ui/product/howAreWeWorking';
+import Visualization from '@/ui/product/visualization';
 import SectionHeading from '@/components/sectionHeading';
-import Visualization from './productComponents/visualization';
-import YouMayLike from './productComponents/youMayLike';
-import GoBackOrForward from './productComponents/goBackOrForward';
+import Steps from '@/ui/paymentOrder/howToPay/steps';
+import YouMayLike from '@/ui/product/youMayLike';
+import GoBackOrForward from '@/ui/product/goBackOrForward';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {

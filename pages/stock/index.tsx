@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/breadcrumbs';
 import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
 import Head from 'next/head';
 import { FC } from 'react';
-import Items from './items';
+import Items from '../../ui/stock/items';
 
 const breadcrumbItems: BreadcrumbsItemType[] = [
   {

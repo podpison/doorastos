@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/breadcrumbs';
 import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
 import Head from 'next/head';
 import { FC } from 'react';
-import Item, { PrivacyPolicyItemType } from './Item';
+import Item, { PrivacyPolicyItemType } from '../../ui/privacyPolicy/item';
 
 const items: PrivacyPolicyItemType[] = [
   {

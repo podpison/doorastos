@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react';
 import Filter from './filter';
 import ButtonsGroup, { ButtonsGroupItemType } from '@/components/buttonsGroup/buttonsGroup';
-import { SecurityItemType } from '../..';
+import { SecurityItemType } from '@/pages/catalog';
 import { ActiveCategoryItemType } from './filter/categories/item';
 
 type Props = {

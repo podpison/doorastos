@@ -1,7 +1,7 @@
 import Accordion from '@/components/accordion';
 import SectionHeading from '@/components/sectionHeading';
+import { TextsItemType } from '@/components/texts/item';
 import { FC } from 'react';
-import { TextsItemType } from '../texts/item';
 
 const accordionItems: TextsItemType[] = [
   {

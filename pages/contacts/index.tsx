@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/breadcrumbs';
 import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
 import Head from 'next/head';
 import { FC } from 'react';
-import Links from './links';
+import Links from '../../ui/contacts/links';
 import Recall from '@/components/recall';
 
 const breadcrumbItems: BreadcrumbsItemType[] = [

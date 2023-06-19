@@ -2,8 +2,8 @@ import { ProductType } from '@/redux/reducers/static';
 import { selectProductItems } from '@/redux/selectors';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Item from './../../catalogComponents/products/item';
 import SectionHeading from '@/components/sectionHeading';
+import Item from '@/ui/catalog/products/item';
 
 type Props = {
   currentItemId: number | undefined

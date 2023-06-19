@@ -1,8 +1,8 @@
 import Breadcrumbs from '@/components/breadcrumbs';
 import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
+import Info from '@/ui/guarantees/guarantessInfo';
 import Head from 'next/head';
 import { FC } from 'react';
-import Info from './guarantessInfo';
 
 const breadcrumbItems: BreadcrumbsItemType[] = [
   {

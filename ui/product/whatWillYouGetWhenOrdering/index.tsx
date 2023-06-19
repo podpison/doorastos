@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import Item, { whatWillYouGetWhenOrderingItemProps } from './item';
 import SectionHeading from '@/components/sectionHeading';
-import maintenanceImg from '../../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/maintenance.webp';
-import discountImg from '../../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/discount.webp';
-import careProductImg from '../../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/careProduct.webp';
+import maintenanceImg from '../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/maintenance.webp';
+import discountImg from '../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/discount.webp';
+import careProductImg from '../../../public/imgs/pages/catalog/whatWillYouGetWhenOrdering/careProduct.webp';
 
 const items: whatWillYouGetWhenOrderingItemProps[] = [
   {

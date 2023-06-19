@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
 import SectionHeadings from './sectionHeadings/index';
 import { ProductType } from '@/redux/reducers/static';
-import Characteristics from './sections/characteristics';
-import GuaranteesInfo from '../../../guarantees/guarantessInfo/index';
-import DAIHero from '@/pages/deliveryAndInstallation/hero'; //DAI - delivery and installation
-import DAIShippingPricing from '@/pages/deliveryAndInstallation/shippingPricing';
-import ReturnConditions from './sections/returnConditions';
-import Reviews from './sections/reviews';
+import DAIHero from '@/ui/deliveryAndInstallation/hero'; //DAI - delivery and installation
+import DAIShippingPricing from '@/ui/deliveryAndInstallation/shippingPricing';
+import Characteristics from './section/characteristics';
+import ReturnConditions from './section/returnConditions';
+import Reviews from './section/reviews';
+import GuaranteesInfo from '../../guarantees/guarantessInfo/index';
 
 type Props = {
   currentItem: ProductType | undefined

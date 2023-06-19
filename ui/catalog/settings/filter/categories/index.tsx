@@ -1,9 +1,9 @@
 import { FC, useMemo, useState } from 'react';
-import solidImg from '../../../../../../public/imgs/pages/catalog/settings/filter/solid.webp';
-import MDFOverlaysImg from '../../../../../../public/imgs/pages/catalog/settings/filter/MDF-overlays.webp';
-import laminatedChipboardImg from '../../../../../../public/imgs/pages/catalog/settings/filter/laminated-chipboard.webp';
-import withGlassAndMirrorImg from '../../../../../../public/imgs/pages/catalog/settings/filter/with-glass-and-mirror.webp';
-import forgedImg from '../../../../../../public/imgs/pages/catalog/settings/filter/forged.webp';
+import solidImg from '../../../../../public/imgs/pages/catalog/settings/filter/solid.webp';
+import MDFOverlaysImg from '../../../../../public/imgs/pages/catalog/settings/filter/MDF-overlays.webp';
+import laminatedChipboardImg from '../../../../../public/imgs/pages/catalog/settings/filter/laminated-chipboard.webp';
+import withGlassAndMirrorImg from '../../../../../public/imgs/pages/catalog/settings/filter/with-glass-and-mirror.webp';
+import forgedImg from '../../../../../public/imgs/pages/catalog/settings/filter/forged.webp';
 import Item, { ActiveCategoryItemType } from './item';
 
 type Props = {

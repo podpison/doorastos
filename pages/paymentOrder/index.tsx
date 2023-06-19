@@ -1,6 +1,6 @@
+import HowToPay from '@/ui/paymentOrder/howToPay';
 import Head from 'next/head';
 import { FC } from 'react';
-import HowToPay from './howToPay';
 
 const PaymentOrder: FC = () => {
   return <>

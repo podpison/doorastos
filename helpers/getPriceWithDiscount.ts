@@ -1,5 +1,7 @@
 const getPriceWithDiscount = (price: number | undefined = 0, discount?: number) => {
-  return discount ? price / 100 * (100 - discount) : price;
+  let discountPrice = discount ? price / 100 * (100 - discount) : price;
+
+  return Math.round(discountPrice);
 };
 
 export default getPriceWithDiscount;

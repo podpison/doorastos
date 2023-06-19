@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import visualizationImg from './../../../../public/imgs/pages/product/visualization.webp';
+import visualizationImg from './../../../public/imgs/pages/product/visualization.webp';
 import Image from 'next/image';
 import ArrowWithCircle from '@/components/arrowWithCircle/arrowWithCircle';
 import HelpChooseDialog from '@/components/dialogs/helpChooseDialog';
