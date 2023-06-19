@@ -4,7 +4,7 @@ import NothingFound from './nothingFound';
 import { ProductType } from '@/redux/reducers/static';
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
 import Pagination from '@/components/pagination';
-import { PriceFromType, SecurityItemType } from '../..';
+import { PriceFromType, SecurityItemType } from '@/pages/catalog';
 import { ActiveCategoryItemType } from '../settings/filter/categories/item';
 
 type Props = {
