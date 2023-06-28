@@ -19,7 +19,7 @@ const Hero: FC = () => {
   
   let Advantages = advantages.map((a, i) => <Advantage text={a} key={i} />);
 
-  return <section className='relative flex flex-col mt-0 esm:pb-10 md:h-screen md:pb-0 md:justify-evenly'>
+  return <section className='relative flex flex-col esm:pb-10 max-md:mt-10 md:h-screen md:pb-0 md:justify-evenly'>
     <ScreenBg className='max-lg:hidden' src={bgPc} alt='Background' />
     <div className='flex flex-col justify-center min-h-[350px] max-esm:relative'>
       <ScreenBg className='lg:hidden' src={bgMobile} alt='Background' />

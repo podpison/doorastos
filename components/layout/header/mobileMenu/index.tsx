@@ -37,7 +37,7 @@ const mobileMenu: FC<Props> = ({ links, isOpen, closeMenu, openHelpChooseDialog 
       }}
       initial={false}
     >
-      <button className='ml-auto block' onClick={closeMenu} aria-label='Close'>
+      <button className='ml-auto block' onClick={closeMenu} aria-label='Close menu'>
         <CloseIcon aria-hidden='true' focusable="false" />
       </button>
       <nav className='mt-7'>

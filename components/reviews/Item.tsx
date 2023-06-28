@@ -2,16 +2,14 @@ import { FC } from 'react';
 import Image from 'next/image';
 import ChevronRounded from '../chevronRounded';
 import SliderPagination from '../sliderPagination';
+import { ReviewItemType } from '@/redux/reducers/static';
 
 type Props = {
-  img: string
-  personName: string
-  review: string
   setNewPage: (operation: 'next' | 'prev') => void
   windowWidth: number
   currentPortion: number
   portionsCount: number
-}
+} & ReviewItemType
 
 const Item: FC<Props> = ({ img, personName, review, setNewPage, windowWidth, currentPortion, portionsCount }) => {
 
@@ -34,7 +32,12 @@ const Item: FC<Props> = ({ img, personName, review, setNewPage, windowWidth, cur
         aria-label='Next review'
       />
     </div>
-    <SliderPagination className='col-[1] row-[2] max-md:mt-2.5 md:col-[2] md:max-w-[190px]' windowWidth={windowWidth} currentPortion={currentPortion} portionsCount={portionsCount} />
+    <SliderPagination
+      className='col-[1] row-[2] max-md:mt-2.5 md:col-[2] md:max-w-[190px]'
+      windowWidth={windowWidth}
+      currentPortion={currentPortion}
+      portionsCount={portionsCount}
+    />
     <div className='col-[1/3] max-md:mt-5 md:col-[2/4] md:row-[1]'>
       <h6 className='text16-24'>{personName}</h6>
       <p className='mt10-20 text-esm text-grey2'>{review}</p>

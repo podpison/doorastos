@@ -9,7 +9,7 @@ type Props = {
 const Checkbox: FC<Props> = ({ variant = 'multiple', ...props }) => {
   return <RadixCheckbox.Root
     className={cn(
-      "flex items-center justify-center h-4 w-4 min-h-[16px] min-w-[16px] border border-grey2 rounded-[2px] transition-colors appearance-none outline-none group-hover:border-black data-[state='checked']:border-black",
+      "flex items-center justify-center h-4 w-4 min-h-[16px] min-w-[16px] border border-grey2 rounded-[2px] transition-colors appearance-none outline-none group-hover:border-black data-[state='checked']:border-black focus:outline focus:outline-black focus:outline-1",
       variant === 'single' && 'rounded-full'
     )}
     {...props}

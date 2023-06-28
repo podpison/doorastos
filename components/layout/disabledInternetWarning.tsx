@@ -1,7 +1,7 @@
 import { useInsertionEffect, useState } from "react";
 import { motion } from 'framer-motion';
 
-export const DisabledInternetWarning: React.FC = () => {
+const DisabledInternetWarning: React.FC = () => {
   const [isOnline, setIsOnline] = useState(true);
 
   useInsertionEffect(() => {
@@ -32,3 +32,5 @@ export const DisabledInternetWarning: React.FC = () => {
     </div>
   </motion.div>
 };
+
+export default DisabledInternetWarning;

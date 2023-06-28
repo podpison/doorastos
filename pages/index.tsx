@@ -8,8 +8,10 @@ import ForWhat from '@/ui/main/forWhat';
 import Hero from '@/ui/main/hero';
 import QualityDifferences from '@/ui/main/qualityDifferences';
 import Head from 'next/head'
+import { FC } from 'react';
 
-const MainPage: React.FC = () => {
+const MainPage: FC = () => {
+
   return <>
     <Head>
       <title>Doorastos</title>

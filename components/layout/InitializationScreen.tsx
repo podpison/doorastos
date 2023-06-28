@@ -6,14 +6,22 @@ const signs = [
   'Delivery and installation of entrance doors'
 ];
 
-const InitializationScreen: FC = () => {
+type Props = {
+  isVisible: boolean
+}
+
+const InitializationScreen: FC<Props> = ({ isVisible }) => {
   const [sign, setSign] = useState<string | null>(null);
 
   useEffect(() => {
     setSign(new Date().getMinutes() % 2 == 0 ? signs[0] : signs[1]);
   }, []);
 
-  return <div className='fixed top-0 left-0 w-full z-[100]'>
+  if (!isVisible) {
+    return <></>;
+  };
+
+  return <div className='fixed top-0 left-0 w-full z-[100]' id='initializationScreen'>
     <div className='absolute left-0 top-0 bg-black w-screen h-screen max-w-[100vw] -z-20' />
     <div className='mainContainer flex flex-col justify-center min-h-screen'>
       <h2 className='font-robodron font-medium tracking-widest text-[min(8.8cqw,_113px)] text-[rgba(255,_255,_255,_0.15)] text-center'>Expert</h2>

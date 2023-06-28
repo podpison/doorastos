@@ -17,6 +17,8 @@ import SectionHeading from '@/components/sectionHeading';
 import Steps from '@/ui/paymentOrder/howToPay/steps';
 import YouMayLike from '@/ui/product/youMayLike';
 import GoBackOrForward from '@/ui/product/goBackOrForward';
+import AdditionalOptions from '@/ui/product/additionalOptions';
+import useRecentlyViewedWatcher from '@/hooks/useRecentlyViewedWatcher';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -33,6 +35,8 @@ const Product: FC = () => {
   let id = router.query.id;
   let currentItem = products.find(i => i.id === (typeof id === 'string' && Number(id)));
 
+  useRecentlyViewedWatcher(currentItem?.id);
+
   useEffect(() => {
     if (!currentItem) return;
 
@@ -42,13 +46,13 @@ const Product: FC = () => {
   }, [currentItem]);
 
   let pageTitle = `${currentItem?.name || 'Product'} | Doorastos`;
-  
+
   if (!currentItem && products.length !== 0) {
     return <NotFound />
   }
-  
+
   let canGoForward = products.find(p => p.id === ((currentItem?.id || 0) + 1)) !== undefined;
-  
+
   return <>
     <Head>
       <title>{pageTitle}</title>
@@ -60,6 +64,7 @@ const Product: FC = () => {
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
       <Description currentItem={currentItem} />
+      {currentItem?.isUnique && <AdditionalOptions />}
       <HowAreWeWorking />
       <Visualization />
       <section className='mt150-250'>

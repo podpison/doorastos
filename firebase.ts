@@ -20,19 +20,18 @@ const firebaseConfig = {
 // measurementId: process.env.FB_MEASUREMENT_ID
 
 const app = initializeApp(firebaseConfig);
-
 const fs = getFirestore(app);
 
 export const itemsAPI = {
   get: async (collectionName: string) => {
-    const itemsSnapshot = await getDocs(collection(fs, collectionName));
+    let itemsSnapshot = await getDocs(collection(fs, collectionName));
     return itemsSnapshot.docs.map(d => d.data());
   },
 };
 
 export const customersAPI = {
   add: async (data: Object) => {
-    const docRef = await addDoc(collection(fs, "contactUs"), data);
+    let docRef = await addDoc(collection(fs, "contactUs"), data);
     return !!docRef;
   },
 };

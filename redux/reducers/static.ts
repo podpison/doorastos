@@ -11,6 +11,7 @@ export type ProductType = {
   where: 'apartment' | 'house'
   finishing: string
   color: string
+  isUnique: boolean
   discount?: {
     value: number
     expiryDate: string
@@ -100,9 +101,16 @@ export type StockItemType = {
   id: number
 }
 
+export type ReviewItemType = {
+  img: string
+  personName: string
+  review: string
+}
+
 const initialState = {
   products: [] as ProductType[],
   stock: [] as StockItemType[],
+  reviews: [] as ReviewItemType[],
 }
 
 export type StaticStateType = typeof initialState

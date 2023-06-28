@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 
 const CookiesNotification: FC = () => {
   const [cookies, setCookie] = useCookies(['areCookiesAccepted']);
-  const [isClosed, setIsClosed] = useState(true); //for some unexpected for me reasons, without the useState and useEffect the component shows updated data in the console and not refreshes the component
+  const [isClosed, setIsClosed] = useState(true);
 
   const handleAcceptedStatus = () => {
     let cd = new Date(); //current date

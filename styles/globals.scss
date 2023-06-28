@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--toastify-color-progress-light: #C7C7C7!important; //grey4
+	--toastify-color-light: #222222!important; //grey1
+	--toastify-text-color-light: white!important;
+	--toastify-toast-width: 410px!important
+}
+
+.Toastify__close-button--light {
+	color: white!important;
+}
+
 @layer base {
-	html, body, #__next {
-		@apply min-h-screen
+	html {
+		&:has(#initializationScreen) {
+			overflow: hidden;
+		}
 	}
-	html, body {
-    overflow-x: hidden;
-  }
 	body {
 		@apply leading-[1.3] text-black tracking-wide;
 	}
@@ -16,6 +26,12 @@
 		@apply mt-28 md:mt-36;
 		flex: 1 0 auto;
 	}
+	html, body, #__next {
+		@apply min-h-screen
+	}
+	html, body {
+    overflow-x: hidden;
+  }
 
 	h2 {
 		@apply text-[20px] leading-[1.2] md:text-[30px] smlg:text-[36px]
@@ -91,7 +107,7 @@
 	.text10-14 {
 		@apply text-[10px] lg:text-[14px]
 	}
-
+	// npm install @radix-ui/react-toast
 	.mt130-300 {
 		@apply mt-32 esm:mt-[200px] md:mt-[300px]
 	}
@@ -126,5 +142,22 @@
 
 	.mainContainer {
 		@apply mx-auto max-w-[1220px] px-2.5 esm:px-5 esm:max-w-[1240px] md:px-8 md:max-w-[1264px] smlg:px-12 smlg:max-w-[1298px]
+	}
+}
+
+.slick-arrow {
+	z-index: 1;
+	width: 35px!important;
+	height: 35px!important;
+	&::before {
+		color: rgb(34 34 34)!important;
+		font-size: 35px!important;
+		border-radius: 9999px;
+	}
+	&.slick-next {
+		right: 0;
+	}
+	&.slick-prev {
+		left: 0;
 	}
 }

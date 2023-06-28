@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const useAppInitialization = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const { products, stock } = useSelector(selectStaticItems);
+  const { products, stock, reviews } = useSelector(selectStaticItems);
   const [isAppLoaded, setIsAppLoaded] = useState(false);
 
   useInsertionEffect(() => {
@@ -14,7 +14,7 @@ const useAppInitialization = () => {
   }, []);
 
   useEffect(() => {
-    if (products.length !== 0 && stock.length !== 0) {
+    if (products.length !== 0 && stock.length !== 0 && reviews.length !== 0) {
       setIsAppLoaded(true);
     };
   }, [products.length, stock.length]);
