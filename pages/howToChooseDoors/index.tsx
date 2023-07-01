@@ -1,9 +1,9 @@
-import Breadcrumbs from '@/components/breadcrumbs';
-import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
+import Breadcrumbs from '@/ui/breadcrumbs';
+import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
 import Head from 'next/head';
 import { FC, useState } from 'react';
-import Items from '../../ui/howToChooseDoors/items';
 import useWhereQuery from '@/hooks/useWhereQuery';
+import Items from '@/pageComponents/howToChooseDoors/items';
 
 const initialBreadcumbItems = {
   name: "Doors to the apartment",

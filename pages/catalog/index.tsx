@@ -1,16 +1,16 @@
-import Breadcrumbs from "@/components/breadcrumbs";
-import { BreadcrumbsItemType } from "@/components/breadcrumbs/item";
+import Breadcrumbs from "@/ui/breadcrumbs";
+import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
 import Head from "next/head";
 import { FC, useState } from "react";
 import { ProductType } from "@/redux/reducers/static";
 import { useSelector } from "react-redux";
 import { selectProductItems } from "@/redux/selectors";
-import UniqueOffer from "@/components/uniqueOffers";
+import UniqueOffer from "@/ui/uniqueOffers";
 import useWhereQuery from "@/hooks/useWhereQuery";
-import { ActiveCategoryItemType } from "@/ui/catalog/settings/filter/categories/item";
-import Settings from "@/ui/catalog/settings";
-import StartPriceFrom from "@/ui/catalog/settings/startPriceFrom";
-import Products from "@/ui/catalog/products";
+import { ActiveCategoryItemType } from "@/pageComponents/catalog/settings/filter/categories/item";
+import Settings from "@/pageComponents/catalog/settings";
+import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
+import Products from "@/pageComponents/catalog/products";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null

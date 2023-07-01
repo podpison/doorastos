@@ -7,3 +7,4 @@ export const selectStaticItems = createDraftSafeSelector(selectSelf, (state) => 
 export const selectProductItems = createDraftSafeSelector(selectSelf, (state) => state.static.products);
 export const selectStockItems = createDraftSafeSelector(selectSelf, (state) => state.static.stock);
 export const selectReviewItems = createDraftSafeSelector(selectSelf, (state) => state.static.reviews);
+export const selectAdditionalProductOptions = createDraftSafeSelector(selectSelf, (state) => state.static.additionalProductOptions);

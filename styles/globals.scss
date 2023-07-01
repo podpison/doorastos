@@ -2,21 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--toastify-color-progress-light: #C7C7C7!important; //grey4
-	--toastify-color-light: #222222!important; //grey1
-	--toastify-text-color-light: white!important;
-	--toastify-toast-width: 410px!important
-}
-
-.Toastify__close-button--light {
-	color: white!important;
-}
-
 @layer base {
 	html {
-		&:has(#initializationScreen) {
+		&:has(.disable-scroll) {
 			overflow: hidden;
+			body {
+				margin-right: 17px;
+				header {
+					margin-left: -6px;
+				}
+			}
 		}
 	}
 	body {

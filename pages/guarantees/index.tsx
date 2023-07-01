@@ -1,6 +1,6 @@
-import Breadcrumbs from '@/components/breadcrumbs';
-import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
-import Info from '@/ui/guarantees/guarantessInfo';
+import Breadcrumbs from '@/ui/breadcrumbs';
+import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
+import Info from '@/pageComponents/guarantees/guarantessInfo';
 import Head from 'next/head';
 import { FC } from 'react';
 

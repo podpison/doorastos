@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export type ProductType = {
   name: string
-  img: string
+  imgs: string[]
   price: number
   material: string
   id: number
@@ -107,10 +107,16 @@ export type ReviewItemType = {
   review: string
 }
 
+export type AdditionalProductOptionType = {
+  name: string
+  price: number
+}
+
 const initialState = {
   products: [] as ProductType[],
   stock: [] as StockItemType[],
   reviews: [] as ReviewItemType[],
+  additionalProductOptions: [] as AdditionalProductOptionType[],
 }
 
 export type StaticStateType = typeof initialState

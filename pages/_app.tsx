@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { FC } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Layout from '@/components/layout';
+import Layout from '@/ui/layout';
 import { CookiesProvider } from 'react-cookie';
 import reduxStore from '@/redux/store';
 import { Provider } from 'react-redux';

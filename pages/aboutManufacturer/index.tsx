@@ -1,9 +1,9 @@
-import Breadcrumbs from '@/components/breadcrumbs';
-import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
+import Breadcrumbs from '@/ui/breadcrumbs';
+import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
+import OurGoal from '@/pageComponents/aboutManufacturer/ourGoal';
+import Slogan from '@/pageComponents/aboutManufacturer/slogan';
 import Head from 'next/head';
 import { FC } from 'react';
-import Slogan from '../../ui/aboutManufacturer/slogan';
-import OurGoal from '../../ui/aboutManufacturer/ourGoal';
 
 const breadcrumbItems: BreadcrumbsItemType[] = [
   {

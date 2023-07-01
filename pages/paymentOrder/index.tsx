@@ -1,4 +1,4 @@
-import HowToPay from '@/ui/paymentOrder/howToPay';
+import HowToPay from '@/pageComponents/paymentOrder/howToPay';
 import Head from 'next/head';
 import { FC } from 'react';
 

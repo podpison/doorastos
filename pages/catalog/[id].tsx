@@ -1,5 +1,5 @@
-import Breadcrumbs from '@/components/breadcrumbs';
-import { BreadcrumbsItemType } from '@/components/breadcrumbs/item';
+import Breadcrumbs from '@/ui/breadcrumbs';
+import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
 import useWhereQuery from '@/hooks/useWhereQuery';
 import { selectProductItems } from '@/redux/selectors';
 import Head from 'next/head';
@@ -7,18 +7,19 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import NotFound from '../404';
-import Hero from '@/ui/product/hero';
-import PriceComponents from '@/ui/product/priceComponents';
-import WhatWillYouGetWhenOrdering from '@/ui/product/whatWillYouGetWhenOrdering';
-import Description from '@/ui/product/description';
-import HowAreWeWorking from '@/ui/product/howAreWeWorking';
-import Visualization from '@/ui/product/visualization';
-import SectionHeading from '@/components/sectionHeading';
-import Steps from '@/ui/paymentOrder/howToPay/steps';
-import YouMayLike from '@/ui/product/youMayLike';
-import GoBackOrForward from '@/ui/product/goBackOrForward';
-import AdditionalOptions from '@/ui/product/additionalOptions';
 import useRecentlyViewedWatcher from '@/hooks/useRecentlyViewedWatcher';
+import Hero from '@/pageComponents/product/hero';
+import PriceComponents from '@/pageComponents/product/priceComponents';
+import WhatWillYouGetWhenOrdering from '@/pageComponents/product/whatWillYouGetWhenOrdering';
+import Description from '@/pageComponents/product/description';
+import AdditionalOptions from '@/pageComponents/product/additionalOptions';
+import HowAreWeWorking from '@/pageComponents/product/howAreWeWorking';
+import Visualization from '@/pageComponents/product/visualization';
+import SectionHeading from '@/ui/sectionHeading';
+import Steps from '@/pageComponents/paymentOrder/howToPay/steps';
+import YouMayLike from '@/pageComponents/product/youMayLike';
+import GoBackOrForward from '@/pageComponents/product/goBackOrForward';
+import { AdditionalProductOptionType } from '@/redux/reducers/static';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -31,6 +32,7 @@ const Product: FC = () => {
   let products = useSelector(selectProductItems);
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
   useWhereQuery(defaultBreadcrumbItem, breadcrumbItems, setBreadcrumbItems);
+  const [additionalOptions, setAdditionalOptions] = useState<AdditionalProductOptionType[]>([]);
 
   let id = router.query.id;
   let currentItem = products.find(i => i.id === (typeof id === 'string' && Number(id)));
@@ -49,9 +51,21 @@ const Product: FC = () => {
 
   if (!currentItem && products.length !== 0) {
     return <NotFound />
-  }
+  };
 
   let canGoForward = products.find(p => p.id === ((currentItem?.id || 0) + 1)) !== undefined;
+
+  const handleNewAdditionalOption = (newOption: AdditionalProductOptionType) => {
+    let isExist = additionalOptions.find(i => i.name === newOption.name);
+
+    if (isExist) {
+      let itemsWithoutNewOption = additionalOptions.filter(i => i.name !== newOption.name);
+
+      setAdditionalOptions(itemsWithoutNewOption);
+    } else {
+      setAdditionalOptions([...additionalOptions, newOption]);
+    };
+  };
 
   return <>
     <Head>
@@ -60,11 +74,11 @@ const Product: FC = () => {
     </Head>
     <main>
       <Breadcrumbs items={breadcrumbItems} />
-      <Hero item={currentItem} />
+      <Hero item={currentItem} additionalOptions={additionalOptions} />
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
       <Description currentItem={currentItem} />
-      {currentItem?.isUnique && <AdditionalOptions />}
+      {currentItem?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
       <HowAreWeWorking />
       <Visualization />
       <section className='mt150-250'>

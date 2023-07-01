@@ -1,8 +1,8 @@
-import Breadcrumbs from '@/components/breadcrumbs';
+import Breadcrumbs from '@/ui/breadcrumbs';
+import Hero from '@/pageComponents/deliveryAndInstallation/hero';
+import ShippingPricing from '@/pageComponents/deliveryAndInstallation/shippingPricing';
 import Head from 'next/head';
 import { FC } from 'react';
-import Hero from '../../ui/deliveryAndInstallation/hero';
-import ShippingPricing from '../../ui/deliveryAndInstallation/shippingPricing';
 
 const breadcrumbsItems = [
   {

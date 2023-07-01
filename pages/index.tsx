@@ -1,12 +1,12 @@
-import Recall from '@/components/recall';
-import Reviews from '@/components/reviews';
-import UniqueOffer from '@/components/uniqueOffers';
-import AdditionalSecurity from '@/ui/main/additionalSecurity';
-import Advantages from '@/ui/main/advantages';
-import CompanyName from '@/ui/main/companyName';
-import ForWhat from '@/ui/main/forWhat';
-import Hero from '@/ui/main/hero';
-import QualityDifferences from '@/ui/main/qualityDifferences';
+import Recall from '@/ui/recall';
+import Reviews from '@/ui/reviews';
+import UniqueOffer from '@/ui/uniqueOffers';
+import AdditionalSecurity from '@/pageComponents/main/additionalSecurity';
+import Advantages from '@/pageComponents/main/advantages';
+import CompanyName from '@/pageComponents/main/companyName';
+import ForWhat from '@/pageComponents/main/forWhat';
+import Hero from '@/pageComponents/main/hero';
+import QualityDifferences from '@/pageComponents/main/qualityDifferences';
 import Head from 'next/head'
 import { FC } from 'react';
 
