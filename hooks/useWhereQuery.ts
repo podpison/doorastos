@@ -1,4 +1,4 @@
-import { BreadcrumbsItemType } from "@/components/breadcrumbs/item";
+import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
 import { ProductType } from "@/redux/reducers/static";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect } from "react";
@@ -10,7 +10,7 @@ type defaultItemType = {
 
 export type WhereType = ProductType['where'] | undefined
 
-//the purpose of this hook is to help with handling breadcrumbs with 'where' query 
+//the purpose of this hook is to help with handling breadcrumbs with the 'where' query 
 const useWhereQuery = (
   defaultItems: defaultItemType | defaultItemType[],
   breadcrumbsItems: BreadcrumbsItemType[],

@@ -1,4 +1,4 @@
-import { addAPI, itemsAPI } from '@/firebase';
+import { itemsAPI } from '@/firebase';
 import Breadcrumbs from '@/ui/breadcrumbs';
 import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
