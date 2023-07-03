@@ -19,7 +19,7 @@ const Options: FC<Props> = ({ activeItems, setActiveItems }) => {
     key={index}
   />);
 
-  return <div className='mt50-150'>
+  return <div>
     <h5 className='text18-24'>You may also want this:</h5>
     <div className='grid mt-7 max-md:divide-y max-md:divide-line md:grid-cols-2 md:gap-x-20'>
       <div className='flex flex-col divide-y divide-line max-md:pb-2.5'>

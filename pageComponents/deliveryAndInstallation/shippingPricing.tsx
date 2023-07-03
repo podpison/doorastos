@@ -10,7 +10,7 @@ const ShippingPricing: FC = () => {
       <div className='flex flex-col gap-y-2.5 mt-7'>
         <p className='text-esm'>If the installation site is located further than 30 km from the Moscow Ring Road, then the cost of delivery is calculated at a special rate.</p>
         <div className='w-full bg-line py-2.5'>
-          <p className='text-center text-[18px]'>1km / 25₽</p>
+          <p className='text-center text-[18px]'>1 km / 25 ₽</p>
         </div>
       </div>
     </div>

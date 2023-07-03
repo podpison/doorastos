@@ -27,7 +27,7 @@ const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   },
 ]
 
-const Product: FC = () => {
+const ProductPage: FC = () => {
   const router = useRouter();
   let products = useSelector(selectProductItems);
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
@@ -91,4 +91,4 @@ const Product: FC = () => {
   </>
 };
 
-export default Product;
+export default ProductPage;

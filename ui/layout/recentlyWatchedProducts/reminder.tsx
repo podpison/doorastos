@@ -27,7 +27,7 @@ const Reminder: FC<Props> = ({ isVisible, setInvisible, onClick }) => {
           Take a look
         </button>
       </div>
-      <button className='mb-auto ml-3' onClick={setInvisible} aria-label='Close reminder'>
+      <button className='ml-3' onClick={setInvisible} aria-label='Close reminder'>
         <CloseIcon className='w-3 h-3' />
       </button>
     </div>

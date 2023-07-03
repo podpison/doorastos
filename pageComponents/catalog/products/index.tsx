@@ -39,7 +39,7 @@ const Products: FC<Props> = ({ itemsPerPage = 3, allItems = [], activeSecurityIt
         if (c.category === 'price') {
           let priceRange = ci.includes('—')
             ? ci.split(' — ').map(p => p.replace(' ₽', '')).map(p => Number(p.replace(' ', ''))) //for a range
-            : Number(ci.replace(' ₽ and more', '').replace(' ', '')); //for a one price
+            : Number(ci.replace(' ₽ and more', '').replace(' ', '')); //for one price
 
           if (typeof priceRange === 'number') {
             return priceRange < item.price;

@@ -133,7 +133,7 @@ export const fetchStaticItems = createAsyncThunk(
 const staticReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(fetchStaticItems.fulfilled, (state, action) => {
-      return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     })
 });
 

@@ -13,7 +13,7 @@ const Link: FC<Props> = ({ name, className, onClick }) => {
   return <NavLink
     className={cn('group block text-grey1 mt-4 first-child:mt-0 sm:text-[18px] md:text-[20px]', className)}
     activeClassName='[&>span]:bg-black'
-    href={textToURL(name) || ''}
+    href={'/' + textToURL(name) || ''}
     onClick={onClick}
   >
     <p>{name}</p>
