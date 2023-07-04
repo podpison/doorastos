@@ -32,7 +32,7 @@ const items: Omit<PriceComponentProps, 'id'>[] = [
 const PriceComponents: FC = () => {
   let Items = items.map((i, index) => <Item {...i} id={index + 1} key={index} />);
 
-  return <section className='mt100-150'>
+  return <section className='mt150-250'>
     <SectionHeading>This model includes:</SectionHeading>
     <div className='mt30-50 grid gap-y-9 md:grid-cols-2 md:gap-x-10 smlg:gap-x-[60px] lg:gap-x-[130px]'>
       {Items}

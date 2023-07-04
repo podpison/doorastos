@@ -9,7 +9,7 @@ type Props = {
 
 const AdditionalOptions: FC<Props> = ({ activeOptions, setActiveOption }) => {
 
-  return <section className='mt150-250 relative py-7 md:py-12'>
+  return <section className='mt100-150 relative py-7 md:py-12'>
     <div className='leftContainer absolute top-0 w-screen h-full max-w-[100vw] bg-grey3 -z-20' />
     <Options activeItems={activeOptions} setActiveItems={setActiveOption} />
   </section>

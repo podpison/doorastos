@@ -75,10 +75,10 @@ const ProductPage: FC = () => {
     <main>
       <Breadcrumbs items={breadcrumbItems} />
       <Hero item={currentItem} additionalOptions={additionalOptions} />
+      {currentItem?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
+      <Description currentItem={currentItem} />
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
-      <Description currentItem={currentItem} />
-      {currentItem?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
       <HowAreWeWorking />
       <Visualization />
       <section className='mt150-250'>

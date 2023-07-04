@@ -8,7 +8,7 @@ const Footer: FC = () => {
 
   return <footer className='mt130-200 relative grid justify-start pt-7 pb-5 esm:grid-cols-2 esm:grid-rows-[repeat(4,max-content)] esm:pt-14 esm:pb-10 smlg:grid-cols-[max-content_1fr_max-content] smlg:grid-rows-[repeat(2,max-content)] smlg:items-center smlg:gap-y-12 smlg:pt-[75px]'>
     <div className='leftContainer absolute top-0 w-screen h-full max-w-[100vw] bg-black -z-20' />
-    <h6 className='text14-20 text-grey2 font-bold tracking-widest font-robodron' aria-label='Logo'>Expert</h6>
+    <p className='text14-20 text-grey2 font-bold tracking-widest font-robodron' aria-label='Logo'>Expert</p>
     <div className='flex flex-col gap-y-1 max-esm:mt-5 esm:gap-y-2.5 esm:ml-auto smlg:col-[3]'>
       <a
         className='text14-18 font-light text-white transition-colors hover:text-white/80'

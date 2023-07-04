@@ -7,7 +7,7 @@
 		&:has(.disable-scroll) {
 			overflow: hidden;
 			body {
-				margin-right: 17px;
+				
 				header {
 					margin-left: -6px;
 				}
@@ -29,6 +29,7 @@
   }
 
 	h2 {
+		//
 		@apply text-[20px] leading-[1.2] md:text-[30px] smlg:text-[36px]
 	};
 	h3 {
@@ -57,6 +58,9 @@
 		@apply text-[10px] tracking-wider esm:text-[12px]
 	}
 
+	.text20-36 {
+		@apply text-[20px] leading-[1.2] md:text-[30px] smlg:text-[36px]
+	}
 	.text14-36 {
 		@apply text-[14px] esm:text-[18px] md:text-[20px] smlg:text-[36px]
 	}

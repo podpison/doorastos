@@ -25,7 +25,11 @@ const Item: FC<Props> = ({ heading, items, id, isSubitem }) => {
   });
 
   return <div className={cn('flex flex-col', !isSubitem && 'gap-y-2.5')}>
-    <h6 className={cn('', isSubitem ? 'text-esm' : 'text-light text-grey1 font-semibold')}>{id}. {heading}</h6>
+    <h2
+      className={cn('', isSubitem ? 'text-esm' : 'text-light text-grey1 font-semibold')}
+    >
+      {id}. {heading}
+    </h2>
     <div className='flex flex-col gap-y-1'>{Subitems}</div>
   </div>
 };

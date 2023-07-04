@@ -24,14 +24,14 @@ const PrivacyPolicy: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ ite
       <Breadcrumbs items={breadcrumbsItems} />
       <div>
         <div className='flex flex-col gap-y-2.5'>
-          <h6 className='text-light text-grey1 font-semibold'>Privacy policy</h6>
+          <h1 className='text-light text-grey1 font-semibold'>Privacy policy</h1>
           <p className='text-esm leading-[30px]'>This Personal Data Privacy Policy(hereinafter referred to as the Privacy Policy) applies to all information that the site argus196.ru - ARGUS Entrance Door Store, (hereinafter referred to as the ARGUS Entrance Door Store) located on the domain name argus196.ru(as well as its subdomains), can get about the User while using the site argus196.ru(as well as its subdomains), its programs and its products.</p>
         </div>
         <div className='flex flex-col gap-y-10 leading-[30px] mt-10'>
           {Items}
         </div>
         <div className='flex flex-col gap-y-1 mt-2.5'>
-          <p className='text-esm'>Updated: 15 August 2018</p>
+          <p className='text-esm'>Updated: <time> 15 August 2018</time></p>
           <p className='text-esm'>Ekaterinburg, OGRNIP 316965800157317</p>
         </div>
       </div>
