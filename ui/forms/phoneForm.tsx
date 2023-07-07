@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import "yup-phone";
 import cn from 'classnames';
 import { customersAPI } from '@/firebase';
+import { toast } from 'react-toastify';
 
 //string for dynamic types (e.g. stock)
 export type PhoneFormTypeType = string | 'consultation' | 'recall' | 'antiCutPrice' | 'antiTheftSystem' | 'armoredPrice' | 'deliveryAndInstallation' | 'bookAMeasurement'
@@ -23,17 +24,33 @@ const validationSchema = Yup.object().shape({
   phone: Yup.string().phone('ru', true, 'Wrong format!').required(),
 });
 
+type SubmitDataType = {
+  type: Props['type']
+  additionalValues?: object
+} & typeof initialValues
+
 const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', className, onSubmit }) => {
   return <Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
-    onSubmit={(values) => {
-      customersAPI.add({
+    onSubmit={async (values, { resetForm }) => {
+      let data: SubmitDataType = {
         ...values,
         type,
-        additionalValues
-      })
-      onSubmit && onSubmit();
+      }
+      additionalValues && (data['additionalValues'] = additionalValues);
+
+      let resp = await toast.promise(customersAPI.add(data), {
+        pending: 'Pending...',
+        success: 'Success! We\'ll contact you soon',
+        error: 'Oops... Something went wrong'
+      });
+
+      
+      if (resp) {
+        onSubmit && onSubmit();
+        resetForm();
+      }
     }}
   >
     {({ isSubmitting, errors }) => (
@@ -69,7 +86,7 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
         </button>
       </Form>
     )}
-  </Formik>
+  </Formik >
 };
 
 export default PhoneForm;

@@ -9,6 +9,8 @@ import useAppInitialization from '@/hooks/useAppInitialization';
 import ArrowUp from './arrowUp';
 import DisabledInternetWarning from './disabledInternetWarning';
 import RecentlyWatchedProducts from './recentlyWatchedProducts';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   children: ReactNode
@@ -59,8 +61,8 @@ const Layout: FC<Props> = ({ children }) => {
   return <div
     className={cn('mainContainer font-sfProDisplay flex flex-col min-h-screen', robodronFont.variable, sfProDisplayFont.variable)}
   >
-    
-    <Header /> 
+
+    <Header />
     {children}
     <Footer />
 
@@ -69,6 +71,9 @@ const Layout: FC<Props> = ({ children }) => {
     <DisabledInternetWarning />
     <InitializationScreen isVisible={!isAppLoaded} />
     <RecentlyWatchedProducts />
+    <ToastContainer
+      position="bottom-right"
+    />
   </div>
 }
 

@@ -6,12 +6,6 @@
 	html {
 		&:has(.disable-scroll) {
 			overflow: hidden;
-			body {
-				
-				header {
-					margin-left: -6px;
-				}
-			}
 		}
 	}
 	body {
