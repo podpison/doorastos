@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { DocumentData, addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.FB_API_KEY,
@@ -15,24 +15,28 @@ const app = initializeApp(firebaseConfig);
 const fs = getFirestore(app);
 
 export const itemsAPI = {
-  get: async (collectionName: string) => {
+  get: async (collectionName: string) => { //get all
     let itemsSnapshot = await getDocs(collection(fs, collectionName));
+
     return itemsSnapshot.docs.map(d => d.data());
   },
+  getByParam: async <T = DocumentData>(collectionName: string, id: string | undefined): Promise<T | undefined> => {
+    if (!id) return;
+
+    let q = query(
+      collection(fs, collectionName),
+      where('id', '==', Number(id))
+    );
+
+    let itemsSnapshot = await getDocs(q);
+
+    return itemsSnapshot.docs.map(d => d.data())[0] as T;
+  }
 };
 
 export const customersAPI = {
   add: async (data: Object) => {
     let docRef = await addDoc(collection(fs, "contactUs"), data);
     return !!docRef;
-  },
-};
-
-export const addAPI = {
-  add: async (data: Object[]) => {
-    for (let item of data) {
-      let docRef = await addDoc(collection(fs, "howToChooseDoors"), item);
-      console.log(docRef)
-    }
   },
 };

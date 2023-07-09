@@ -10,14 +10,14 @@ import Settings from "@/pageComponents/catalog/settings";
 import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
 import Products from "@/pageComponents/catalog/products";
 import { itemsAPI } from "@/firebase";
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null
 
 type Props = {
   itemsPerPage?: number
-} & InferGetStaticPropsType<typeof getStaticProps>
+} & InferGetServerSidePropsType<typeof getServerSideProps>
 
 const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbsItemType[]>([]);
@@ -97,7 +97,7 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
 
 export default CatalogPage;
 
-export const getStaticProps: GetStaticProps<{ products: ProductType[] }> = async () => {
+export const getServerSideProps: GetServerSideProps<{ products: ProductType[] }> = async () => {
   let products = await itemsAPI.get('products') as ProductType[];
 
   return {
