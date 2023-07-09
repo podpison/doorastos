@@ -35,6 +35,7 @@ const CatalogPage: FC<Props> = ({ itemsPerPage = 3 }) => {
     setActiveCategoryItems([]);
     setIsPaginationReset(true);
   };
+
   const setActiveCategoryItem = (category: ActiveCategoryItemType['category'], newItems: string[]) => {
     let categoryIndex = activeCategoryItems.findIndex(c => c.category === category);
 

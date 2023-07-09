@@ -40,13 +40,14 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
       }
       additionalValues && (data['additionalValues'] = additionalValues);
 
-      let resp = await toast.promise(customersAPI.add(data), {
-        pending: 'Pending...',
-        success: 'Success! We\'ll contact you soon',
-        error: 'Oops... Something went wrong'
-      });
+      let resp = await toast.promise(customersAPI.add(data),
+        {
+          pending: 'Pending...',
+          success: 'Success! We\'ll contact you soon',
+          error: 'Oops... Something went wrong'
+        }
+      );
 
-      
       if (resp) {
         onSubmit && onSubmit();
         resetForm();

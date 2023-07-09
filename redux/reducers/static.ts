@@ -116,7 +116,7 @@ const initialState = {
   products: [] as ProductType[],
   stock: [] as StockItemType[],
   reviews: [] as ReviewItemType[],
-  additionalProductOptions: [] as AdditionalProductOptionType[],
+  additionalProductOptions: [] as AdditionalProductOptionType[]
 }
 
 export type StaticStateType = typeof initialState

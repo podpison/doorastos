@@ -72,7 +72,7 @@ const Layout: FC<Props> = ({ children }) => {
     <InitializationScreen isVisible={!isAppLoaded} />
     <RecentlyWatchedProducts />
     <ToastContainer
-      position="bottom-right"
+      position="top-right"
     />
   </div>
 }

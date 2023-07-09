@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--toastify-color-light: #222222!important;
+	--toastify-text-color-light: #F2F2F2!important;
+	--toastify-toast-width: 330px!important;
+}
+
+.Toastify__close-button {
+	color: #fff!important
+}
+
 @layer base {
 	html {
 		&:has(.disable-scroll) {
