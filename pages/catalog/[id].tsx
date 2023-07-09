@@ -1,11 +1,8 @@
 import Breadcrumbs from '@/ui/breadcrumbs';
 import { BreadcrumbsItemType } from '@/ui/breadcrumbs/item';
 import useWhereQuery from '@/hooks/useWhereQuery';
-import { selectProductItems } from '@/redux/selectors';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import NotFound from '../404';
 import useRecentlyViewedWatcher from '@/hooks/useRecentlyViewedWatcher';
 import Hero from '@/pageComponents/product/hero';
@@ -19,7 +16,9 @@ import SectionHeading from '@/ui/sectionHeading';
 import Steps from '@/pageComponents/paymentOrder/howToPay/steps';
 import YouMayLike from '@/pageComponents/product/youMayLike';
 import GoBackOrForward from '@/pageComponents/product/goBackOrForward';
-import { AdditionalProductOptionType } from '@/redux/reducers/static';
+import { AdditionalProductOptionType, ProductType } from '@/redux/reducers/static';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { itemsAPI } from '@/firebase';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -27,33 +26,27 @@ const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   },
 ]
 
-const ProductPage: FC = () => {
-  const router = useRouter();
-  let products = useSelector(selectProductItems);
+const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ currentProduct, canGoForward }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
   useWhereQuery(defaultBreadcrumbItem, breadcrumbItems, setBreadcrumbItems);
   const [additionalOptions, setAdditionalOptions] = useState<AdditionalProductOptionType[]>([]);
 
-  let id = router.query.id;
-  let currentItem = products.find(i => i.id === (typeof id === 'string' && Number(id)));
-
-  useRecentlyViewedWatcher(currentItem?.id);
+  let currentProductId = currentProduct?.id;
+  useRecentlyViewedWatcher(currentProductId);
 
   useEffect(() => {
-    if (!currentItem) return;
+    if (!currentProduct) return;
 
     setBreadcrumbItems(prev => {
-      return !currentItem ? [...prev] : [...prev, { name: currentItem.name, href: currentItem.id.toString() }];
+      return !currentProduct ? [...prev] : [...prev, { name: currentProduct.name, href: currentProduct.id.toString() }];
     });
-  }, [currentItem]);
+  }, [currentProduct]);
 
-  let pageTitle = `${currentItem?.name || 'Product'} | Doorastos`;
+  let pageTitle = `${currentProduct?.name || 'Product'} | Doorastos`;
 
-  if (!currentItem && products.length !== 0) {
+  if (!currentProduct) {
     return <NotFound />
   };
-
-  let canGoForward = products.find(p => p.id === ((currentItem?.id || 0) + 1)) !== undefined;
 
   const handleNewAdditionalOption = (newOption: AdditionalProductOptionType) => {
     let isExist = additionalOptions.find(i => i.name === newOption.name);
@@ -70,13 +63,13 @@ const ProductPage: FC = () => {
   return <>
     <Head>
       <title>{pageTitle}</title>
-      <meta name="description" content={`Doorastos - the description of the ${currentItem?.name} product`} />
+      <meta name="description" content={`Doorastos - the description of the ${currentProduct?.name} product`} />
     </Head>
     <main>
       <Breadcrumbs items={breadcrumbItems} />
-      <Hero item={currentItem} additionalOptions={additionalOptions} />
-      {currentItem?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
-      <Description currentItem={currentItem} />
+      <Hero item={currentProduct} additionalOptions={additionalOptions} />
+      {currentProduct?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
+      <Description currentItem={currentProduct} />
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
       <HowAreWeWorking />
@@ -85,10 +78,50 @@ const ProductPage: FC = () => {
         <SectionHeading>How to pay for Expert doors?</SectionHeading>
         <Steps />
       </section>
-      <YouMayLike currentItemId={currentItem?.id} />
-      <GoBackOrForward currentItemId={currentItem?.id} canGoForward={canGoForward} />
+      <YouMayLike currentItemId={currentProduct?.id} />
+      <GoBackOrForward currentItemId={currentProduct?.id} canGoForward={canGoForward} />
     </main>
   </>
 };
 
 export default ProductPage;
+
+type GetStaticPropsReturnType = {
+  currentProduct: ProductType | undefined
+  canGoForward: boolean
+}
+
+export const getStaticProps: GetStaticProps<GetStaticPropsReturnType> = async ({ params }) => {
+  let searchedId = params?.id;
+
+  let products = await itemsAPI.get('products') as ProductType[];
+  let currentProduct = products.find(p => typeof searchedId === 'string' && p.id === Number(searchedId));
+  let canGoForward = products.find(p => p.id === ((currentProduct?.id || 0) + 1)) !== undefined;
+
+  if (!currentProduct) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      currentProduct,
+      canGoForward,
+    }
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  let products = await itemsAPI.get('products') as ProductType[];
+  let paths = products.map(p => ({
+    params: {
+      id: p.id.toString()
+    }
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};

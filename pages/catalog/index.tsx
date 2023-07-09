@@ -3,24 +3,23 @@ import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
 import Head from "next/head";
 import { FC, useState } from "react";
 import { ProductType } from "@/redux/reducers/static";
-import { useSelector } from "react-redux";
-import { selectProductItems } from "@/redux/selectors";
 import UniqueOffer from "@/ui/uniqueOffers";
 import useWhereQuery from "@/hooks/useWhereQuery";
 import { ActiveCategoryItemType } from "@/pageComponents/catalog/settings/filter/categories/item";
 import Settings from "@/pageComponents/catalog/settings";
 import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
 import Products from "@/pageComponents/catalog/products";
+import { itemsAPI } from "@/firebase";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null
 
 type Props = {
   itemsPerPage?: number
-}
+} & InferGetStaticPropsType<typeof getStaticProps>
 
-const CatalogPage: FC<Props> = ({ itemsPerPage = 3 }) => {
-  const products = useSelector(selectProductItems);
+const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbsItemType[]>([]);
   const [startPriceFromItem, setStartPriceFromItem] = useState<PriceFromType>(null);
   const [activeSecurityItem, setActiveSecurityItem] = useState<SecurityItemType>(null);
@@ -97,3 +96,13 @@ const CatalogPage: FC<Props> = ({ itemsPerPage = 3 }) => {
 }
 
 export default CatalogPage;
+
+export const getStaticProps: GetStaticProps<{ products: ProductType[] }> = async () => {
+  let products = await itemsAPI.get('products') as ProductType[];
+
+  return {
+    props: {
+      products,
+    }
+  };
+};
