@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
 import SectionHeadings from './sectionHeadings/index';
-import { ProductType } from '@/redux/reducers/static';
 import DAIHero from '@/pageComponents/deliveryAndInstallation/hero'; //DAI - delivery and installation
 import DAIShippingPricing from '@/pageComponents/deliveryAndInstallation/shippingPricing';
 import Characteristics from './section/characteristics';
 import ReturnConditions from './section/returnConditions';
 import Reviews from './section/reviews';
 import GuaranteesInfo from '../../guarantees/guarantessInfo/index';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   currentItem: ProductType | undefined

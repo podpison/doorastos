@@ -1,8 +1,8 @@
-import { ProductType } from '@/redux/reducers/static';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
 

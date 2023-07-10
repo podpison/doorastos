@@ -4,7 +4,7 @@ import tamperproofImg from '../../../../../public/imgs/pages/catalog/settings/fi
 import armoredImg from '../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/armored.webp';
 import Item from './item';
 import { SecurityItemType } from '@/pages/catalog';
-import { ProductType } from '@/redux/reducers/static';
+import { ProductType } from '@/pages/catalog/[id]';
 
 const securityProperties = [
   {

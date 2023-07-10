@@ -1,18 +1,19 @@
 import { FC, useRef, useState } from 'react';
 import SectionHeading from '../sectionHeading';
 import Slider from "react-slick";
-import Item from './Item';
+import Item, { ReviewItemType } from './Item';
 import useResize from '@/hooks/useResize';
-import { useSelector } from 'react-redux';
-import { selectReviewItems } from '@/redux/selectors';
 
 const itemsPerPortion = 1;
 
-const Reviews: FC = () => {
+type Props = {
+  items: ReviewItemType[]
+}
+
+const Reviews: FC<Props> = ({ items }) => {
   let windowWidth = useResize();
   const sliderRef = useRef<Slider>(null);
   const [currentPortion, setCurrentPortion] = useState(0);
-  let items = useSelector(selectReviewItems);
 
   const hanldeBeforeChange = (oldIndex: number, newIndex: number) => {
     setCurrentPortion(newIndex);

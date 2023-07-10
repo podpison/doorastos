@@ -15,10 +15,10 @@ const app = initializeApp(firebaseConfig);
 const fs = getFirestore(app);
 
 export const itemsAPI = {
-  get: async (collectionName: string) => { //get all
+  get: async <T = DocumentData>(collectionName: string): Promise<T[]> => { //get all
     let itemsSnapshot = await getDocs(collection(fs, collectionName));
 
-    return itemsSnapshot.docs.map(d => d.data());
+    return itemsSnapshot.docs.map(d => d.data()) as T[];
   },
   getByParam: async <T = DocumentData>(collectionName: string, id: string | undefined): Promise<T | undefined> => {
     if (!id) return;

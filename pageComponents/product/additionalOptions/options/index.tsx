@@ -1,16 +1,13 @@
 import { FC } from 'react';
-import Item from './item';
-import { AdditionalProductOptionType } from '@/redux/reducers/static';
-import { useSelector } from 'react-redux';
-import { selectAdditionalProductOptions } from '@/redux/selectors';
+import Item, { AdditionalProductOptionType } from './item';
 
 type Props = {
+  items: AdditionalProductOptionType[]
   activeItems: AdditionalProductOptionType[]
   setActiveItems: (items: AdditionalProductOptionType) => void
 }
 
-const Options: FC<Props> = ({ activeItems, setActiveItems }) => {
-  let items = useSelector(selectAdditionalProductOptions);
+const Options: FC<Props> = ({ items, activeItems, setActiveItems }) => {
 
   let Items = items.map((i, index) => <Item
     isActive={activeItems.find(ai => ai.name === i.name) !== undefined}

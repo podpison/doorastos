@@ -1,10 +1,19 @@
 import { Dispatch, FC, SetStateAction } from 'react';
-import { StockItemType } from '@/redux/reducers/static';
 import Image from 'next/image';
 import ArrowWithCircle from '@/ui/arrowWithCircle/arrowWithCircle';
 import cn from 'classnames';
 import textToURL from '@/helpers/textToURL';
 import capitalizeFirstLetter from '@/helpers/capitalizeFirstLetter';
+
+export type StockItemType = {
+  heading: string
+  description: string
+  img: {
+    src: string
+    alt: string
+  }
+  id: number
+}
 
 type Props = {
   activeItemType: string | null

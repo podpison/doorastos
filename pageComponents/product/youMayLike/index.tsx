@@ -1,16 +1,14 @@
-import { ProductType } from '@/redux/reducers/static';
-import { selectProductItems } from '@/redux/selectors';
 import { FC, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import SectionHeading from '@/ui/sectionHeading';
 import Item from '@/pageComponents/catalog/products/item';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
+  data: ProductType[]
   currentItemId: number | undefined
 }
 
-const YouMayLike: FC<Props> = ({ currentItemId }) => {
-  let data = useSelector(selectProductItems);
+const YouMayLike: FC<Props> = ({ data, currentItemId }) => {
   const [items, setItems] = useState<ProductType[]>([]);
 
   useEffect(() => {

@@ -2,7 +2,12 @@ import { FC } from 'react';
 import Image from 'next/image';
 import ChevronRounded from '../chevronRounded';
 import SliderPagination from '../sliderPagination';
-import { ReviewItemType } from '@/redux/reducers/static';
+
+export type ReviewItemType = {
+  img: string
+  personName: string
+  review: string
+}
 
 type Props = {
   setNewPage: (operation: 'next' | 'prev') => void

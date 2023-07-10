@@ -3,7 +3,7 @@ import AdditionalInfoDialog, { AdditionalInfoType } from '@/ui/dialogs/additiona
 import { Dispatch, FC, SetStateAction, useState } from 'react';
 import cn from 'classnames';
 import { SecurityItemType } from '@/pages/catalog';
-import { ProductType } from '@/redux/reducers/static';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   text: ProductType['security'];

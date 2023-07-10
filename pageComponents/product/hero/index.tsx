@@ -1,5 +1,4 @@
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
-import { AdditionalProductOptionType, ProductType } from '@/redux/reducers/static';
 import { FC, useState } from 'react';
 import cn from 'classnames';
 import HelpChooseDialog from '@/ui/dialogs/helpChooseDialog';
@@ -7,6 +6,8 @@ import BookAMeasurement from './bookAMeasurement';
 import textToURL from '@/helpers/textToURL';
 import capitalizeFirstLetter from '@/helpers/capitalizeFirstLetter';
 import Imgs from './imgs/imgs';
+import { ProductType } from '@/pages/catalog/[id]';
+import { AdditionalProductOptionType } from '../additionalOptions/options/item';
 
 type Props = {
   item: ProductType | undefined

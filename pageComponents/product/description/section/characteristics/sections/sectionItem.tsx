@@ -1,4 +1,3 @@
-import { ProductType } from '@/redux/reducers/static';
 import { FC } from 'react';
 
 type Props = {

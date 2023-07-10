@@ -1,23 +1,18 @@
-import { fetchStaticItems } from "@/redux/reducers/static";
-import { selectStaticItems } from "@/redux/selectors";
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import { useEffect, useInsertionEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useInsertionEffect, useState } from "react";
 
 const useAppInitialization = () => {
-  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const { stock, reviews } = useSelector(selectStaticItems);
   const [isAppLoaded, setIsAppLoaded] = useState(false);
 
   useInsertionEffect(() => {
-    dispatch(fetchStaticItems());
-  }, []);
+    //We used to wait for all the items to be fetched here but, since all the fetching logic is in components, there is nothing to wait for. With that being said, we can't just remove this component (right?). We consider to add 2 seconds delay as a 'fake loading'
+    let token = setTimeout(() => {
+      setIsAppLoaded(true)
+    }, 2000);
 
-  useEffect(() => {
-    if (stock.length !== 0 && reviews.length !== 0) {
-      setIsAppLoaded(true);
+    return () => {
+      clearTimeout(token);
     };
-  }, [stock.length, reviews.length]);
+  }, []);
 
   return isAppLoaded;
 };

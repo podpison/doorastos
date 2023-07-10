@@ -1,6 +1,6 @@
-import { ProductType } from '@/redux/reducers/static';
 import { FC } from 'react';
 import SectionItem from './sectionItem';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   data: ProductType['characteristics']['protectionAgainstBreaking']

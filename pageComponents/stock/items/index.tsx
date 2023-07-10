@@ -1,16 +1,16 @@
 import { FC, useEffect, useState } from 'react';
-import { selectStockItems } from '@/redux/selectors';
-import { useSelector } from 'react-redux';
-import Item from './item';
+import Item, { StockItemType } from './item';
 import HelpChooseDialog from '@/ui/dialogs/helpChooseDialog';
 import Pagination from '@/ui/pagination';
-import { StockItemType } from '@/redux/reducers/static';
 
 const itemsPerPage = 3;
 
-const Items: FC = () => {
+type Props = {
+  data: StockItemType[]
+}
+
+const Items: FC<Props> = ({ data }) => {
   const [activeItemType, setActiveItemType] = useState<string | null>(null);
-  let data = useSelector(selectStockItems);
   const [items, setItems] = useState<StockItemType[]>(data.slice(0, 3));
 
   let Items = items.map(i => <Item activeItemType={activeItemType} setActiveItemType={setActiveItemType} {...i} key={i.id} />)

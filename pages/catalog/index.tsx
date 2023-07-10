@@ -2,7 +2,6 @@ import Breadcrumbs from "@/ui/breadcrumbs";
 import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
 import Head from "next/head";
 import { FC, useState } from "react";
-import { ProductType } from "@/redux/reducers/static";
 import UniqueOffer from "@/ui/uniqueOffers";
 import useWhereQuery from "@/hooks/useWhereQuery";
 import { ActiveCategoryItemType } from "@/pageComponents/catalog/settings/filter/categories/item";
@@ -11,6 +10,7 @@ import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
 import Products from "@/pageComponents/catalog/products";
 import { itemsAPI } from "@/firebase";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { ProductType } from "./[id]";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null

@@ -1,5 +1,5 @@
+import { ProductType } from "@/pages/catalog/[id]";
 import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
-import { ProductType } from "@/redux/reducers/static";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect } from "react";
 

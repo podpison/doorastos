@@ -1,7 +1,7 @@
-import { ProductType } from '@/redux/reducers/static';
 import { FC, useState } from 'react';
 import Item from './item';
 import Pagination from '@/ui/pagination';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   data: ProductType['reviews'] | undefined

@@ -16,9 +16,99 @@ import SectionHeading from '@/ui/sectionHeading';
 import Steps from '@/pageComponents/paymentOrder/howToPay/steps';
 import YouMayLike from '@/pageComponents/product/youMayLike';
 import GoBackOrForward from '@/pageComponents/product/goBackOrForward';
-import { AdditionalProductOptionType, ProductType } from '@/redux/reducers/static';
 import { itemsAPI } from '@/firebase';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { AdditionalProductOptionType } from '@/pageComponents/product/additionalOptions/options/item';
+
+export type ProductType = {
+  name: string
+  imgs: string[]
+  price: number
+  material: string
+  id: number
+  security: 'With thermal break' | 'Tamperproof' | 'Armored'
+  where: 'apartment' | 'house'
+  finishing: string
+  color: string
+  isUnique: boolean
+  discount?: {
+    value: number
+    expiryDate: string
+  }
+  characteristics: {
+    general: {
+      manufacturer: string
+      productName: string
+      openingDirection: string
+      openingSide: string
+      leafThickness: string
+      frameType: string
+      soundInsulationIndex: string
+      height: string
+      width: string
+      weight: string
+    }
+    protectionAgainstBreaking: {
+      numberOfMetalSheets: string
+      metalThickness: string
+      numberOfStiffeners: string
+      numberOfAntiRemovableClips: string
+      numberOfLocks: string
+      lockBrand: string
+      lockClass: string
+      armorPlate: boolean
+      armorPackage: boolean
+      nightValve: boolean
+    },
+    decorativeTrim: {
+      coatingOfCanvasAndBox: string
+      coatingColor: string
+      finishingOutside: boolean
+      finishingFromTheInside: boolean
+      decorativeThreshold: boolean
+    },
+    accessories: {
+      hardwareColor: string
+      pen: string
+      closer: boolean
+      threshold: boolean
+      hingeDecor: boolean
+    },
+    heatAndSoundInsulation: {
+      doorLeafFiller: string
+      fillerLayerThickness: string
+      flammabilityClassOfTheFiller: string
+      applicationTemperatureOfTheFiller: string
+      doorFrameInsulation: boolean
+    },
+    tightness: {
+      numberOfSealCircuits: string
+      sealMaterial: string
+    },
+    easeOfUse: {
+      doorHingeType: string
+      numberOfDoorHinges: string
+      openingAngle: string
+      removableCornersToReplaceTheInnerPanel: string
+      functionalValve: boolean
+      castleOfInvisibility: boolean
+      electronicLockWithFingerprintScanner: boolean
+      latchAdjuster: string
+      closer: boolean
+      peepholeHeight: string
+      viewingAngleOfThePeephole: string
+    },
+  }
+  reviews: {
+    grade: number
+    userName: string
+    date: string
+    city: string
+    advantages: string
+    disadvantages: string
+    comment: string
+  }[]
+}
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -26,7 +116,7 @@ const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   },
 ]
 
-const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ currentProduct, canGoForward }) => {
+const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ products, currentProduct, canGoForward, additionalProductOptions }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
   useWhereQuery(defaultBreadcrumbItem, breadcrumbItems, setBreadcrumbItems);
   const [additionalOptions, setAdditionalOptions] = useState<AdditionalProductOptionType[]>([]);
@@ -68,7 +158,7 @@ const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ curre
     <main>
       <Breadcrumbs items={breadcrumbItems} />
       <Hero item={currentProduct} additionalOptions={additionalOptions} />
-      {currentProduct?.isUnique && <AdditionalOptions activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
+      {(currentProduct?.isUnique === false) && <AdditionalOptions items={additionalProductOptions} activeOptions={additionalOptions} setActiveOption={handleNewAdditionalOption} />}
       <Description currentItem={currentProduct} />
       <PriceComponents />
       <WhatWillYouGetWhenOrdering />
@@ -78,7 +168,7 @@ const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ curre
         <SectionHeading>How to pay for Expert doors?</SectionHeading>
         <Steps />
       </section>
-      <YouMayLike currentItemId={currentProduct?.id} />
+      <YouMayLike data={products} currentItemId={currentProduct?.id} />
       <GoBackOrForward currentItemId={currentProduct?.id} canGoForward={canGoForward} />
     </main>
   </>
@@ -87,27 +177,27 @@ const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ curre
 export default ProductPage;
 
 type GetStaticPropsReturnType = {
-  currentProduct: ProductType | undefined
+  products: ProductType[]
+  currentProduct: ProductType | null
   canGoForward: boolean
+  additionalProductOptions: AdditionalProductOptionType[]
 }
 
 export const getStaticProps: GetStaticProps<GetStaticPropsReturnType> = async ({ params }) => {
   let searchedId = params?.id;
 
   let products = await itemsAPI.get('products') as ProductType[];
+  let additionalProductOptions = await itemsAPI.get('additionalProductOptions') as AdditionalProductOptionType[];
+
   let currentProduct = products.find(p => typeof searchedId === 'string' && p.id === Number(searchedId));
   let canGoForward = products.find(p => p.id === ((currentProduct?.id || 0) + 1)) !== undefined;
 
-  if (!currentProduct) {
-    return {
-      notFound: true,
-    }
-  }
-
   return {
     props: {
-      currentProduct,
+      products,
+      currentProduct: currentProduct || null,
       canGoForward,
+      additionalProductOptions
     },
     revalidate: 60 * 60 * 24 //revalidate after 24 hours
   };

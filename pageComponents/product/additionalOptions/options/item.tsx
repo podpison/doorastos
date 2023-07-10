@@ -1,7 +1,11 @@
 import Checkbox from '@/ui/checkbox';
 import { FC } from 'react';
 import cn from 'classnames';
-import { AdditionalProductOptionType } from '@/redux/reducers/static';
+
+export type AdditionalProductOptionType = {
+  name: string
+  price: number
+}
 
 type Props = {
   isActive: boolean

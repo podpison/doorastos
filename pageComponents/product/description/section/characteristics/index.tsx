@@ -1,4 +1,3 @@
-import { ProductType } from '@/redux/reducers/static';
 import { FC, useState } from 'react';
 import CategoryHeadings from './categoryHeadings';
 import General from './sections/general';
@@ -8,6 +7,7 @@ import Accessories from './sections/accessories';
 import HeatAndSoundInsulation from './sections/HeatAndSoundInsulation';
 import Tightness from './sections/tightness';
 import EaseOfUse from './sections/easeOfUse';
+import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   currentItem: ProductType | undefined

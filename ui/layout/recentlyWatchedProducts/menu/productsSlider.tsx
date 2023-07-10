@@ -1,11 +1,11 @@
-import { selectProductItems } from '@/redux/selectors';
-import { FC, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { FC, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import Item from '@/pageComponents/catalog/products/item';
 import SliderPagination from '@/ui/sliderPagination';
 import useResize from '@/hooks/useResize';
 import ChevronRounded from '@/ui/chevronRounded';
+import { ProductType } from '@/pages/catalog/[id]';
+import { itemsAPI } from '@/firebase';
 
 type Props = {
   viewedProductsIds: number[] | undefined
@@ -15,8 +15,8 @@ const itemsPerPortion = 1;
 
 const ProductsSlider: FC<Props> = ({ viewedProductsIds }) => {
   let windowWidth = useResize();
-  let products = useSelector(selectProductItems);
   const sliderRef = useRef<Slider>(null);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPortion, setCurrentPortion] = useState(0);
 
   let viewedProducts = products.filter(p => viewedProductsIds?.includes(p.id));
@@ -29,6 +29,11 @@ const ProductsSlider: FC<Props> = ({ viewedProductsIds }) => {
   const setNewPage = (operation: 'next' | 'prev') => {
     operation === 'next' ? sliderRef.current?.slickNext() : sliderRef.current?.slickPrev();
   };
+
+  useEffect(() => {
+    itemsAPI.get<ProductType>('products').then(res => setProducts(res));
+    
+  }, []);
 
   return <div className='esm:max-w-[400px]'>
     <Slider

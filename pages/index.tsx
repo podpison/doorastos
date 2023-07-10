@@ -9,8 +9,11 @@ import Hero from '@/pageComponents/main/hero';
 import QualityDifferences from '@/pageComponents/main/qualityDifferences';
 import Head from 'next/head'
 import { FC } from 'react';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { ReviewItemType } from '@/ui/reviews/Item';
+import { itemsAPI } from '@/firebase';
 
-const MainPage: FC = () => {
+const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ reviews }) => {
 
   return <>
     <Head>
@@ -25,9 +28,20 @@ const MainPage: FC = () => {
       <ForWhat />
       <QualityDifferences />
       <AdditionalSecurity />
-      <Reviews />
+      <Reviews items={reviews} />
       <Recall className='mt130-300 max-w-[710px] ml-auto' />
     </main>
   </>
 }
 export default MainPage;
+
+export const getStaticProps: GetStaticProps<{ reviews: ReviewItemType[] }> = async () => {
+  let reviews = await itemsAPI.get('reviews') as ReviewItemType[];
+
+  return {
+    props: {
+      reviews,
+    },
+    revalidate: 60 * 60 * 24 //revalidate after 24 hours
+  };
+};

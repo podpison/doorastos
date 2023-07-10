@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SecurityItemType } from '@/pages/catalog';
-import { ProductType } from '@/redux/reducers/static';
-import * as redux from 'react-redux';
-import Products from '@/pages/catalog/catalogComponents/products';
+import { ProductType } from '@/pages/catalog/[id]';
+import Products from '@/pageComponents/catalog/products';
 
 const fakeProducts: ProductType[] = [
   {
@@ -2027,15 +2026,6 @@ const fakeProducts: ProductType[] = [
     "security": "With thermal break"
   }
 ]
-
-jest.spyOn(redux, 'useSelector').mockReturnValueOnce(fakeProducts);
-jest.mock('react-redux', () => {
-  return {
-    __esModule: true,
-    ...jest.requireActual('react-redux'),
-    useSelector: () => fakeProducts,
-  };
-});
 
 describe('Catalog', () => {
   describe('Render filtred items', () => {
