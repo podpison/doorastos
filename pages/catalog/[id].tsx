@@ -18,7 +18,7 @@ import YouMayLike from '@/pageComponents/product/youMayLike';
 import GoBackOrForward from '@/pageComponents/product/goBackOrForward';
 import { AdditionalProductOptionType, ProductType } from '@/redux/reducers/static';
 import { itemsAPI } from '@/firebase';
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -26,7 +26,7 @@ const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   },
 ]
 
-const ProductPage: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ currentProduct, canGoForward }) => {
+const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ currentProduct, canGoForward }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
   useWhereQuery(defaultBreadcrumbItem, breadcrumbItems, setBreadcrumbItems);
   const [additionalOptions, setAdditionalOptions] = useState<AdditionalProductOptionType[]>([]);
@@ -91,11 +91,12 @@ type GetStaticPropsReturnType = {
   canGoForward: boolean
 }
 
-export const getServerSideProps: GetServerSideProps<GetStaticPropsReturnType> = async ({ params }) => {
-  let id = typeof params?.id === 'string' ? params?.id : undefined
+export const getStaticProps: GetStaticProps<GetStaticPropsReturnType> = async ({ params }) => {
+  let searchedId = params?.id;
 
-  let currentProduct = await itemsAPI.getByParam<ProductType>('products', id);
-  let nextProduct = await itemsAPI.getByParam<ProductType>('products', String(Number(id) + 1));
+  let products = await itemsAPI.get('products') as ProductType[];
+  let currentProduct = products.find(p => typeof searchedId === 'string' && p.id === Number(searchedId));
+  let canGoForward = products.find(p => p.id === ((currentProduct?.id || 0) + 1)) !== undefined;
 
   if (!currentProduct) {
     return {
@@ -106,7 +107,22 @@ export const getServerSideProps: GetServerSideProps<GetStaticPropsReturnType> = 
   return {
     props: {
       currentProduct,
-      canGoForward: nextProduct !== undefined,
+      canGoForward,
+    },
+    revalidate: 60 * 60 * 24 //revalidate after 24 hours
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  let products = await itemsAPI.get('products') as ProductType[];
+  let paths = products.map(p => ({
+    params: {
+      id: p.id.toString()
     }
+  }));
+
+  return {
+    paths,
+    fallback: false,
   };
 };
