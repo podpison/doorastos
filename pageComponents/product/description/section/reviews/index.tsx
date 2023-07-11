@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Item from './item';
 import Pagination from '@/ui/pagination';
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   data: ProductType['reviews'] | undefined

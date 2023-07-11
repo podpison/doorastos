@@ -2,7 +2,96 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
-import { ProductType } from '@/pages/catalog/[id]';
+
+export type ProductType = {
+  name: string
+  imgs: string[]
+  price: number
+  material: string
+  id: number
+  security: 'With thermal break' | 'Tamperproof' | 'Armored'
+  where: 'apartment' | 'house'
+  finishing: string
+  color: string
+  isUnique: boolean
+  discount?: {
+    value: number
+    expiryDate: string
+  }
+  characteristics: {
+    general: {
+      manufacturer: string
+      productName: string
+      openingDirection: string
+      openingSide: string
+      leafThickness: string
+      frameType: string
+      soundInsulationIndex: string
+      height: string
+      width: string
+      weight: string
+    }
+    protectionAgainstBreaking: {
+      numberOfMetalSheets: string
+      metalThickness: string
+      numberOfStiffeners: string
+      numberOfAntiRemovableClips: string
+      numberOfLocks: string
+      lockBrand: string
+      lockClass: string
+      armorPlate: boolean
+      armorPackage: boolean
+      nightValve: boolean
+    },
+    decorativeTrim: {
+      coatingOfCanvasAndBox: string
+      coatingColor: string
+      finishingOutside: boolean
+      finishingFromTheInside: boolean
+      decorativeThreshold: boolean
+    },
+    accessories: {
+      hardwareColor: string
+      pen: string
+      closer: boolean
+      threshold: boolean
+      hingeDecor: boolean
+    },
+    heatAndSoundInsulation: {
+      doorLeafFiller: string
+      fillerLayerThickness: string
+      flammabilityClassOfTheFiller: string
+      applicationTemperatureOfTheFiller: string
+      doorFrameInsulation: boolean
+    },
+    tightness: {
+      numberOfSealCircuits: string
+      sealMaterial: string
+    },
+    easeOfUse: {
+      doorHingeType: string
+      numberOfDoorHinges: string
+      openingAngle: string
+      removableCornersToReplaceTheInnerPanel: string
+      functionalValve: boolean
+      castleOfInvisibility: boolean
+      electronicLockWithFingerprintScanner: boolean
+      latchAdjuster: string
+      closer: boolean
+      peepholeHeight: string
+      viewingAngleOfThePeephole: string
+    },
+  }
+  reviews: {
+    grade: number
+    userName: string
+    date: string
+    city: string
+    advantages: string
+    disadvantages: string
+    comment: string
+  }[]
+}
 
 type Props = {
 

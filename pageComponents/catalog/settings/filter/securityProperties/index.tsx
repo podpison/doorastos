@@ -4,7 +4,7 @@ import tamperproofImg from '../../../../../public/imgs/pages/catalog/settings/fi
 import armoredImg from '../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/armored.webp';
 import Item from './item';
 import { SecurityItemType } from '@/pages/catalog';
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 const securityProperties = [
   {

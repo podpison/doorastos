@@ -1,4 +1,4 @@
-import { ProductType } from "@/pages/catalog/[id]";
+import { ProductType } from "@/pageComponents/catalog/products/item";
 import { BreadcrumbsItemType } from "@/ui/breadcrumbs/item";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect } from "react";

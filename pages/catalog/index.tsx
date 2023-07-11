@@ -10,7 +10,7 @@ import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
 import Products from "@/pageComponents/catalog/products";
 import { itemsAPI } from "@/firebase";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { ProductType } from "./[id]";
+import { ProductType } from "@/pageComponents/catalog/products/item";
 
 export type PriceFromType = ('Ascending' | 'Descending') | null
 export type SecurityItemType = ProductType['security'] | null

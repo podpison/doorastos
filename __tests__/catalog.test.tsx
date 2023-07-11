@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SecurityItemType } from '@/pages/catalog';
-import { ProductType } from '@/pages/catalog/[id]';
 import Products from '@/pageComponents/catalog/products';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 const fakeProducts: ProductType[] = [
   {
@@ -105,7 +105,8 @@ const fakeProducts: ProductType[] = [
       "value": 10
     },
     "price": 69000,
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "name": "Expert pro tp1",
     "security": "Tamperproof",
     "characteristics": {
@@ -273,7 +274,8 @@ const fakeProducts: ProductType[] = [
       }
     ],
     "material": "Scandinavian oak",
-    "img": "https://i.postimg.cc/8PV7rz80/img-1.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "price": 55000,
     "finishing": "Forged",
     "name": "Expert pro arm1",
@@ -344,7 +346,8 @@ const fakeProducts: ProductType[] = [
     }
   },
   {
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "characteristics": {
       "decorativeTrim": {
         "decorativeThreshold": true,
@@ -515,7 +518,8 @@ const fakeProducts: ProductType[] = [
     "price": 46000
   },
   {
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "price": 100000,
     "id": 11,
     "color": "White",
@@ -753,7 +757,8 @@ const fakeProducts: ProductType[] = [
     "color": "Greens",
     "material": "Scandinavian oak",
     "name": "Expert pro arm3",
-    "img": "https://i.postimg.cc/8PV7rz80/img-1.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "where": "apartment",
     "reviews": [
       {
@@ -921,7 +926,8 @@ const fakeProducts: ProductType[] = [
     "price": 50000,
     "material": "Scandinavian oak",
     "finishing": "With glass and mirror",
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "name": "Expert pro tb53",
     "where": "house",
     "reviews": [
@@ -1020,7 +1026,8 @@ const fakeProducts: ProductType[] = [
     "security": "Tamperproof"
   },
   {
-    "img": "https://i.postimg.cc/8PV7rz80/img-1.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "reviews": [
       {
         "disadvantages": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, quidem?",
@@ -1279,7 +1286,8 @@ const fakeProducts: ProductType[] = [
         "advantages": "Lorem ipsum dolor sit amet."
       }
     ],
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "characteristics": {
       "heatAndSoundInsulation": {
         "doorFrameInsulation": false,
@@ -1448,7 +1456,8 @@ const fakeProducts: ProductType[] = [
       }
     ],
     "material": "Scandinavian oak",
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "price": 86299,
     "discount": {
       "expiryDate": "2030-02-15T19:00:00.000Z",
@@ -1525,7 +1534,8 @@ const fakeProducts: ProductType[] = [
     "where": "house"
   },
   {
-    "img": "https://i.postimg.cc/8PV7rz80/img-1.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "color": "Light",
     "where": "apartment",
     "reviews": [
@@ -1853,7 +1863,8 @@ const fakeProducts: ProductType[] = [
     "security": "With thermal break",
     "finishing": "Forged",
     "color": "Light",
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "where": "apartment",
     "id": 5,
     "name": "Expert pro tb6"
@@ -2021,7 +2032,8 @@ const fakeProducts: ProductType[] = [
     },
     "material": "Scandinavian oak",
     "finishing": "Forged",
-    "img": "https://i.postimg.cc/wTc75YgT/img.png",
+    "imgs": ["https://i.postimg.cc/wTc75YgT/img.png"],
+    isUnique: false,
     "name": "Expert pro tb2",
     "security": "With thermal break"
   }

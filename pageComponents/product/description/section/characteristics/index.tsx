@@ -7,7 +7,7 @@ import Accessories from './sections/accessories';
 import HeatAndSoundInsulation from './sections/HeatAndSoundInsulation';
 import Tightness from './sections/tightness';
 import EaseOfUse from './sections/easeOfUse';
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   currentItem: ProductType | undefined

@@ -1,11 +1,10 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
-import Item from './item';
+import Item, { ProductType } from './item';
 import NothingFound from './nothingFound';
 import getPriceWithDiscount from '@/helpers/getPriceWithDiscount';
 import Pagination from '@/ui/pagination';
 import { PriceFromType, SecurityItemType } from '@/pages/catalog';
 import { ActiveCategoryItemType } from '../settings/filter/categories/item';
-import { ProductType } from '@/pages/catalog/[id]';
 
 type Props = {
   itemsPerPage?: number

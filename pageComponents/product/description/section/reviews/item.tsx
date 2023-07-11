@@ -1,4 +1,4 @@
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 import { FC } from 'react';
 
 type Props = {

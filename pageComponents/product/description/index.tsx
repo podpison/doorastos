@@ -6,7 +6,7 @@ import Characteristics from './section/characteristics';
 import ReturnConditions from './section/returnConditions';
 import Reviews from './section/reviews';
 import GuaranteesInfo from '../../guarantees/guarantessInfo/index';
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   currentItem: ProductType | undefined

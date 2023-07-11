@@ -6,8 +6,8 @@ import BookAMeasurement from './bookAMeasurement';
 import textToURL from '@/helpers/textToURL';
 import capitalizeFirstLetter from '@/helpers/capitalizeFirstLetter';
 import Imgs from './imgs/imgs';
-import { ProductType } from '@/pages/catalog/[id]';
 import { AdditionalProductOptionType } from '../additionalOptions/options/item';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   item: ProductType | undefined

@@ -1,10 +1,9 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import Item from '@/pageComponents/catalog/products/item';
+import Item, { ProductType } from '@/pageComponents/catalog/products/item';
 import SliderPagination from '@/ui/sliderPagination';
 import useResize from '@/hooks/useResize';
 import ChevronRounded from '@/ui/chevronRounded';
-import { ProductType } from '@/pages/catalog/[id]';
 import { itemsAPI } from '@/firebase';
 
 type Props = {

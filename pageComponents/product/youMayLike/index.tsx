@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import SectionHeading from '@/ui/sectionHeading';
-import Item from '@/pageComponents/catalog/products/item';
-import { ProductType } from '@/pages/catalog/[id]';
+import Item, { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   data: ProductType[]

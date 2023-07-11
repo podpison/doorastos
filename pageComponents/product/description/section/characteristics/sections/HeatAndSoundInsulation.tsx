@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import SectionItem from './sectionItem';
-import { ProductType } from '@/pages/catalog/[id]';
+import { ProductType } from '@/pageComponents/catalog/products/item';
 
 type Props = {
   data: ProductType['characteristics']['heatAndSoundInsulation']
