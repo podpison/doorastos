@@ -19,7 +19,7 @@ type Props = {
 const Item: FC<Props> = ({ img, personName, review, setNewPage, windowWidth, currentPortion, portionsCount }) => {
 
   return <div className='grid grid-cols-2 md:grid-cols-[50%_1fr_1fr] md:grid-rows-[1fr_max-content] md:gap-x-7 smlg:gap-x-12 lg:grid-cols-[max-content_1fr_1fr]'>
-    <Image className='md:row-[1/3]' src={img} alt='Door' width={500} height={600} />
+    <Image className='ml-px md:row-[1/3]' src={img} alt='Door' width={500} height={600} />
     <div className='flex gap-x-5 mt-auto ml-auto md:col-[3]'>
       <ChevronRounded
         className='w-14 h-14'

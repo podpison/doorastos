@@ -25,7 +25,7 @@ const Menu: FC<Props> = ({ isOpen, viewedProductIds, handleOpenStatus }) => {
       onClick={handleOpenStatus}
     />
     <motion.div
-      className='bg-white z-50 h-screen px-2.5 pt-7'
+      className='bg-white z-50 h-screen overflow-y-auto px-2.5 py-7'
       animate={{
         x: isOpen ? 0 : 450
       }}
