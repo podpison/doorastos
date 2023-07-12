@@ -7,10 +7,10 @@ import CloseIcon from '@/ui/icons/CloseIcon';
 type Props = {
   isOpen: boolean
   viewedProductIds: number[] | undefined
-  handleOpenStatus: () => void
+  closeMenu: () => void
 }
 
-const Menu: FC<Props> = ({ isOpen, viewedProductIds, handleOpenStatus }) => {
+const Menu: FC<Props> = ({ isOpen, viewedProductIds, closeMenu }) => {
   return <div
     className={cn(
       'flex flex-col fixed right-0 top-0 z-40 max-esm:w-full',
@@ -22,7 +22,7 @@ const Menu: FC<Props> = ({ isOpen, viewedProductIds, handleOpenStatus }) => {
         'fixed top-0 -left-1 w-[calc(100vw_+_4px)] h-screen transition-all bg-black/60',
         !isOpen && 'opacity-0 invisible -z-50'
       )}
-      onClick={handleOpenStatus}
+      onClick={closeMenu}
     />
     <motion.div
       className='bg-white z-50 h-screen overflow-y-auto px-2.5 py-7'
@@ -33,11 +33,11 @@ const Menu: FC<Props> = ({ isOpen, viewedProductIds, handleOpenStatus }) => {
     >
       <div className='flex justify-between items-center gap-x-5'>
         <h5 className='text-light font-normal'>You've recently viewed these products:</h5>
-        <button onClick={handleOpenStatus} aria-label='Close menu'>
+        <button onClick={closeMenu} aria-label='Close menu'>
           <CloseIcon />
         </button>
       </div>
-      <ProductsSlider viewedProductsIds={viewedProductIds} />
+      <ProductsSlider closeMenu={closeMenu} viewedProductsIds={viewedProductIds} />
     </motion.div>
   </div>
 };

@@ -19,8 +19,16 @@ const RecentlyWatchedProducts: FC = () => {
   }, []);
 
   return <>
-    <Reminder isVisible={isVisible} setInvisible={handleIsVisibleStatus} onClick={handleOpenMenuStatus} />
-    <Menu isOpen={isMenuOpen} viewedProductIds={viewedProductIds} handleOpenStatus={handleOpenMenuStatus} />
+    <Reminder
+      isVisible={isVisible}
+      setInvisible={handleIsVisibleStatus}
+      onClick={handleOpenMenuStatus}
+    />
+    <Menu
+      isOpen={isMenuOpen}
+      viewedProductIds={viewedProductIds}
+      closeMenu={handleOpenMenuStatus}
+    />
   </>
 };
 

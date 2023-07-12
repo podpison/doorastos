@@ -8,18 +8,19 @@ import { itemsAPI } from '@/firebase';
 
 type Props = {
   viewedProductsIds: number[] | undefined
+  closeMenu: () => void
 }
 
 const itemsPerPortion = 1;
 
-const ProductsSlider: FC<Props> = ({ viewedProductsIds }) => {
+const ProductsSlider: FC<Props> = ({ viewedProductsIds, closeMenu }) => {
   let windowWidth = useResize();
   const sliderRef = useRef<Slider>(null);
   const [products, setProducts] = useState<ProductType[]>([]);
   const [currentPortion, setCurrentPortion] = useState(0);
 
   let viewedProducts = products.filter(p => viewedProductsIds?.includes(p.id));
-  let Items = viewedProducts.map(p => <Item {...p} key={p.id} />);
+  let Items = viewedProducts.map(p => <Item onClick={closeMenu} {...p} key={p.id} />);
   let portionsCount = Math.ceil(viewedProducts.length / itemsPerPortion);
 
   const hanldeBeforeChange = (oldIndex: number, newIndex: number) => {
@@ -31,7 +32,6 @@ const ProductsSlider: FC<Props> = ({ viewedProductsIds }) => {
 
   useEffect(() => {
     itemsAPI.get<ProductType>('products').then(res => setProducts(res));
-    
   }, []);
 
   return <div className='esm:max-w-[400px]'>
