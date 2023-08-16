@@ -20,6 +20,7 @@ import { itemsAPI } from '@/firebase';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { AdditionalProductOptionType } from '@/pageComponents/product/additionalOptions/options/item';
 import { ProductType } from '@/pageComponents/catalog/products/item';
+import textToURL from '@/helpers/textToURL';
 
 const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
   {
@@ -95,12 +96,12 @@ type GetStaticPropsReturnType = {
 }
 
 export const getStaticProps: GetStaticProps<GetStaticPropsReturnType> = async ({ params }) => {
-  let searchedId = params?.id;
+  let searchedName = params?.name;
 
   let products = await itemsAPI.get('products') as ProductType[];
   let additionalProductOptions = await itemsAPI.get('additionalProductOptions') as AdditionalProductOptionType[];
 
-  let currentProduct = products.find(p => typeof searchedId === 'string' && p.id === Number(searchedId));
+  let currentProduct = products.find(p => typeof searchedName === 'string' && textToURL(p.name) === searchedName);
   let canGoForward = products.find(p => p.id === ((currentProduct?.id || 0) + 1)) !== undefined;
 
   return {
@@ -118,7 +119,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let products = await itemsAPI.get('products') as ProductType[];
   let paths = products.map(p => ({
     params: {
-      id: p.id.toString()
+      name: textToURL(p.name)
     }
   }));
 
