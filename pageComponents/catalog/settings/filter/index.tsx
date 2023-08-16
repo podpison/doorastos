@@ -7,15 +7,17 @@ import SecurityProperties from './securityProperties';
 import Categories from './categories';
 import { ActiveCategoryItemType } from './categories/item';
 import { SecurityItemType } from '@/pages/catalog';
+import { ProductType } from '../../products/item';
 
 type Props = {
   activeSecurityItem: SecurityItemType
   setActiveSecurityItem: Dispatch<SetStateAction<SecurityItemType>>
   activeCategoryItems: ActiveCategoryItemType[]
   setActiveCategoryItem: (category: ActiveCategoryItemType['category'], newItems: string[]) => void
+  allItems: ProductType[]
 }
 
-const Filter: FC<Props> = ({ activeSecurityItem, setActiveSecurityItem, activeCategoryItems, setActiveCategoryItem }) => {
+const Filter: FC<Props> = ({ activeSecurityItem, setActiveSecurityItem, activeCategoryItems, setActiveCategoryItem, allItems }) => {
   let windowWidth = useResize();
   let isPc = windowWidth >= 900;
   const [isExpanded, setIsExpanded] = useState(isPc);
@@ -42,6 +44,7 @@ const Filter: FC<Props> = ({ activeSecurityItem, setActiveSecurityItem, activeCa
       <Categories
         activeItems={activeCategoryItems}
         setActiveItem={setActiveCategoryItem}
+        allItems={allItems}
       />
       <SecurityProperties activeItem={activeSecurityItem} setActiveItem={setActiveSecurityItem} />
     </motion.div>

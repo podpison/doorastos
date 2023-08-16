@@ -75,6 +75,7 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
         setActiveSecurityItem={setActiveSecurityItem}
         activeCategoryItems={activeCategoryItems}
         setActiveCategoryItem={setActiveCategoryItem}
+        allItems={products}
       />
       <StartPriceFrom
         activeItem={startPriceFromItem}
