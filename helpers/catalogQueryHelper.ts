@@ -3,10 +3,16 @@ import textToURL from "./textToURL";
 
 const catalogQueryHelper = (
   queryName: string,
-  value: string,
+  value: string | null,
   queries: ParsedUrlQuery,
   shouldDelete: boolean
 ) => {
+  if (!value) {
+    return {
+      ...queries,
+    };
+  }
+
   if (shouldDelete) {
     let queriesCopy = { ...queries };
     delete queriesCopy[queryName];

@@ -13,7 +13,6 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ProductType } from "@/pageComponents/catalog/products/item";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
-import textToURL from "@/helpers/textToURL";
 
 export type PriceFromType = string | null; //'Ascending' | 'Descending'
 export type SecurityItemType = ProductType["security"] | null;

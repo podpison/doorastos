@@ -38,6 +38,7 @@ const Products: FC<Props> = ({
       activeSecurityItem !== null
         ? itemsCopy.filter((i) => textToURL(i.security) === activeSecurityItem)
         : itemsCopy;
+
     let filtredByPrice =
       startPriceFromItem !== null
         ? filtredBySecurity.sort((a, b) => {
@@ -50,7 +51,7 @@ const Products: FC<Props> = ({
               b?.discount?.value
             );
 
-            return startPriceFromItem === "Ascending"
+            return startPriceFromItem === "ascending"
               ? aPriceWithDiscount - bPriceWithDiscount
               : bPriceWithDiscount - aPriceWithDiscount;
           })
@@ -124,7 +125,7 @@ const Products: FC<Props> = ({
   ]);
 
   useEffect(() => {
-    if (!isPaginationReset) {
+    if (isPaginationReset) {
       setItemsPortion(items.slice(0, itemsPerPage));
     };
   }, [items, itemsPerPage, isPaginationReset]);

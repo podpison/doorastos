@@ -3,6 +3,7 @@ import { PriceFromType } from "@/pages/catalog";
 import { FC } from "react";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
+import catalogQueryHelper from "@/helpers/catalogQueryHelper";
 
 type Props = {
   text: PriceFromType;
@@ -25,10 +26,7 @@ const Item: FC<Props> = ({
     <Link
       className="group flex items-center gap-x-2 cursor-pointer"
       href={{
-        query: {
-          ...allQueries,
-          startPriceFrom: checkedItem === text ? null : text,
-        },
+        query: catalogQueryHelper('startPriceFrom', text, allQueries, checkedItem === text),
       }}
       onClick={handleClick}
     >

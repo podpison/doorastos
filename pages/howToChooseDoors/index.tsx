@@ -14,7 +14,7 @@ const initialBreadcumbItems = {
 
 const HowToChooseDoors: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ categories }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbsItemType[]>([]);
-  const { where } = useWhereQuery({ name: 'How to choose doors' }, breadcrumbItems, setBreadcrumbItems, initialBreadcumbItems);
+  const {query: whereQuery} = useWhereQuery({ name: 'How to choose doors' }, setBreadcrumbItems, initialBreadcumbItems);
 
   return <>
     <Head>
@@ -23,7 +23,7 @@ const HowToChooseDoors: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ 
     </Head>
     <main>
       <Breadcrumbs items={breadcrumbItems} />
-      <Items categories={categories} where={where} />
+      <Items categories={categories} where={whereQuery} />
     </main>
   </>
 };
