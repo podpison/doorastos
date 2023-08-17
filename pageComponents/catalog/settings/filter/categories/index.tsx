@@ -4,20 +4,20 @@ import MDFOverlaysImg from "../../../../../public/imgs/pages/catalog/settings/fi
 import laminatedChipboardImg from "../../../../../public/imgs/pages/catalog/settings/filter/laminated-chipboard.webp";
 import withGlassAndMirrorImg from "../../../../../public/imgs/pages/catalog/settings/filter/with-glass-and-mirror.webp";
 import forgedImg from "../../../../../public/imgs/pages/catalog/settings/filter/forged.webp";
-import Item, { ActiveCategoryItemType } from "./item";
+import Item, { ActiveCategoryItemsType } from "./item";
 import { ProductType } from "@/pageComponents/catalog/products/item";
 
 type Props = {
-  activeItems: ActiveCategoryItemType[];
+  activeItems: ActiveCategoryItemsType;
   setActiveItem: (
-    category: ActiveCategoryItemType["category"],
+    category: string,
     newItems: string[]
   ) => void;
   allItems: ProductType[];
 };
 
 const Categories: FC<Props> = ({
-  activeItems = [],
+  activeItems,
   setActiveItem,
   allItems,
 }) => {
@@ -27,7 +27,7 @@ const Categories: FC<Props> = ({
         defaultItem: "Price",
         items: [
           {
-            text: "30 000 ₽ — 50 000 ₽",
+            text: "20 000 ₽ — 50 000 ₽",
           },
           {
             text: "50 000 ₽ — 70 000 ₽",
@@ -125,7 +125,7 @@ const Categories: FC<Props> = ({
     };
 
     return defaultItems.concat(colorCategory);
-  }, [allItems]); //vercel doen't want to deploy this project if items are outside the component
+  }, [allItems]);
 
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 

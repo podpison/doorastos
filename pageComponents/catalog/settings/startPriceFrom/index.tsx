@@ -1,18 +1,31 @@
-import { Dispatch, FC, SetStateAction } from 'react';
-import Item from './item';
-import { PriceFromType } from '@/pages/catalog';
+import { FC } from "react";
+import Item from "./item";
+import { PriceFromType } from "@/pages/catalog";
+import { useRouter } from "next/router";
 
 type Props = {
-  activeItem: PriceFromType
-  setActiveItem: Dispatch<SetStateAction<PriceFromType>>
-}
+  activeItem: PriceFromType;
+  resetPagination: (isReset: boolean) => void;
+};
 
-const StartPriceFrom: FC<Props> = ({ activeItem, setActiveItem }) => {
+const items = ["Ascending", "Descending"];
 
-  return <div className='flex gap-x-4 mt-10 esm:gap-x-10 esm:mt-16'>
-    <Item text='Ascending' checkedItem={activeItem} setCheckedItem={setActiveItem} />
-    <Item text='Descending' checkedItem={activeItem} setCheckedItem={setActiveItem} />
-  </div>
+const StartPriceFrom: FC<Props> = ({ activeItem, resetPagination }) => {
+  const router = useRouter();
+
+  let Items = items.map((i) => (
+    <Item
+      text={i}
+      checkedItem={activeItem}
+      allQueries={router.query}
+      resetPagination={resetPagination}
+      key={i}
+    />
+  ));
+
+  return (
+    <div className="flex gap-x-4 mt-10 esm:gap-x-10 esm:mt-16">{Items}</div>
+  );
 };
 
 export default StartPriceFrom;

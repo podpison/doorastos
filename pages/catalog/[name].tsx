@@ -30,7 +30,7 @@ const defaultBreadcrumbItem: BreadcrumbsItemType[] = [
 
 const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ products, currentProduct, canGoForward, additionalProductOptions }) => {
   const [breadcrumbItems, setBreadcrumbItems] = useState(defaultBreadcrumbItem);
-  useWhereQuery(defaultBreadcrumbItem, breadcrumbItems, setBreadcrumbItems);
+  useWhereQuery(defaultBreadcrumbItem, setBreadcrumbItems);
   const [additionalOptions, setAdditionalOptions] = useState<AdditionalProductOptionType[]>([]);
 
   let currentProductId = currentProduct?.id;

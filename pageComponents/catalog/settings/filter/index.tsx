@@ -1,23 +1,21 @@
 import SettingsIcon from '@/ui/icons/settingsIcon';
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 import useResize from '@/hooks/useResize';
 import SecurityProperties from './securityProperties';
 import Categories from './categories';
-import { ActiveCategoryItemType } from './categories/item';
-import { SecurityItemType } from '@/pages/catalog';
+import { ActiveCategoryItemsType } from './categories/item';
 import { ProductType } from '../../products/item';
 
 type Props = {
-  activeSecurityItem: SecurityItemType
-  setActiveSecurityItem: Dispatch<SetStateAction<SecurityItemType>>
-  activeCategoryItems: ActiveCategoryItemType[]
-  setActiveCategoryItem: (category: ActiveCategoryItemType['category'], newItems: string[]) => void
+  activeSecurityItem: string | null
+  activeCategoryItems: ActiveCategoryItemsType
+  setActiveCategoryItem: (category: string, newItems: string[]) => void
   allItems: ProductType[]
 }
 
-const Filter: FC<Props> = ({ activeSecurityItem, setActiveSecurityItem, activeCategoryItems, setActiveCategoryItem, allItems }) => {
+const Filter: FC<Props> = ({ activeSecurityItem, activeCategoryItems, setActiveCategoryItem, allItems }) => {
   let windowWidth = useResize();
   let isPc = windowWidth >= 900;
   const [isExpanded, setIsExpanded] = useState(isPc);
@@ -46,7 +44,7 @@ const Filter: FC<Props> = ({ activeSecurityItem, setActiveSecurityItem, activeCa
         setActiveItem={setActiveCategoryItem}
         allItems={allItems}
       />
-      <SecurityProperties activeItem={activeSecurityItem} setActiveItem={setActiveSecurityItem} />
+      <SecurityProperties activeItem={activeSecurityItem} />
     </motion.div>
   </div>
 };
