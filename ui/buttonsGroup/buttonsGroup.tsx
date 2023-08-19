@@ -12,13 +12,25 @@ type Props = {
   activeLink: string | string[] | undefined;
   items: ButtonsGroupItemType[];
   className?: string;
+  onItemClick?: () => void;
 };
 
-const ButtonsGroup: FC<Props> = ({ activeLink, items, className }) => {
+const ButtonsGroup: FC<Props> = ({
+  activeLink,
+  items,
+  className,
+  onItemClick,
+}) => {
   const router = useRouter();
 
   let Items = items.map((i, index) => (
-    <Item activeLink={activeLink} {...i} allQueries={router.query} key={index} />
+    <Item
+      activeLink={activeLink}
+      allQueries={router.query}
+      onClick={onItemClick}
+      {...i}
+      key={index}
+    />
   ));
 
   return (

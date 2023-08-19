@@ -4,7 +4,6 @@ import Head from "next/head";
 import { FC, useState } from "react";
 import UniqueOffer from "@/ui/uniqueOffers";
 import useWhereQuery from "@/hooks/useWhereQuery";
-import { ActiveCategoryItemsType } from "@/pageComponents/catalog/settings/filter/categories/item";
 import Settings from "@/pageComponents/catalog/settings";
 import StartPriceFrom from "@/pageComponents/catalog/settings/startPriceFrom";
 import Products from "@/pageComponents/catalog/products";
@@ -40,11 +39,9 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
     { name: "Catalog" },
     setBreadcrumbItems
   );
-  const [isPaginationReset, setIsPaginationReset] = useState(false);
+  const [forcePage, setForcePage] = useState<number | undefined>(undefined);
 
   const resetSettings = async () => {
-    await router.push("/catalog") //redirect MUST be finished first
-    setIsPaginationReset(true);
     setBreadcrumbItems((prev) =>
       prev.filter((i) => !i.href?.includes("?where"))
     );
@@ -54,6 +51,7 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
     await router.push({
       query: catalogQueryHelper(category, newItems, router.query, false, ['offset'])
     });
+    setForcePage(0);
   };
 
   return (
@@ -80,8 +78,8 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
           startPriceFromItem={startPriceFromItem}
           whereItem={whereQuery}
           activeCategoryItems={activeCategoryItems}
-          isPaginationReset={isPaginationReset}
-          setIsPaginationReset={setIsPaginationReset}
+          forcePage={forcePage}
+          setForcePage={setForcePage}
         />
         <UniqueOffer />
       </main>

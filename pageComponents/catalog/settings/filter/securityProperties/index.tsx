@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import withThermalBreakImg from "../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/with-thermal-break.webp";
 import tamperproofImg from "../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/tamperproof.webp";
 import armoredImg from "../../../../../public/imgs/pages/catalog/settings/filter/additionalSecurity/armored.webp";

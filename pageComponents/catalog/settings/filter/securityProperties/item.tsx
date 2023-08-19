@@ -17,7 +17,12 @@ type Props = {
   allQueries: ParsedUrlQuery;
 };
 
-const Item: FC<Props> = ({ text, info, activeItem, allQueries }) => {
+const Item: FC<Props> = ({
+  text,
+  info,
+  activeItem,
+  allQueries,
+}) => {
   const [isAIDOpen, setIsAIDOpen] = useState(false); //AID - additional item dialog
 
   let isActive = activeItem === textToURL(text);

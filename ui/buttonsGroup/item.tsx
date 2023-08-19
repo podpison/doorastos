@@ -9,9 +9,10 @@ type Props = {
   where: string;
   activeLink: string | string[] | undefined;
   allQueries: ParsedUrlQuery;
+  onClick?: () => void
 };
 
-const Item: FC<Props> = ({ text, where, activeLink, allQueries }) => {
+const Item: FC<Props> = ({ text, where, activeLink, allQueries, onClick }) => {
   let isActive = activeLink === where;
 
   return (
@@ -25,6 +26,7 @@ const Item: FC<Props> = ({ text, where, activeLink, allQueries }) => {
           "offset",
         ]),
       }}
+      onClick={onClick}
     >
       {text}
     </Link>

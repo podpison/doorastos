@@ -1,12 +1,4 @@
-import React, {
-  Component,
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Component, FC, useEffect, useRef } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import Arrow from "./arrow";
 import useResize from "@/hooks/useResize";
@@ -18,22 +10,21 @@ type Props = {
   items: object[];
   setItems: (items: object[]) => void;
   itemsPerPage: number;
-  isReset?: boolean;
-  setIsReset?: Dispatch<SetStateAction<boolean>>;
+  forcePage?: number | undefined;
+  setForcePage?: (page: number | undefined) => void;
 };
 
 const Pagination: FC<Props> = ({
   items,
   setItems,
   itemsPerPage,
-  isReset,
-  setIsReset,
+  forcePage,
+  setForcePage,
 }) => {
   const paginationRef = useRef<Component<ReactPaginateProps, any, any>>(null);
   const windowWidth = useResize();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [forcePage, setForcePage] = useState<number | undefined>(undefined);
 
   const itemOffset = Number(searchParams.get("offset")) || 0;
   const pageCount = Math.ceil(items?.length / itemsPerPage);
@@ -54,16 +45,18 @@ const Pagination: FC<Props> = ({
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     const currentItems = items.slice(itemOffset, endOffset);
+
     setItems(currentItems);
-  }, [itemOffset, items.length]);
+  }, [itemOffset, items]);
 
   useEffect(() => {
-    if (!paginationRef.current) return;
+    if (!paginationRef.current || !setForcePage) return;
 
     let currentPage = paginationRef.current.state.selected;
 
     if (pageCount <= urlCurrnetPage) {
-      setIsReset && setIsReset(true);
+      console.log(pageCount, urlCurrnetPage);
+      setForcePage(0);
       return;
     }
 
@@ -73,25 +66,11 @@ const Pagination: FC<Props> = ({
   }, [paginationRef, urlCurrnetPage, pageCount]);
 
   useEffect(() => {
-    const callback = async () => {
-      if (setIsReset && isReset) {
-        setIsReset(false);
-        setForcePage(isReset ? 0 : undefined);
+    //cleanup
+    if (forcePage === undefined || !setForcePage) return;
 
-        await router.push({
-          query: catalogQueryHelper("offset", "0", router.query, true),
-        });
-      }
-    };
-
-    callback();
-  }, [isReset, setIsReset]);
-
-  useEffect(() => {
-    if (forcePage) {
-      setForcePage(undefined);
-    }
-  }, [forcePage]);
+    setForcePage(undefined);
+  }, [forcePage, setForcePage]);
 
   if (pageCount <= 1) {
     return <></>;

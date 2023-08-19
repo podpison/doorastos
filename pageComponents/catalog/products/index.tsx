@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Item, { ProductType } from "./item";
 import NothingFound from "./nothingFound";
 import getPriceWithDiscount from "@/helpers/getPriceWithDiscount";
@@ -14,8 +14,8 @@ type Props = {
   startPriceFromItem: PriceFromType;
   whereItem: string | string[] | undefined;
   activeCategoryItems: ActiveCategoryItemsType;
-  isPaginationReset: boolean;
-  setIsPaginationReset: Dispatch<SetStateAction<boolean>>;
+  forcePage: number | undefined;
+  setForcePage: (page: number | undefined) => void;
 };
 
 const Products: FC<Props> = ({
@@ -25,8 +25,8 @@ const Products: FC<Props> = ({
   startPriceFromItem,
   whereItem,
   activeCategoryItems,
-  isPaginationReset,
-  setIsPaginationReset,
+  forcePage,
+  setForcePage,
 }) => {
   const [items, setItems] = useState<ProductType[]>(allItems); //filtred items
   const [itemsPortion, setItemsPortion] = useState<ProductType[]>(items); //portion of filtred items
@@ -34,6 +34,7 @@ const Products: FC<Props> = ({
 
   useEffect(() => {
     let itemsCopy = [...allItems];
+
     let filtredBySecurity =
       activeSecurityItem !== null
         ? itemsCopy.filter((i) => textToURL(i.security) === activeSecurityItem)
@@ -125,12 +126,6 @@ const Products: FC<Props> = ({
     activeCategoryItems,
   ]);
 
-  useEffect(() => {
-    if (isPaginationReset) {
-      setItemsPortion(items.slice(0, itemsPerPage));
-    }
-  }, [items, itemsPerPage, isPaginationReset]);
-
   if (items.length === 0) {
     return <NothingFound />;
   }
@@ -147,8 +142,8 @@ const Products: FC<Props> = ({
         items={items}
         setItems={(items) => setItemsPortion(items as ProductType[])}
         itemsPerPage={itemsPerPage}
-        isReset={isPaginationReset}
-        setIsReset={setIsPaginationReset}
+        forcePage={forcePage}
+        setForcePage={setForcePage}
       />
     </div>
   );
