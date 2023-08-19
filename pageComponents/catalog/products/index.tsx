@@ -56,6 +56,7 @@ const Products: FC<Props> = ({
               : bPriceWithDiscount - aPriceWithDiscount;
           })
         : filtredBySecurity;
+
     let filtredByWhere =
       typeof whereItem === "string"
         ? filtredByPrice.filter((i) => i.where === whereItem)
@@ -127,7 +128,7 @@ const Products: FC<Props> = ({
   useEffect(() => {
     if (isPaginationReset) {
       setItemsPortion(items.slice(0, itemsPerPage));
-    };
+    }
   }, [items, itemsPerPage, isPaginationReset]);
 
   if (items.length === 0) {

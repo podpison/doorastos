@@ -9,29 +9,24 @@ type Props = {
   text: PriceFromType;
   checkedItem: PriceFromType;
   allQueries: ParsedUrlQuery;
-  resetPagination: (isReset: boolean) => void;
 };
 
-const Item: FC<Props> = ({
-  text,
-  checkedItem,
-  allQueries,
-  resetPagination,
-}) => {
-  const handleClick = () => {
-    resetPagination(true);
-  };
-
+const Item: FC<Props> = ({ text, checkedItem, allQueries }) => {
   return (
     <Link
       className="group flex items-center gap-x-2 cursor-pointer"
       href={{
-        query: catalogQueryHelper('startPriceFrom', text, allQueries, checkedItem === text),
+        query: catalogQueryHelper(
+          "startPriceFrom",
+          text,
+          allQueries,
+          checkedItem === text?.toLowerCase(),
+          ["offset"]
+        ),
       }}
-      onClick={handleClick}
     >
       <Checkbox
-        checked={text === checkedItem}
+        checked={text?.toLowerCase() === checkedItem}
         variant="single"
         id={text || ""}
       />

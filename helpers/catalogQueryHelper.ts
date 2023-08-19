@@ -3,9 +3,10 @@ import textToURL from "./textToURL";
 
 const catalogQueryHelper = (
   queryName: string,
-  value: string | null,
+  value: string | string[] | null,
   queries: ParsedUrlQuery,
-  shouldDelete: boolean
+  shouldDelete: boolean,
+  unwantedQueries: string[] = []
 ) => {
   if (!value) {
     return {
@@ -13,16 +14,23 @@ const catalogQueryHelper = (
     };
   }
 
+  let queriesCopy = { ...queries };
+
+  if (unwantedQueries.length > 0) {
+    unwantedQueries.forEach((q) => {
+      delete queriesCopy[q];
+    });
+  }
+
   if (shouldDelete) {
-    let queriesCopy = { ...queries };
     delete queriesCopy[queryName];
 
     return queriesCopy;
   }
 
   return {
-    ...queries,
-    [queryName]: textToURL(value),
+    ...queriesCopy,
+    [queryName]: typeof value === 'string' ? textToURL(value) : value.map(v => textToURL(v)),
   };
 };
 

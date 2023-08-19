@@ -1,8 +1,10 @@
 import React, {
+  Component,
   Dispatch,
   FC,
   SetStateAction,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
@@ -11,7 +13,6 @@ import useResize from "@/hooks/useResize";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import catalogQueryHelper from "@/helpers/catalogQueryHelper";
-import { useIsMount } from "@/hooks/useIsMount";
 
 type Props = {
   items: object[];
@@ -28,15 +29,15 @@ const Pagination: FC<Props> = ({
   isReset,
   setIsReset,
 }) => {
+  const paginationRef = useRef<Component<ReactPaginateProps, any, any>>(null);
   const windowWidth = useResize();
   const router = useRouter();
-  const isMount = useIsMount(); //prevents page offest from being removed while mouning
   const searchParams = useSearchParams();
-  const [shouldForcePage, setShouldForcePage] = useState(true);
   const [forcePage, setForcePage] = useState<number | undefined>(undefined);
 
   const itemOffset = Number(searchParams.get("offset")) || 0;
   const pageCount = Math.ceil(items?.length / itemsPerPage);
+  const urlCurrnetPage = itemOffset / itemsPerPage;
 
   const handlePageClick: ReactPaginateProps["onPageChange"] = async (event) => {
     const newOffset = (event.selected * itemsPerPage) % items?.length;
@@ -54,18 +55,28 @@ const Pagination: FC<Props> = ({
     const endOffset = itemOffset + itemsPerPage;
     const currentItems = items.slice(itemOffset, endOffset);
     setItems(currentItems);
-  }, [itemOffset]);
+  }, [itemOffset, items.length]);
 
   useEffect(() => {
-    if (setIsReset && !isMount) {
-      setIsReset(true);
+    if (!paginationRef.current) return;
+
+    let currentPage = paginationRef.current.state.selected;
+
+    if (pageCount <= urlCurrnetPage) {
+      setIsReset && setIsReset(true);
+      return;
     }
-  }, [items.length]);
+
+    if (currentPage !== urlCurrnetPage) {
+      setForcePage(urlCurrnetPage);
+    }
+  }, [paginationRef, urlCurrnetPage, pageCount]);
 
   useEffect(() => {
     const callback = async () => {
       if (setIsReset && isReset) {
         setIsReset(false);
+        setForcePage(isReset ? 0 : undefined);
 
         await router.push({
           query: catalogQueryHelper("offset", "0", router.query, true),
@@ -75,17 +86,6 @@ const Pagination: FC<Props> = ({
 
     callback();
   }, [isReset, setIsReset]);
-
-  useEffect(() => {
-    setForcePage(isReset ? 0 : undefined);
-  }, [isReset]);
-
-  useEffect(() => {
-    if (!shouldForcePage && itemOffset === 0) return;
-
-    setForcePage(itemOffset / itemsPerPage);
-    setShouldForcePage(false);
-  }, [shouldForcePage, itemOffset]);
 
   useEffect(() => {
     if (forcePage) {
@@ -114,6 +114,7 @@ const Pagination: FC<Props> = ({
       previousLabel={<Arrow className="-rotate-90" />}
       renderOnZeroPageCount={null}
       forcePage={forcePage}
+      ref={paginationRef}
     />
   );
 };

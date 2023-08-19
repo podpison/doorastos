@@ -21,7 +21,9 @@ const Item: FC<Props> = ({ text, where, activeLink, allQueries }) => {
         isActive ? "bg-blue1 text-white" : "bg-line text-black hover:bg-grey4"
       )}
       href={{
-        query: catalogQueryHelper("where", where, allQueries, isActive),
+        query: catalogQueryHelper("where", where, allQueries, isActive, [
+          "offset",
+        ]),
       }}
     >
       {text}

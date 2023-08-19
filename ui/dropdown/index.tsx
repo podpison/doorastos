@@ -39,16 +39,14 @@ const Dropdown: FC<DropdownProps> = ({
     }
   };
 
-  let Items = items.map((i, index) => {
-    return (
-      <CheckboxItem
-        {...i}
-        isActive={activeItems.includes(textToURL(i.text))}
-        onClick={() => handleItemClick(i.text)}
-        key={index}
-      />
-    );
-  });
+  let Items = items.map((i, index) => (
+    <CheckboxItem
+      {...i}
+      isActive={activeItems.includes(textToURL(i.text).toLowerCase())}
+      onClick={() => handleItemClick(i.text)}
+      key={index}
+    />
+  ));
 
   useEffect(() => {
     const callback = (e: MouseEvent) => {

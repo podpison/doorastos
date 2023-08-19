@@ -13,6 +13,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { ProductType } from "@/pageComponents/catalog/products/item";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
+import catalogQueryHelper from "@/helpers/catalogQueryHelper";
 
 export type PriceFromType = string | null; //'Ascending' | 'Descending'
 export type SecurityItemType = ProductType["security"] | null;
@@ -51,10 +52,7 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
 
   const setActiveCategoryItem = async (category: string, newItems: string[]) => {
     await router.push({
-      query: {
-        ...router.query,
-        [category]: newItems,
-      },
+      query: catalogQueryHelper(category, newItems, router.query, false, ['offset'])
     });
   };
 
@@ -74,7 +72,7 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
           setActiveCategoryItem={setActiveCategoryItem}
           allItems={products}
         />
-        <StartPriceFrom activeItem={startPriceFromItem} resetPagination={setIsPaginationReset} />
+        <StartPriceFrom activeItem={startPriceFromItem} />
         <Products
           itemsPerPage={itemsPerPage}
           allItems={products}

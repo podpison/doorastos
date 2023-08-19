@@ -19,7 +19,7 @@ export type AdditionalInfoProps = {
 const AdditionalInfoDialog: FC<AdditionalInfoProps> = ({ heading, img, texts, open, openDialog, ...props }) => {
   let isDialogShown = open && img && texts;
 
-  return <div>
+  return <div className='pl-1'>
     <button onClick={openDialog} aria-label={`Open ${heading} description`}>
       <InfoIcon className='hover:fill-grey2 active:fill-blue1' />
     </button>

@@ -25,17 +25,19 @@ const Item: FC<Props> = ({ text, info, activeItem, allQueries }) => {
   const handleAIDStatus = () => setIsAIDOpen((prev) => !prev);
 
   return (
-    <Link
+    <div
       className={cn(
-        "group flex items-center justify-between gap-x-2 w-full border-y cursor-pointer transition-colors hover:border-grey2 active:border-grey2 lg:gap-x-2",
+        "group flex items-center justify-between w-full border-y transition-colors pr-1 hover:border-grey2 active:border-grey2",
         isActive ? "border-grey2" : "border-line"
       )}
-      href={{
-        query: catalogQueryHelper('security', text, allQueries, isActive)
-      }}
     >
-      <div
-        className="flex items-center gap-x-2 w-full"
+      <Link
+        className="flex items-center gap-x-2 w-full cursor-pointer"
+        href={{
+          query: catalogQueryHelper("security", text, allQueries, isActive, [
+            "offset",
+          ]),
+        }}
         aria-label={`set ${text} security property`}
       >
         <Checkbox checked={isActive} variant="single" id={text} />
@@ -45,7 +47,7 @@ const Item: FC<Props> = ({ text, info, activeItem, allQueries }) => {
         >
           {text}
         </label>
-      </div>
+      </Link>
       <AdditionalInfoDialog
         open={isAIDOpen}
         onOpenChange={(status) => setIsAIDOpen(status)}
@@ -53,7 +55,7 @@ const Item: FC<Props> = ({ text, info, activeItem, allQueries }) => {
         heading={text}
         {...info}
       />
-    </Link>
+    </div>
   );
 };
 

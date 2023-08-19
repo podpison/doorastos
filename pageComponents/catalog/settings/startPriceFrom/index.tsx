@@ -5,12 +5,11 @@ import { useRouter } from "next/router";
 
 type Props = {
   activeItem: PriceFromType;
-  resetPagination: (isReset: boolean) => void;
 };
 
 const items = ["Ascending", "Descending"];
 
-const StartPriceFrom: FC<Props> = ({ activeItem, resetPagination }) => {
+const StartPriceFrom: FC<Props> = ({ activeItem }) => {
   const router = useRouter();
 
   let Items = items.map((i) => (
@@ -18,7 +17,6 @@ const StartPriceFrom: FC<Props> = ({ activeItem, resetPagination }) => {
       text={i}
       checkedItem={activeItem}
       allQueries={router.query}
-      resetPagination={resetPagination}
       key={i}
     />
   ));
