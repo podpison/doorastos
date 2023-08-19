@@ -24,6 +24,7 @@ const Item: FC<Props> = ({ text, checkedItem, allQueries }) => {
           ["offset"]
         ),
       }}
+      scroll={false}
     >
       <Checkbox
         checked={text?.toLowerCase() === checkedItem}

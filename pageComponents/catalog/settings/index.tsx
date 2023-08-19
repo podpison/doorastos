@@ -41,11 +41,13 @@ const Settings: FC<Props> = ({
         <ButtonsGroup
           items={buttonsGroupItems}
           activeLink={activeLink}
+          itemScroll={false}
         />
         <Link
           className="text-center text-esm w-full bg-blue1 text-white transition-colors py-2.5 hover:text-black hover:bg-line"
           href='/catalog'
           onClick={resetSettings}
+          scroll={false}
         >
           Reset settings
         </Link>

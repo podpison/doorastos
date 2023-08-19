@@ -13,6 +13,7 @@ type Props = {
   items: ButtonsGroupItemType[];
   className?: string;
   onItemClick?: () => void;
+  itemScroll?: boolean;
 };
 
 const ButtonsGroup: FC<Props> = ({
@@ -20,6 +21,7 @@ const ButtonsGroup: FC<Props> = ({
   items,
   className,
   onItemClick,
+  itemScroll,
 }) => {
   const router = useRouter();
 
@@ -28,6 +30,7 @@ const ButtonsGroup: FC<Props> = ({
       activeLink={activeLink}
       allQueries={router.query}
       onClick={onItemClick}
+      scroll={itemScroll}
       {...i}
       key={index}
     />

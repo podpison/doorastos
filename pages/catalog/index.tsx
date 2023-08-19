@@ -47,9 +47,19 @@ const CatalogPage: FC<Props> = ({ products = [], itemsPerPage = 3 }) => {
     );
   };
 
-  const setActiveCategoryItem = async (category: string, newItems: string[]) => {
+  const setActiveCategoryItem = async (
+    category: string,
+    newItems: string[]
+  ) => {
     await router.push({
-      query: catalogQueryHelper(category, newItems, router.query, false, ['offset'])
+      query: catalogQueryHelper(
+        category,
+        newItems,
+        router.query,
+        false,
+        ["offset"],
+        false
+      ),
     });
     setForcePage(0);
   };

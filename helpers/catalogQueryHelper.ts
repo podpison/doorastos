@@ -6,7 +6,8 @@ const catalogQueryHelper = (
   value: string | string[] | null,
   queries: ParsedUrlQuery,
   shouldDelete: boolean,
-  unwantedQueries: string[] = []
+  unwantedQueries: string[] = [],
+  formatItems: boolean = true
 ) => {
   if (!value) {
     return {
@@ -28,9 +29,19 @@ const catalogQueryHelper = (
     return queriesCopy;
   }
 
+  if (!formatItems) {
+    return {
+      ...queriesCopy,
+      [queryName]: value,
+    };
+  }
+
   return {
     ...queriesCopy,
-    [queryName]: typeof value === 'string' ? textToURL(value) : value.map(v => textToURL(v)),
+    [queryName]:
+      typeof value === "string"
+        ? textToURL(value)
+        : value.map((v) => textToURL(v)),
   };
 };
 

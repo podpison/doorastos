@@ -44,6 +44,7 @@ const Item: FC<Props> = ({
           ]),
         }}
         aria-label={`set ${text} security property`}
+        scroll={false}
       >
         <Checkbox checked={isActive} variant="single" id={text} />
         <label
