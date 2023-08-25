@@ -96,13 +96,14 @@ const Products: FC<Props> = ({
                         .map((p) => p.replace("₽", ""))
                         .map((p) => Number(p)) //for a range
                     : Number(ci.replace("₽AndMore", "").replace(" ", "")); //for one price
-
+                  let itemPriceWithDiscount = getPriceWithDiscount(item.price, item?.discount?.value);
+                  
                   if (typeof priceRange === "number") {
-                    return priceRange < item.price;
+                    return priceRange < itemPriceWithDiscount;
                   }
 
                   return (
-                    priceRange[0] <= item.price && item.price <= priceRange[1]
+                    priceRange[0] <= itemPriceWithDiscount && itemPriceWithDiscount <= priceRange[1]
                   );
                 }
 

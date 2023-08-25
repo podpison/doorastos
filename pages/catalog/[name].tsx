@@ -40,7 +40,7 @@ const ProductPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ produ
     if (!currentProduct) return;
 
     setBreadcrumbItems(prev => {
-      return !currentProduct ? [...prev] : [...prev, { name: currentProduct.name, href: textToURL(currentProduct.name) }];
+      return [...prev, { name: currentProduct.name, href: textToURL(currentProduct.name) }];
     });
   }, [currentProduct]);
 

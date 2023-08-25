@@ -16,6 +16,7 @@ type Props = {
 } & BreadcrumbsItemType;
 
 const Item: FC<Props> = ({ name, href, query, id, isLast }) => {
+  let formattedHref = href || textToURL(name);
 
   return (
     <div className="flex items-center gap-x-2">
@@ -26,10 +27,8 @@ const Item: FC<Props> = ({ name, href, query, id, isLast }) => {
           isLast ? "text-grey1" : "text-grey2"
         )}
         href={{
-          href: href || textToURL(name),
-          query: {
-            ...query
-          }
+          pathname: formattedHref[0] === '/' ? formattedHref : `/${formattedHref}`,
+          query
         }}
       >
         {name}

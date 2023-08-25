@@ -55,7 +55,6 @@ const Pagination: FC<Props> = ({
     let currentPage = paginationRef.current.state.selected;
 
     if (pageCount <= urlCurrnetPage) {
-      console.log(pageCount, urlCurrnetPage);
       setForcePage(0);
       return;
     }
