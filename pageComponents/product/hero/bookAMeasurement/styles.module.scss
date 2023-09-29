@@ -1,19 +1,25 @@
 @property --progress {
-  syntax: '<percentage>';
+  syntax: "<percentage>";
   inherits: false;
   initial-value: 50%;
 }
 
 .container {
-  --progress: 85%;
   border-radius: 50%;
   transform: rotate(115deg);
+  background: radial-gradient(closest-side, white 96%, transparent 100% 100%),
+    conic-gradient(#0222a5 var(--progress), white 0);
   transition: --progress 0.5s;
-  background:
-    radial-gradient(closest-side, white 96%, transparent 100% 100%),
-    conic-gradient(#0222A5 var(--progress), white 0);
+  --progress: 85%;
 
   &:hover {
     --progress: 0%;
+  }
+
+  //if doesn't support
+  @-moz-document url-prefix() {
+    &:hover {
+      --progress: 85%
+    }
   }
 }
