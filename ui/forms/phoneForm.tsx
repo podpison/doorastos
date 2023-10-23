@@ -5,6 +5,7 @@ import "yup-phone";
 import cn from 'classnames';
 import { customersAPI } from '@/firebase';
 import { toast } from 'react-toastify';
+import { InputMask } from '@react-input/mask';
 
 //string for dynamic types (e.g. stock)
 export type PhoneFormTypeType = string | 'consultation' | 'recall' | 'antiCutPrice' | 'antiTheftSystem' | 'armoredPrice' | 'deliveryAndInstallation' | 'bookAMeasurement'
@@ -54,19 +55,21 @@ const PhoneForm: FC<Props> = ({ additionalValues, type = 'consultation', classNa
       }
     }}
   >
-    {({ isSubmitting, errors }) => (
+    {({ isSubmitting, errors, getFieldProps }) => (
       <Form className={cn('', className)}>
         <div className='flex flex-col gap-y-2.5'>
           <div className='group'>
-            <Field
+            <InputMask
               className={cn(
                 'text14 h-7 w-full border-b outline-none transition-colors',
                 errors.phone ? 'text-red border-b-red placeholder:text-red' : 'border-b-grey1 group-hover:text-grey1',
               )}
               placeholder='Phone'
               type="phone"
-              name="phone"
               aria-label="Your phone"
+              mask="+7 (___) ___-__-__"
+              replacement={{ _: /\d/ }}
+              {...getFieldProps('phone')}
             />
           </div>
           <p className='text-tiny text-grey2'>
